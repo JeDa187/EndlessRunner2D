@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
 
         dragonfly?.ToggleRigidbodyMovement(false);              // Disable dragonfly movement
 
+        ParallaxBackground_0 parallax = FindObjectOfType<ParallaxBackground_0>(); // Find the ParallaxBackground_0 object
+
         float currentCountdown = countdownTime;                 // Initialize countdown
 
         while (currentCountdown > 0)
@@ -104,8 +106,14 @@ public class GameManager : MonoBehaviour
             dragonfly.ToggleRigidbodyMovement(true);            // Enable dragonfly movement
         }
 
+        if (parallax != null)
+        {
+            parallax.canMove = true;                            // Enable parallax movement
+        }
+
         StartCoroutine(UpdateScore());
     }
+
 
 
     private IEnumerator UpdateScore()
