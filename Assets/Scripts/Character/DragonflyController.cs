@@ -47,9 +47,9 @@ public class DragonflyController : MonoBehaviour
         if (viewportPositionMax.y < 0.5f * objectHeightInViewport || viewportPositionMin.y > 1 - 0.5f * objectHeightInViewport)
         {
             GameManager.Instance.GameOver(); // End the game
+            Destroy(gameObject); // Destroy the dragonfly game object
         }
     }
-
 
     public void ToggleRigidbodyMovement(bool allowMovement)
     {
