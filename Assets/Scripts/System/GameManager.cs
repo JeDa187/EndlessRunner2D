@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private TMP_Text countdownTextObject;
+    [SerializeField] private GameObject gameOverPanel;           // Panel displayed when the game is over
+    [SerializeField] private TMP_Text countdownTextObject;       // Text object for the countdown
 
-    private float countdownTime = 3.0f;
-    public static GameManager Instance;
+    private float countdownTime = 3.0f;                          // Time for the countdown before the game starts
+    public static GameManager Instance;                          // Singleton instance of the GameManager
 
     private void Awake()
     {
-        SetupSingleton();
+        SetupSingleton();                                        // Setup the Singleton instance
     }
 
     private void Start()
     {
-        InitializeGame();
+        InitializeGame();                                        // Setup the game at the start
     }
 
     private void SetupSingleton()
@@ -29,35 +29,35 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject);                                 // Destroy the game object if another instance exists
         }
     }
 
     private void InitializeGame()
     {
-        Time.timeScale = 1; // Ensure game time is normalized
-        StartCoroutine(CountdownToStart());
+        Time.timeScale = 1;                                      // Ensure game time is running normally
+        StartCoroutine(CountdownToStart());                      // Start the countdown before the game begins
     }
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);                           // Display the Game Over panel
+        Time.timeScale = 0;                                      // Pause the game time
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;                                      // Resume game time
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Reload the current scene
     }
 
     private IEnumerator CountdownToStart()
     {
-        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
+        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();  // Find the Dragonfly object
 
-        dragonfly?.ToggleRigidbodyMovement(false);
+        dragonfly?.ToggleRigidbodyMovement(false);              // Disable dragonfly movement
 
-        float currentCountdown = countdownTime;
+        float currentCountdown = countdownTime;                 // Initialize countdown
 
         while (currentCountdown > 0)
         {
@@ -66,12 +66,12 @@ public class GameManager : MonoBehaviour
             currentCountdown--;
         }
 
-        countdownTextObject.text = "";
+        countdownTextObject.text = "";                          // Clear countdown text
 
         if (dragonfly != null)
         {
-            dragonfly.ResetDragonfly();
-            dragonfly.ToggleRigidbodyMovement(true);
+            dragonfly.ResetDragonfly();                         // Reset the dragonfly position and state
+            dragonfly.ToggleRigidbodyMovement(true);            // Enable dragonfly movement
         }
     }
 }
