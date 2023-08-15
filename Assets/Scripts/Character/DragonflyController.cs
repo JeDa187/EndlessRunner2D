@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class DragonflyController : MonoBehaviour
 {
@@ -29,9 +30,13 @@ public class DragonflyController : MonoBehaviour
         // Check if the character is completely outside the screen bounds
         if (viewportPositionMax.y < 0 || viewportPositionMin.y > 1)
         {
-            // Reset to the original position
-            transform.position = originalPosition;
-            rb.velocity = Vector2.zero; // Reset velocity
+            GameManager.Instance.GameOver();
         }
+    }
+
+    public void ResetDragonfly()
+    {
+        transform.position = originalPosition; // Reset the position
+        rb.velocity = Vector2.zero; // Reset velocity
     }
 }
