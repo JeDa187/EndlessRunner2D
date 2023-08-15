@@ -5,13 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;  // Singleton rakenne
-    public TMP_Text countdownTextObject; // Drag your TextMeshPro UI object here from the inspector
-    private float countdownTime = 3.0f;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_Text countdownTextObject;
 
-    public GameObject gameOverPanel;
+    private float countdownTime = 3.0f;
+    public static GameManager Instance;
 
     private void Awake()
+    {
+        SetupSingleton();
+    }
+
+    private void Start()
+    {
+        InitializeGame();
+    }
+
+    private void SetupSingleton()
     {
         if (Instance == null)
         {
@@ -20,8 +30,13 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
         }
+    }
+
+    private void InitializeGame()
+    {
+        Time.timeScale = 1; // Ensure game time is normalized
+        StartCoroutine(CountdownToStart());
     }
 
     public void GameOver()
@@ -32,12 +47,16 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        gameOverPanel.SetActive(false);
-        StartCoroutine(CountdownToStart());
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private IEnumerator CountdownToStart()
     {
+        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
+
+        dragonfly?.ToggleRigidbodyMovement(false);
+
         float currentCountdown = countdownTime;
 
         while (currentCountdown > 0)
@@ -47,11 +66,12 @@ public class GameManager : MonoBehaviour
             currentCountdown--;
         }
 
-        countdownTextObject.text = ""; // Clear the countdown text
-        DragonflyController dragonfly = Object.FindFirstObjectByType<DragonflyController>();
+        countdownTextObject.text = "";
+
         if (dragonfly != null)
         {
             dragonfly.ResetDragonfly();
+            dragonfly.ToggleRigidbodyMovement(true);
         }
     }
 }
