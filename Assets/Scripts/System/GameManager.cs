@@ -2,33 +2,36 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System; // Lis‰‰ t‰m‰ k‰ytt‰‰ksesi Action-tyyppi‰
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject gameOverPanel;           // Panel displayed when the game is over
-    [SerializeField] private TMP_Text countdownTextObject;       // Text object for the countdown
-    [SerializeField] private TMP_Text scoreTextObject;           // Text object for the score
-    [SerializeField] private TMP_Text highScoreTextObject;       // Text object for the high score
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_Text countdownTextObject;
+    [SerializeField] private TMP_Text scoreTextObject;
+    [SerializeField] private TMP_Text highScoreTextObject;
 
-    private const string HighScoreKey = "HighScore";             // Key for PlayerPrefs
+    private const string HighScoreKey = "HighScore";
+    private float countdownTime = 3.0f;
+    private int score = 0;
+    private int highScore = 0;
+    public static GameManager Instance;
 
-    private float countdownTime = 3.0f;                          // Time for the countdown before the game starts
-    private int score = 0;                                       // Player's score
-    private int highScore = 0;                                   // High score
-    public static GameManager Instance;                          // Singleton instance of the GameManager
+    private InfiniteParallaxBackground parallax;
 
-    private InfiniteParallaxBackground parallax;   // Add a reference to the new InfiniteParallaxBackground class
+    // Lis‰‰ t‰m‰ rivi m‰‰ritell‰ksesi tapahtuman
+    public event Action OnCountdownFinished;
 
     private void Awake()
     {
         SetupSingleton();
         LoadHighScore();
-        parallax = FindObjectOfType<InfiniteParallaxBackground>();  // Find the InfiniteParallaxBackground object
+        parallax = FindObjectOfType<InfiniteParallaxBackground>();
     }
 
     private void Start()
     {
-        InitializeGame();                                        // Setup the game at the start
+        InitializeGame();
     }
 
     private void SetupSingleton()
@@ -39,45 +42,44 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);                                 // Destroy the game object if another instance exists
+            Destroy(gameObject);
         }
     }
 
     private void InitializeGame()
     {
-        Time.timeScale = 1;                                      // Ensure game time is running normally
-        StartCoroutine(CountdownToStart());                      // Start the countdown before the game begins
+        Time.timeScale = 1;
+        StartCoroutine(CountdownToStart());
     }
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);                           // Display the Game Over panel
-        scoreTextObject.gameObject.SetActive(false);             // Hide the score text
-        Time.timeScale = 0;                                      // Pause the game time
-
-        UpdateHighScore();                                       // Update the high score if necessary
+        gameOverPanel.SetActive(true);
+        scoreTextObject.gameObject.SetActive(false);
+        Time.timeScale = 0;
+        UpdateHighScore();
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1;                                      // Resume game time
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Reload the current scene
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void LoadHighScore()
     {
-        highScore = PlayerPrefs.GetInt(HighScoreKey, 0);         // Load the high score from PlayerPrefs
-        highScoreTextObject.text = $"High Score: {highScore}";   // Display the high score
+        highScore = PlayerPrefs.GetInt(HighScoreKey, 0);
+        highScoreTextObject.text = $"High Score: {highScore}";
     }
 
     private void UpdateHighScore()
     {
-        if (score > highScore)                                   // Check if the score is greater than the high score
+        if (score > highScore)
         {
-            highScore = score;                                   // Update the high score
-            PlayerPrefs.SetInt(HighScoreKey, highScore);         // Save the high score to PlayerPrefs
+            highScore = score;
+            PlayerPrefs.SetInt(HighScoreKey, highScore);
         }
-        highScoreTextObject.text = $"High Score: {highScore}";   // Display the high score
+        highScoreTextObject.text = $"High Score: {highScore}";
     }
 
     private IEnumerator CountdownToStart()
@@ -88,8 +90,7 @@ public class GameManager : MonoBehaviour
             dragonfly.ToggleRigidbodyMovement(false);
         }
 
-        // Update CountdownToStart() method to use the new InfiniteParallaxBackground class
-        parallax.enableScrolling = false; // Disable parallax scrolling
+        parallax.enableScrolling = false;
 
         float currentCountdown = countdownTime;
         while (currentCountdown > 0)
@@ -111,22 +112,21 @@ public class GameManager : MonoBehaviour
             dragonfly.ToggleRigidbodyMovement(true);
         }
 
-        // Use the new InfiniteParallaxBackground class to enable parallax scrolling
         parallax.enableScrolling = true;
+
+        // Lis‰‰ t‰m‰ rivi laukaistaksesi tapahtuman
+        OnCountdownFinished?.Invoke();
 
         StartCoroutine(UpdateScore());
     }
-
-
-
 
     private IEnumerator UpdateScore()
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);              // Wait for 0.5 seconds
-            score += 1;                                         // Increase the score by 1
-            scoreTextObject.text = $"Score: {score}";           // Update the score text
+            yield return new WaitForSeconds(0.5f);
+            score += 1;
+            scoreTextObject.text = $"Score: {score}";
         }
     }
 
@@ -135,5 +135,4 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
-
 }
