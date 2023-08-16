@@ -6,7 +6,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
 {
     public bool enableScrolling = false;
     public float CameraSpeed = 1.5f;
-    private float SpeedIncreaseRate = 0.1f; // Lisätty uusi muuttuja
+    private float SpeedIncreaseRate = 0.05f; // Lisätty uusi muuttuja
 
     [Header("Layer Settings")]
     public float[] LayerScrollSpeeds = new float[7];
