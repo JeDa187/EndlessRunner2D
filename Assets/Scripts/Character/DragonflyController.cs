@@ -10,11 +10,15 @@ public class DragonflyController : MonoBehaviour
     private Vector2 originalPosition;                            // Original position of dragonfly for resetting
     private Renderer rend;                                       // Renderer component for bounds checking
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>(); // Initialize the Rigidbody2D component here instead of Start
+    }
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();                       // Get the Rigidbody2D component
-        originalPosition = transform.position;                   // Save the original position
-        rend = GetComponent<Renderer>();                         // Get the Renderer component
+        originalPosition = transform.position; // Save the original position
+        rend = GetComponent<Renderer>(); // Get the Renderer component
     }
 
     private void Update()
