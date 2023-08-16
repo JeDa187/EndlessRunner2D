@@ -125,4 +125,11 @@ public class GameManager : MonoBehaviour
             scoreTextObject.text = $"Score: {score}";           // Update the score text
         }
     }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
