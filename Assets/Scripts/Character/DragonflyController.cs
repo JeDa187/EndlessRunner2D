@@ -37,6 +37,15 @@ public class DragonflyController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;                // Apply jump force upwards
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Tarkista, onko törmäys tapahtunut objektin kanssa, joka voi tuhota hahmon
+        if (collision.gameObject.CompareTag("Hazard"))
+        {
+            GameManager.Instance.GameOver();
+            Destroy(gameObject);
+        }
+    }
 
     private void CheckOutOfScreenBounds()
     {
