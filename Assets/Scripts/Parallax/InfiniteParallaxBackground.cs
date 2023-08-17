@@ -4,24 +4,48 @@ using UnityEngine;
 
 public class InfiniteParallaxBackground : MonoBehaviour
 {
+    // A flag to enable or disable scrolling of the background
     public bool enableScrolling = false;
-    public float CameraSpeed = 1.5f;
-    private float SpeedIncreaseRate = 0.05f; // Lisätty uusi muuttuja
 
+    // The speed at which the camera moves
+    public float CameraSpeed = 1.5f;
+
+    // The rate at which the speed of the layers increases over time
+    private float SpeedIncreaseRate = 0.05f;
+
+    // Header in the Inspector for layer settings
     [Header("Layer Settings")]
+
+    // The speed at which each layer scrolls
     public float[] LayerScrollSpeeds = new float[7];
+
+    // The layers to scroll
     public GameObject[] Layers = new GameObject[7];
 
+    // The main camera's transform component
     private Transform mainCamera;
+
+    // The initial position of each layer
     private float[] initialPositions = new float[7];
+
+    // The width of the sprite
     private float spriteWidth;
+
+    // The scale of the sprite on the X axis
     private float spriteSizeX;
 
     void Start()
     {
+        // Get the main camera's transform component
         mainCamera = Camera.main.transform;
+
+        // Get the sprite's scale on the X axis
         spriteSizeX = Layers[0].transform.localScale.x;
+
+        // Get the sprite's width
         spriteWidth = Layers[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+
+        // Store the initial position of each layer
         for (int i = 0; i < Layers.Length; i++)
         {
             initialPositions[i] = Layers[i].transform.position.x;
@@ -30,21 +54,29 @@ public class InfiniteParallaxBackground : MonoBehaviour
 
     void Update()
     {
+        // If scrolling is enabled
         if (enableScrolling)
         {
-            // Lisätty koodi kerrosten liikuttelun nopeuden lisäämiseksi ajan myötä
+            // Increase the speed of each layer over time
             for (int i = 0; i < LayerScrollSpeeds.Length; i++)
             {
                 LayerScrollSpeeds[i] -= SpeedIncreaseRate * Time.deltaTime;
             }
 
+            // Move the main camera to the right
             mainCamera.position += Vector3.right * Time.deltaTime * CameraSpeed;
+
+            // Scroll each layer
             for (int i = 0; i < Layers.Length; i++)
             {
+                // Calculate the offset based on the camera's position and the layer's scroll speed
                 float offset = (mainCamera.position.x * (1 - LayerScrollSpeeds[i]));
                 float scrollDistance = mainCamera.position.x * LayerScrollSpeeds[i];
+
+                // Set the new position of the layer
                 Layers[i].transform.position = new Vector2(initialPositions[i] + scrollDistance, Layers[i].transform.position.y);
 
+                // Check if the layer has scrolled past its bounds and adjust its position if needed
                 if (offset > initialPositions[i] + spriteWidth * spriteSizeX)
                 {
                     initialPositions[i] += spriteWidth * spriteSizeX;
@@ -54,6 +86,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
                     initialPositions[i] -= spriteWidth * spriteSizeX;
                 }
 
+                // If the layer has scrolled off the screen, move it back
                 if (Layers[i].transform.position.x < mainCamera.position.x - spriteWidth * spriteSizeX)
                 {
                     Layers[i].transform.position += Vector3.right * spriteWidth * spriteSizeX * 2;

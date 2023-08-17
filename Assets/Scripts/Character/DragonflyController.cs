@@ -3,12 +3,12 @@ using TMPro;
 
 public class DragonflyController : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 12f;              // Force applied when dragonfly jumps
+    [SerializeField] private float jumpForce = 12f; // Force applied when the dragonfly jumps
 
-    private bool canMove = false;                                // Flag to check if dragonfly can move
-    private Rigidbody2D rb;                                      // Rigidbody2D component for physics
-    private Vector2 originalPosition;                            // Original position of dragonfly for resetting
-    private Renderer rend;                                       // Renderer component for bounds checking
+    private bool canMove = false; // Flag to check if the dragonfly can move
+    private Rigidbody2D rb;       // Rigidbody2D component for physics
+    private Vector2 originalPosition; // Original position of the dragonfly for resetting
+    private Renderer rend;            // Renderer component for bounds checking
 
     private void Awake()
     {
@@ -23,10 +23,10 @@ public class DragonflyController : MonoBehaviour
 
     private void Update()
     {
-        if (!canMove) return;                                    // If canMove is false, exit the function
+        if (!canMove) return; // If canMove is false, exit the function
 
-        HandleInput();                                           // Check and process player input
-        CheckOutOfScreenBounds();                                // Check if dragonfly is out of screen bounds
+        HandleInput();        // Check and process player input
+        CheckOutOfScreenBounds(); // Check if the dragonfly is out of screen bounds
     }
 
     private void HandleInput()
@@ -34,16 +34,17 @@ public class DragonflyController : MonoBehaviour
         // Check for mouse click or touch input
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            rb.velocity = Vector2.up * jumpForce;                // Apply jump force upwards
+            rb.velocity = Vector2.up * jumpForce; // Apply jump force upwards
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Tarkista, onko törmäys tapahtunut objektin kanssa, joka voi tuhota hahmon
+        // Check if collision occurred with an object that can destroy the character
         if (collision.gameObject.CompareTag("Hazard"))
         {
-            GameManager.Instance.GameOver();
-            Destroy(gameObject);
+            GameManager.Instance.GameOver(); // End the game
+            Destroy(gameObject);            // Destroy the dragonfly game object
         }
     }
 
@@ -56,7 +57,7 @@ public class DragonflyController : MonoBehaviour
         // Get the height of the object in viewport coordinates
         float objectHeightInViewport = viewportPositionMax.y - viewportPositionMin.y;
 
-        // If dragonfly is more than half outside the screen vertically
+        // If the dragonfly is more than half outside the screen vertically
         if (viewportPositionMax.y < 0.5f * objectHeightInViewport || viewportPositionMin.y > 1 - 0.5f * objectHeightInViewport)
         {
             GameManager.Instance.GameOver(); // End the game
@@ -66,19 +67,19 @@ public class DragonflyController : MonoBehaviour
 
     public void ToggleRigidbodyMovement(bool allowMovement)
     {
-        canMove = allowMovement;                                 // Set the movement flag
-        rb.isKinematic = !allowMovement;                         // Toggle kinematic state based on movement
+        canMove = allowMovement; // Set the movement flag
+        rb.isKinematic = !allowMovement; // Toggle kinematic state based on movement
 
         if (!allowMovement)
         {
-            rb.velocity = Vector2.zero;                          // Stop any movement
+            rb.velocity = Vector2.zero; // Stop any movement
         }
     }
 
     public void ResetDragonfly()
     {
-        gameObject.SetActive(true);                              // Activate the dragonfly object
-        transform.position = originalPosition;                   // Reset position
-        rb.velocity = Vector2.zero;                              // Stop any movement
+        gameObject.SetActive(true); // Activate the dragonfly object
+        transform.position = originalPosition; // Reset position
+        rb.velocity = Vector2.zero; // Stop any movement
     }
 }
