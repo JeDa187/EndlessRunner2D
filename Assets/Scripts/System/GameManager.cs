@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text countdownTextObject; // Text object to display the countdown before game starts
     [SerializeField] private TMP_Text scoreTextObject; // Text object to display the player's current score
     [SerializeField] private TMP_Text highScoreTextObject; // Text object to display the highest score
+    [SerializeField] private GameObject pauseMenuPanel; // UI panel displayed when game is paused
 
     private const string HighScoreKey = "HighScore"; // Key used to save/load high score with PlayerPrefs
     private float countdownTime = 3.0f; // Duration of countdown before game starts
@@ -64,6 +65,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1; // Reset time scale to normal speed
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1; // Resume the game
+        pauseMenuPanel.SetActive(false); // Hide the pause menu
     }
 
     private void LoadHighScore()
