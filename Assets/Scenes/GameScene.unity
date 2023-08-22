@@ -920,6 +920,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664268005}
   m_CullTransparentMesh: 1
+--- !u!1 &724098651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2410163301480943888, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
+  m_PrefabInstance: {fileID: 1028970082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &724098657
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724098651}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1, y: -0.09}
+  serializedVersion: 2
+  m_Radius: 0.77
 --- !u!1 &836623263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,23 +1297,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2760872010388890157, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: jumpForce
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6067964095150051326, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_Size.x
-      value: 3.1900434
+      value: 2.4044957
       objectReference: {fileID: 0}
     - target: {fileID: 6067964095150051326, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_Size.y
       value: 1.5629091
       objectReference: {fileID: 0}
     - target: {fileID: 6067964095150051326, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067964095150051326, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_Offset.x
-      value: -0.40497828
+      value: -0.012204409
       objectReference: {fileID: 0}
     - target: {fileID: 6067964095150051326, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_Offset.y
-      value: -0.114450485
+      value: -0.114450455
       objectReference: {fileID: 0}
     - target: {fileID: 6503728123194771994, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_RootOrder

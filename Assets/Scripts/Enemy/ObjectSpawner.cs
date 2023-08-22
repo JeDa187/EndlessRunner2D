@@ -36,7 +36,8 @@ public class ObjectSpawner : MonoBehaviour
             }
             while (Mathf.Abs(nextY - lastY) < minDeltaY);  // Varmistetaan, että seuraava korkeus on riittävän kaukana edellisestä
 
-            Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x + Camera.main.orthographicSize * Camera.main.aspect + spawnOffsetX, nextY);
+            Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x + 
+                Camera.main.orthographicSize * Camera.main.aspect + spawnOffsetX, nextY);
             Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
 
             lastY = nextY;  // Tallennetaan viimeksi spawnatun objektin korkeus
