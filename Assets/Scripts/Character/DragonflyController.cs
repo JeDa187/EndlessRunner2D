@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class DragonflyController : MonoBehaviour
 {
@@ -31,12 +32,34 @@ public class DragonflyController : MonoBehaviour
 
     private void HandleInput()
     {
-        // Check for mouse click or touch input
+        // Tarkista, onko hiiri tai kosketus UI-elementin päällä
+        if (EventSystem.current.IsPointerOverGameObject() || IsTouchOverUI())
+        {
+            return; // Jos on, älä suorita seuraavaa koodia
+        }
+
+        // Tarkista hiiren napsautus tai kosketussyöte
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            rb.velocity = Vector2.up * jumpForce; // Apply jump force upwards
+            rb.velocity = Vector2.up * jumpForce; // Soveltaa hyppyvoimaa ylöspäin
         }
     }
+
+    private bool IsTouchOverUI()
+    {
+        if (Input.touchCount > 0)
+        {
+            // Tarkista ensimmäinen kosketus (voit myös käydä läpi kaikki kosketukset tarvittaessa)
+            Touch touch = Input.GetTouch(0);
+            int touchID = touch.fingerId;
+
+            // Tarkista, onko kosketus UI-elementin päällä
+            return EventSystem.current.IsPointerOverGameObject(touchID);
+        }
+
+        return false;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
