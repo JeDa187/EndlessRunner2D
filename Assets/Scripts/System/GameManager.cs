@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreTextObject; // Text object to display the player's current score
     [SerializeField] private TMP_Text highScoreTextObject; // Text object to display the highest score
     [SerializeField] private GameObject pauseMenuPanel; // UI panel displayed when game is paused
+    private PlayFabManager playFabManager;
+
 
     private const string HighScoreKey = "HighScore"; // Key used to save/load high score with PlayerPrefs
     private float countdownTime = 3.0f; // Duration of countdown before game starts
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         SetupSingleton(); // Set up singleton instance
         LoadHighScore(); // Load the high score from PlayerPrefs
         parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
+        playFabManager = FindObjectOfType<PlayFabManager>();
     }
 
     private void Start()
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
         scoreTextObject.gameObject.SetActive(false); // Hide the score text object
         Time.timeScale = 0; // Pause the game
         UpdateHighScore(); // Update the high score if needed
+        playFabManager.SendLeaderboard(score);
     }
 
     public void RestartGame()
