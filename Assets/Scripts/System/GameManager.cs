@@ -3,6 +3,9 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System; // Add this to use the Action type
+using PlayFab.ClientModels;
+using PlayFab;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreTextObject; // Text object to display the player's current score
     [SerializeField] private TMP_Text highScoreTextObject; // Text object to display the highest score
     [SerializeField] private GameObject pauseMenuPanel; // UI panel displayed when game is paused
-    private PlayFabManager playFabManager;
+   
 
 
     private const string HighScoreKey = "HighScore"; // Key used to save/load high score with PlayerPrefs
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour
         SetupSingleton(); // Set up singleton instance
         LoadHighScore(); // Load the high score from PlayerPrefs
         parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
-        playFabManager = FindObjectOfType<PlayFabManager>();
+       
     }
 
     private void Start()
@@ -58,12 +61,29 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true); // Show the game over panel
-        scoreTextObject.gameObject.SetActive(false); // Hide the score text object
-        Time.timeScale = 0; // Pause the game
-        UpdateHighScore(); // Update the high score if needed
-        playFabManager.SendLeaderboard(score);
+        gameOverPanel.SetActive(true);
+        scoreTextObject.gameObject.SetActive(false);
+        Time.timeScale = 0;
+        UpdateHighScore();
+
+        // Lähetä pisteet tulostaululle
+        SendScoreToLeaderboard(score);
     }
+
+    void SendScoreToLeaderboard(int playerScore)
+    {
+        string playerName = PlayerPrefs.GetString("PlayerName");
+        PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate> {
+            new StatisticUpdate { StatisticName = "PlatformScore", Value = playerScore },
+        }
+        },
+        result => { Debug.Log("Pelaajatilastot päivitetty"); },
+        error => { Debug.LogError(error.GenerateErrorReport()); });
+    }
+
+
 
     public void RestartGame()
     {
