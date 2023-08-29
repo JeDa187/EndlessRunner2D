@@ -1,15 +1,24 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragonflyController : MonoBehaviour
+public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
 {
-    [SerializeField] private float jumpForce = 12f; // Force applied when the dragonfly jumps
+    [SerializeField] private CameraController cameraController;
+    private float originalCameraSpeed;
+    private Vector2 originalPosition; // Original position of the dragonfly for resetting  
 
-    private bool canMove = false; // Flag to check if the dragonfly can move
-    private Rigidbody2D rb;       // Rigidbody2D component for physics
-    private Vector2 originalPosition; // Original position of the dragonfly for resetting
-    private Renderer rend;            // Renderer component for bounds checking
+    [SerializeField] private float jumpForce;
+    private bool canMove = false; 
+    private Rigidbody2D rb;      
+
+    private bool isImmortal = false;
+    private float immortalTimer = 0;
+    private Coroutine fireBreathCoroutine;
+    private AbilityManager abilityManager;
+    private InputHandling inputHandling;
+    private AbilitySO abilitySO;
 
     private void Awake()
     {
@@ -17,75 +26,28 @@ public class DragonflyController : MonoBehaviour
     }
 
     private void Start()
-    {
+    {        
         originalPosition = transform.position; // Save the original position
-        rend = GetComponent<Renderer>(); // Get the Renderer component
+        abilityManager = GetComponent<AbilityManager>();
+        inputHandling = GetComponent<InputHandling>();
     }
 
     private void Update()
     {
         if (!canMove) return; // If canMove is false, exit the function
-
-        HandleInput();        // Check and process player input
-        CheckOutOfScreenBounds(); // Check if the dragonfly is out of screen bounds
-    }
-
-    private void HandleInput()
-    {
-        // Tarkista, onko hiiri tai kosketus UI-elementin päällä
-        if (EventSystem.current.IsPointerOverGameObject() || IsTouchOverUI())
-        {
-            return; // Jos on, älä suorita seuraavaa koodia
-        }
-
-        // Tarkista hiiren napsautus tai kosketussyöte
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            rb.velocity = Vector2.up * jumpForce; // Soveltaa hyppyvoimaa ylöspäin
-        }
-    }
-
-    private bool IsTouchOverUI()
-    {
-        if (Input.touchCount > 0)
-        {
-            // Tarkista ensimmäinen kosketus (voit myös käydä läpi kaikki kosketukset tarvittaessa)
-            Touch touch = Input.GetTouch(0);
-            int touchID = touch.fingerId;
-
-            // Tarkista, onko kosketus UI-elementin päällä
-            return EventSystem.current.IsPointerOverGameObject(touchID);
-        }
-
-        return false;
+        inputHandling.HandleInput();        // Check and process player input
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Jump()
     {
-        // Check if collision occurred with an object that can destroy the character
-        if (collision.gameObject.CompareTag("Hazard"))
-        {
-            GameManager.Instance.GameOver(); // End the game
-            Destroy(gameObject);            // Destroy the dragonfly game object
-        }
+        rb.velocity = Vector2.up * jumpForce;
     }
 
-    private void CheckOutOfScreenBounds()
+    // IPlayerInteraction implementation
+    public void EnablePlayerMovement(bool enable)
     {
-        // Convert object bounds to viewport positions
-        Vector2 viewportPositionMin = Camera.main.WorldToViewportPoint(rend.bounds.min);
-        Vector2 viewportPositionMax = Camera.main.WorldToViewportPoint(rend.bounds.max);
-
-        // Get the height of the object in viewport coordinates
-        float objectHeightInViewport = viewportPositionMax.y - viewportPositionMin.y;
-
-        // If the dragonfly is more than half outside the screen vertically
-        if (viewportPositionMax.y < 0.5f * objectHeightInViewport || viewportPositionMin.y > 1 - 0.5f * objectHeightInViewport)
-        {
-            GameManager.Instance.GameOver(); // End the game
-            Destroy(gameObject); // Destroy the dragonfly game object
-        }
+        ToggleRigidbodyMovement(enable);
     }
 
     public void ToggleRigidbodyMovement(bool allowMovement)
@@ -93,10 +55,7 @@ public class DragonflyController : MonoBehaviour
         canMove = allowMovement; // Set the movement flag
         rb.isKinematic = !allowMovement; // Toggle kinematic state based on movement
 
-        if (!allowMovement)
-        {
-            rb.velocity = Vector2.zero; // Stop any movement
-        }
+        if (!allowMovement) rb.velocity = Vector2.zero; // Stop any movement
     }
 
     public void ResetDragonfly()
@@ -104,5 +63,46 @@ public class DragonflyController : MonoBehaviour
         gameObject.SetActive(true); // Activate the dragonfly object
         transform.position = originalPosition; // Reset position
         rb.velocity = Vector2.zero; // Stop any movement
+    }
+
+    // Kutsutaan kun pelaaja käyttää kykyä
+    public void UseAbility(AbilitySO currentAbility)
+    {
+        if (currentAbility != null && immortalTimer <= 0)
+        {
+            Debug.Log("ss");
+            Debug.Log("useability");
+            InventoryManager.Instance.UseAbilityAndClearInventory(currentAbility);
+            abilitySO = currentAbility; //
+            StartCoroutine(FireBreathCoroutine());
+        }
+        //Debug.Log("ss");
+        //Debug.Log("useability");
+        //InventoryManager.Instance.UseAbilityAndClearInventory(currentAbility);
+        //StartCoroutine(FireBreathCoroutine());
+    }
+
+    private IEnumerator FireBreathCoroutine()
+    {
+        Debug.Log("korokoro");
+        //isImmortal = true;
+        immortalTimer = abilitySO.abilityDuration;
+        rb.isKinematic = true;
+        GetComponent<Collider2D>().enabled = false;
+
+        if (abilitySO.fireBreathParticles != null)
+        {
+            abilitySO.fireBreathParticles.Play();
+        }
+
+        yield return new WaitForSeconds(abilitySO.abilityDuration);
+
+        //isImmortal = false;
+        immortalTimer = 0;
+        rb.isKinematic = false;
+        if (abilitySO.fireBreathParticles != null)
+        {
+            abilitySO.fireBreathParticles.Stop();
+        }
     }
 }
