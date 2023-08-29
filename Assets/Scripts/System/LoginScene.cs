@@ -8,50 +8,88 @@ public class LoginScene : MonoBehaviour
 {
     public TMP_InputField playerNameInputField; // Input field for player name
     public TextMeshProUGUI errorMessage; // Text field for displaying error messages
+    public TMP_InputField passwordInputField; // Input field for password
 
-    // Method called when the "Continue" button is clicked
     public void OnContinueButtonClicked()
     {
         string playerName = playerNameInputField.text;
-        // Check if the player's name is exactly 4 characters long
+        string password = passwordInputField.text;
+
         if (playerName.Length != 4)
         {
             errorMessage.text = "Nimen on oltava tasan 4 kirjainta.";
         }
+        else if (password.Length < 5)
+        {
+            errorMessage.text = "Salasanan on oltava vähintään 5 merkkiä pitkä.";
+        }
         else
         {
-            // If the name is 4 characters long, log in to PlayFab service and check the player's name
-            CheckPlayerName(playerName);
+            errorMessage.text = "logging in";
+            CheckPlayerName(playerName, password);
         }
     }
 
-    // Method to check the player's name and log in to PlayFab
-    private void CheckPlayerName(string playerName)
+    private void CheckPlayerName(string playerName, string password)
     {
-        PlayFabClientAPI.LoginWithCustomID(new LoginWithCustomIDRequest
+        PlayFabClientAPI.LoginWithPlayFab(new LoginWithPlayFabRequest
         {
-            CustomId = playerName,
-            CreateAccount = true,
+            Username = playerName,
+            Password = password,
         }, result =>
         {
             // Successful login
-            // Set the DisplayName to be the same as the CustomId
-            PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest
-            {
-                DisplayName = playerName,
-            }, nameResult =>
-            {
-                // Successful name update
-                // Move to the next scene
-                SceneManager.LoadScene("MainMenu");
-            }, nameError =>
-            {
-                // Error updating the name
-                errorMessage.text = nameError.ErrorMessage;
-            });
+            // Update the display name and move to the next scene
+            UpdateDisplayName(playerName);
         }, error =>
         {
-            // Error logging in
+            if (error.Error == PlayFabErrorCode.AccountNotFound)
+            {
+                // Account not found
+                // Show creating new user message and try to create a new account
+                errorMessage.text = "creating new user";
+                CreateNewAccount(playerName, password);
+            }
+            else
+            {
+                // Other error
+                errorMessage.text = error.ErrorMessage;
+            }
+        });
+    }
+
+    private void CreateNewAccount(string playerName, string password)
+    {
+        PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest
+        {
+            Username = playerName,
+            Password = password,
+            RequireBothUsernameAndEmail = false
+        }, result =>
+        {
+            // Successful registration
+            // Update the display name and move to the next scene
+            UpdateDisplayName(playerName);
+        }, error =>
+        {
+            // Error registering
+            errorMessage.text = error.ErrorMessage;
+        });
+    }
+
+    private void UpdateDisplayName(string playerName)
+    {
+        PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = playerName,
+        }, result =>
+        {
+            // Successful name update
+            // Move to the next scene
+            SceneManager.LoadScene("MainMenu");
+        }, error =>
+        {
+            // Error updating the name
             errorMessage.text = error.ErrorMessage;
         });
     }
