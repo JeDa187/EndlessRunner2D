@@ -17,15 +17,14 @@ public class LoginScene : MonoBehaviour
 
         if (playerName.Length != 4)
         {
-            errorMessage.text = "Nimen on oltava tasan 4 kirjainta.";
+            errorMessage.text = "The name must contain 4 characters.";
         }
         else if (password.Length < 5)
         {
-            errorMessage.text = "Salasanan on oltava vähintään 5 merkkiä pitkä.";
+            errorMessage.text = "The password must be at least 5 characters long.";
         }
         else
         {
-            errorMessage.text = "logging in";
             CheckPlayerName(playerName, password);
         }
     }
@@ -39,16 +38,18 @@ public class LoginScene : MonoBehaviour
         }, result =>
         {
             // Successful login
-            // Update the display name and move to the next scene
-            UpdateDisplayName(playerName);
+            // Show logging in message
+            errorMessage.text = "Logging in to existing account";
+            // Wait for 3 seconds, then update the display name and move to the next scene
+            Invoke("UpdateDisplayNameAndMoveToNextScene", 3.0f);
         }, error =>
         {
             if (error.Error == PlayFabErrorCode.AccountNotFound)
             {
                 // Account not found
                 // Show creating new user message and try to create a new account
-                errorMessage.text = "creating new user";
-                CreateNewAccount(playerName, password);
+                errorMessage.text = "Creating new user";
+                Invoke("CreateNewAccountAndMoveToNextScene", 3.0f);
             }
             else
             {
@@ -57,6 +58,22 @@ public class LoginScene : MonoBehaviour
             }
         });
     }
+
+    private void UpdateDisplayNameAndMoveToNextScene()
+    {
+        string playerName = playerNameInputField.text;
+        UpdateDisplayName(playerName);
+    }
+
+    private void CreateNewAccountAndMoveToNextScene()
+    {
+        string playerName = playerNameInputField.text;
+        string password = passwordInputField.text;
+        CreateNewAccount(playerName, password);
+    }
+
+
+
 
     private void CreateNewAccount(string playerName, string password)
     {
