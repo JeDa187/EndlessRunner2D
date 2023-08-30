@@ -59,7 +59,6 @@ public class InputHandling : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) // Voit käyttää sopivaa näppäintä tai syötettä
         {
-            Debug.Log("space");
             AbilitySO currentAbility  = abilityManager.currentAbility;
             abilityManager.UseCurrentAbility();
         }

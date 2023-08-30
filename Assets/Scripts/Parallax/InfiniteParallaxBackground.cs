@@ -4,35 +4,18 @@ using UnityEngine;
 
 public class InfiniteParallaxBackground : MonoBehaviour
 {
-    // A flag to enable or disable scrolling of the background
-    public bool enableScrolling = false;
 
-    // The speed at which the camera moves
-    public float CameraSpeed = 1.5f;
-
-    // The rate at which the speed of the layers increases over time
-    private float SpeedIncreaseRate = 0.05f;
-
-    // Header in the Inspector for layer settings
-    [Header("Layer Settings")]
-
-    // The speed at which each layer scrolls
-    public float[] LayerScrollSpeeds = new float[7];
-
-    // The layers to scroll
-    public GameObject[] Layers = new GameObject[7];
-
-    // The main camera's transform component
-    private Transform mainCamera;
-
-    // The initial position of each layer
-    private float[] initialPositions = new float[7];
-
-    // The width of the sprite
-    private float spriteWidth;
-
-    // The scale of the sprite on the X axis
-    private float spriteSizeX;
+    public bool enableScrolling = false;                // A flag to enable or disable scrolling of the background
+    public float CameraSpeed = 1.5f;                    // The speed at which the camera moves
+    private float speedIncreaseRate = 0.05f;            // The rate at which the speed of the layers increases over time
+    [Header("Layer Settings")]                          // Header in the Inspector for layer settings
+    public float[] LayerScrollSpeeds = new float[7];    // The speed at which each layer scrolls
+    public GameObject[] Layers = new GameObject[7];     // The layers to scroll
+    private Transform mainCamera;                       // The main camera's transform component
+    private float[] initialPositions = new float[7];    // The initial position of each layer
+    private float spriteWidth;                          // The width of the sprite
+    private float spriteSizeX;                          // The scale of the sprite on the X axis
+    public float backgroundSpeed;
 
     void Start()
     {
@@ -54,13 +37,13 @@ public class InfiniteParallaxBackground : MonoBehaviour
 
     void Update()
     {
-        // If scrolling is enabled
-        if (enableScrolling)
+		// If scrolling is enabled
+		if (enableScrolling)
         {
             // Increase the speed of each layer over time
             for (int i = 0; i < LayerScrollSpeeds.Length; i++)
             {
-                LayerScrollSpeeds[i] -= SpeedIncreaseRate * Time.deltaTime;
+                LayerScrollSpeeds[i] -= speedIncreaseRate * Time.deltaTime;
             }
 
             // Move the main camera to the right

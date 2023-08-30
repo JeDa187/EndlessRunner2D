@@ -1,22 +1,21 @@
 using UnityEngine;
 
-public enum AbilityType { FireBreath, JumpBoost /*, Lis‰‰ muita kykytyyppej‰ tarvittaessa*/ }
+public enum AbilityType { FireBreath /*, Lis‰‰ muita kykytyyppej‰ tarvittaessa*/ }
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "Custom/Ability")]
 public class AbilitySO : ScriptableObject/*IAbilityActivator*/
 {
+    // Lis‰‰ tarvittavia ominaisuuksia kyvylle
+    // Muuttujat kyvyn arvoja varten
     public string abilityName;
     public string description;
     public Sprite icon;
-    public GameObject abilityEffectPrefab;
-    public ParticleSystem fireBreathParticles;
-    // Lis‰‰ tarvittavia ominaisuuksia kyvylle
-    public AbilityType abilityType;
-
-    // Muuttujat kyvyn arvoja varten
-    public float speedMultiplier;
+    public float screenSpeedMultiplier;
     public float abilityDuration = 5.0f;
-    public float jumpHeight;
+    public GameObject abilityEffect;
+    public ParticleSystem fireBreathParticles;
+
+    public AbilityType abilityType;
 
     //public void UseAbility(DragonflyController player)
     //{

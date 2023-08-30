@@ -13,7 +13,6 @@ public class AbilityManager : MonoBehaviour
 
     public void SetCurrentAbility(AbilitySO ability)
     {
-        Debug.Log(this);
         currentAbility = ability;
     }
 
@@ -21,7 +20,6 @@ public class AbilityManager : MonoBehaviour
     {
         if (currentAbility != null)
         {
-            Debug.Log("tämä");
             dragonflyController.UseAbility(currentAbility);
         }
     }

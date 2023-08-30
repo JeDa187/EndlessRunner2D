@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         Time.timeScale = 1; // Reset time scale to normal speed
-        StartCoroutine(CountdownToStart()); // Start the countdown before the game starts
+        CountdownToStart(); // Start the countdown before the game starts
     }
 
     public void GameOver()
@@ -111,43 +111,66 @@ public class GameManager : MonoBehaviour
         }
         highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }
-
-    private IEnumerator CountdownToStart()
+    private void CountdownToStart()
     {
-        DragonflyController dragonfly = FindObjectOfType<DragonflyController>(); // Get the dragonfly controller script
+        DisableDragonflyAndParallax();
+        StartCoroutine(DoCountdown());
+    }
+
+    private void DisableDragonflyAndParallax()
+    {
+        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
         if (dragonfly != null)
         {
-            dragonfly.ToggleRigidbodyMovement(false); // Disable dragonfly movement during countdown
+            dragonfly.ToggleRigidbodyMovement(false);
+            dragonfly.ResetDragonfly();
         }
 
-        parallax.enableScrolling = false; // Disable parallax scrolling during countdown
+        parallax.enableScrolling = false;
+    }
 
+    private IEnumerator DoCountdown()
+    {
         float currentCountdown = countdownTime;
         while (currentCountdown > 0)
         {
-            countdownTextObject.text = currentCountdown.ToString("0"); // Update countdown text
+            countdownTextObject.text = currentCountdown.ToString("0");
             yield return new WaitForSeconds(1.0f);
             currentCountdown--;
         }
 
-        countdownTextObject.text = ""; // Clear countdown text
+        countdownTextObject.text = "";
 
+        InitializeScore();
+
+        EnableDragonflyAndParallax();
+
+        NotifyCountdownFinished();
+
+        StartCoroutine(UpdateScore());
+    }
+
+    private void InitializeScore()
+    {
         score = 0;
-        scoreTextObject.text = $"Score: {score}"; // Reset and display the score
+        scoreTextObject.text = $"Score: {score}";
         scoreTextObject.gameObject.SetActive(true);
+    }
 
+    private void EnableDragonflyAndParallax()
+    {
+        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
         if (dragonfly != null)
         {
-            dragonfly.ResetDragonfly(); // Reset dragonfly position and state
-            dragonfly.ToggleRigidbodyMovement(true); // Enable dragonfly movement
+            dragonfly.ToggleRigidbodyMovement(true);
         }
 
-        parallax.enableScrolling = true; // Enable parallax scrolling
+        parallax.enableScrolling = true;
+    }
 
-        // Trigger event to notify other scripts that countdown has finished
+    private void NotifyCountdownFinished()
+    {
         OnCountdownFinished?.Invoke();
-
-        StartCoroutine(UpdateScore()); // Start updating the score
     }
 
     private IEnumerator UpdateScore()
@@ -166,3 +189,44 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); // Load the main menu scene
     }
 }
+
+/* Alla Osa vanhasta Koodista minkä jaoin osiin jotta on helpommin luettava ja hallitava */
+
+
+//private IEnumerator CountdownToStart()
+//{
+//    DragonflyController dragonfly = FindObjectOfType<DragonflyController>(); // Get the dragonfly controller script
+//    if (dragonfly != null)
+//    {
+//        dragonfly.ToggleRigidbodyMovement(false); // Disable dragonfly movement during countdown
+//    }
+
+//    parallax.enableScrolling = false; // Disable parallax scrolling during countdown
+
+//    float currentCountdown = countdownTime;
+//    while (currentCountdown > 0)
+//    {
+//        countdownTextObject.text = currentCountdown.ToString("0"); // Update countdown text
+//        yield return new WaitForSeconds(1.0f);
+//        currentCountdown--;
+//    }
+
+//    countdownTextObject.text = ""; // Clear countdown text
+
+//    score = 0;
+//    scoreTextObject.text = $"Score: {score}"; // Reset and display the score
+//    scoreTextObject.gameObject.SetActive(true);
+
+//    if (dragonfly != null)
+//    {
+//        dragonfly.ResetDragonfly(); // Reset dragonfly position and state
+//        dragonfly.ToggleRigidbodyMovement(true); // Enable dragonfly movement
+//    }
+
+//    parallax.enableScrolling = true; // Enable parallax scrolling
+
+//    // Trigger event to notify other scripts that countdown has finished
+//    OnCountdownFinished?.Invoke();
+
+//    StartCoroutine(UpdateScore()); // Start updating the score
+//}

@@ -5,17 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
 {
-    [SerializeField] private CameraController cameraController;
-    private float originalCameraSpeed;
-    private Vector2 originalPosition; // Original position of the dragonfly for resetting  
 
+    private Vector2 originalPosition; // Original position of the dragonfly for resetting  
     [SerializeField] private float jumpForce;
     private bool canMove = false; 
-    private Rigidbody2D rb;      
+    private Rigidbody2D rb;
 
-    private bool isImmortal = false;
     private float immortalTimer = 0;
-    private Coroutine fireBreathCoroutine;
     private AbilityManager abilityManager;
     private InputHandling inputHandling;
     private AbilitySO abilitySO;
@@ -70,36 +66,52 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     {
         if (currentAbility != null && immortalTimer <= 0)
         {
-            Debug.Log("ss");
-            Debug.Log("useability");
             InventoryManager.Instance.UseAbilityAndClearInventory(currentAbility);
-            abilitySO = currentAbility; //
+            abilitySO = currentAbility;
+
+            // Tyhjennä pelaajan currentAbility
+            abilityManager.SetCurrentAbility(null);
             StartCoroutine(FireBreathCoroutine());
         }
-        //Debug.Log("ss");
-        //Debug.Log("useability");
-        //InventoryManager.Instance.UseAbilityAndClearInventory(currentAbility);
-        //StartCoroutine(FireBreathCoroutine());
     }
 
     private IEnumerator FireBreathCoroutine()
     {
-        Debug.Log("korokoro");
-        //isImmortal = true;
+        Debug.Log("coroutine");
+        InfiniteParallaxBackground parallaxBG = FindObjectOfType<InfiniteParallaxBackground>();
+        float[] originalSpeeds = (float[])parallaxBG.LayerScrollSpeeds.Clone(); // Save the original speeds
+        for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
+        {
+            parallaxBG.LayerScrollSpeeds[i] *= 20f;
+        }
+
         immortalTimer = abilitySO.abilityDuration;
-        rb.isKinematic = true;
+        RigidbodyConstraints2D originalConstraints = rb.constraints;
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         GetComponent<Collider2D>().enabled = false;
 
+        Debug.Log("Checking fireBreathParticles");
         if (abilitySO.fireBreathParticles != null)
         {
+            Debug.Log("Fire breath particles found");
             abilitySO.fireBreathParticles.Play();
+        }
+        else
+        {
+            Debug.Log("No fire breath particles found");
         }
 
         yield return new WaitForSeconds(abilitySO.abilityDuration);
 
-        //isImmortal = false;
+        // Reset the speeds back to the original values
+        for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
+        {
+            parallaxBG.LayerScrollSpeeds[i] = originalSpeeds[i];
+        }
         immortalTimer = 0;
-        rb.isKinematic = false;
+        rb.constraints = originalConstraints;
+        GetComponent<Collider2D>().enabled = true;
+
         if (abilitySO.fireBreathParticles != null)
         {
             abilitySO.fireBreathParticles.Stop();

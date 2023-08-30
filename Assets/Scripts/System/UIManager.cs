@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
 {
     public AbilityManager abilityManager;
     public static UIManager Instance;
-    private DragonflyController dragonflyController;
     public Sprite icon;
     public Text collectedItemsText;
 
@@ -41,19 +40,10 @@ public class UIManager : MonoBehaviour
         UpdateCollectedItemsText(); // P‰ivit‰ tekstikentt‰ alussa
     }
 
-    // Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
+    //Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
     public void UpdateUI()
     {
         UpdateCollectedItemsText();
         // Voit lis‰t‰ muita p‰ivityksi‰ tarpeesi mukaan.
     }
-
-    public void SetFireBreathAbility()
-    {
-        if (dragonflyController != null)
-        {
-            dragonflyController.UseAbility(abilityManager.currentAbility);
-        }
-    }
-
 }
