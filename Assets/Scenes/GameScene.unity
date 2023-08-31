@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 322174977}
   - component: {fileID: 322174976}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: AbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1561,7 +1561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9858491, b: 0.9858491, a: 0}
+  m_Color: {r: 0.5660378, g: 0.26432896, b: 0.26432896, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2861,6 +2861,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6503728123194771994, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
   m_PrefabInstance: {fileID: 1028970082}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1490766002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490766003}
+  - component: {fileID: 1490766004}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1490766003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490766002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1490766004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490766002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94803bde99cf9d498aee2ad7c45a967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreTextObject: {fileID: 664268007}
+  highScoreTextObject: {fileID: 836623265}
 --- !u!1 &1514308741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8085688765338817987, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
@@ -3012,6 +3058,7 @@ GameObject:
   - component: {fileID: 1583724985}
   - component: {fileID: 1583724984}
   - component: {fileID: 1583724986}
+  - component: {fileID: 1583724987}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3033,9 +3080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 567389405}
   countdownTextObject: {fileID: 2025438032}
-  scoreTextObject: {fileID: 664268007}
-  highScoreTextObject: {fileID: 836623265}
-  pauseMenuCanvas: {fileID: 0}
+  pauseMenuCanvas: {fileID: 783015851}
 --- !u!4 &1583724985
 Transform:
   m_ObjectHideFlags: 0
@@ -3066,6 +3111,20 @@ MonoBehaviour:
   abilityManager: {fileID: 1431318260}
   icon: {fileID: 0}
   collectedItemsText: {fileID: 322174976}
+--- !u!114 &1583724987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583724983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94803bde99cf9d498aee2ad7c45a967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreTextObject: {fileID: 664268007}
+  highScoreTextObject: {fileID: 836623265}
 --- !u!1 &1614686167
 GameObject:
   m_ObjectHideFlags: 0
