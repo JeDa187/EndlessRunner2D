@@ -52,13 +52,25 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Destroy this instance if another one already exists
         }
     }
+    
+    // Tämä ennen scriptin muutosta
+
+    //private void InitializeGame()
+    //{
+    //    Time.timeScale = 1; // Reset time scale to normal speed
+    //    StartCoroutine(CountdownToStart()); // Start the countdown before the game starts
+    //}
 
     private void InitializeGame()
     {
         Time.timeScale = 1; // Reset time scale to normal speed
         CountdownToStart(); // Start the countdown before the game starts
+    }   
+    public void ResumeGame()
+    {
+        Time.timeScale = 1; // Resume the game
+        pauseMenuPanel.SetActive(false); // Hide the pause menu
     }
-
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
@@ -68,6 +80,11 @@ public class GameManager : MonoBehaviour
 
         // Lähetä pisteet tulostaululle
         SendScoreToLeaderboard(score);
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1; // Reset time scale to normal speed
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
     }
 
     void SendScoreToLeaderboard(int playerScore)
@@ -83,34 +100,6 @@ public class GameManager : MonoBehaviour
         error => { Debug.LogError(error.GenerateErrorReport()); });
     }
 
-
-
-    public void RestartGame()
-    {
-        Time.timeScale = 1; // Reset time scale to normal speed
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
-    }
-    public void ResumeGame()
-    {
-        Time.timeScale = 1; // Resume the game
-        pauseMenuPanel.SetActive(false); // Hide the pause menu
-    }
-
-    private void LoadHighScore()
-    {
-        highScore = PlayerPrefs.GetInt(HighScoreKey, 0); // Load high score from PlayerPrefs or default to 0
-        highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
-    }
-
-    private void UpdateHighScore()
-    {
-        if (score > highScore)
-        {
-            highScore = score; // Update high score if player's score is higher
-            PlayerPrefs.SetInt(HighScoreKey, highScore); // Save new high score to PlayerPrefs
-        }
-        highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
-    }
     private void CountdownToStart()
     {
         DisableDragonflyAndParallax();
@@ -127,6 +116,17 @@ public class GameManager : MonoBehaviour
         }
 
         parallax.enableScrolling = false;
+    }
+
+    private void EnableDragonflyAndParallax()
+    {
+        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
+        if (dragonfly != null)
+        {
+            dragonfly.ToggleRigidbodyMovement(true);
+        }
+
+        parallax.enableScrolling = true;
     }
 
     private IEnumerator DoCountdown()
@@ -148,29 +148,31 @@ public class GameManager : MonoBehaviour
         NotifyCountdownFinished();
 
         StartCoroutine(UpdateScore());
+    } 
+    private void NotifyCountdownFinished()
+    {
+        OnCountdownFinished?.Invoke();
+    }
+    private void LoadHighScore()
+    {
+        highScore = PlayerPrefs.GetInt(HighScoreKey, 0); // Load high score from PlayerPrefs or default to 0
+        highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }
 
+    private void UpdateHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score; // Update high score if player's score is higher
+            PlayerPrefs.SetInt(HighScoreKey, highScore); // Save new high score to PlayerPrefs
+        }
+        highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
+    }
     private void InitializeScore()
     {
         score = 0;
         scoreTextObject.text = $"Score: {score}";
         scoreTextObject.gameObject.SetActive(true);
-    }
-
-    private void EnableDragonflyAndParallax()
-    {
-        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
-        if (dragonfly != null)
-        {
-            dragonfly.ToggleRigidbodyMovement(true);
-        }
-
-        parallax.enableScrolling = true;
-    }
-
-    private void NotifyCountdownFinished()
-    {
-        OnCountdownFinished?.Invoke();
     }
 
     private IEnumerator UpdateScore()
