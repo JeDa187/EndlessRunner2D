@@ -3032,7 +3032,7 @@ MonoBehaviour:
   countdownTextObject: {fileID: 2025438032}
   scoreTextObject: {fileID: 664268007}
   highScoreTextObject: {fileID: 836623265}
-  pauseMenuPanel: {fileID: 1846423273}
+  pauseMenuPanel: {fileID: 783015851}
 --- !u!4 &1583724985
 Transform:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text countdownTextObject; // Text object to display the countdown before game starts
     [SerializeField] private TMP_Text scoreTextObject; // Text object to display the player's current score
     [SerializeField] private TMP_Text highScoreTextObject; // Text object to display the highest score
-    [SerializeField] private GameObject pauseMenuPanel; // UI panel displayed when game is paused
+    [SerializeField] private GameObject pauseMenuCanvas; // UI panel displayed when game is paused
    
 
 
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1; // Resume the game
-        pauseMenuPanel.SetActive(false); // Hide the pause menu
+        pauseMenuCanvas.SetActive(false); // Hide the pause menu
     }
     public void GameOver()
     {
