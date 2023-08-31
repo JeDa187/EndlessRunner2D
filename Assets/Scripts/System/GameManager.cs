@@ -153,6 +153,12 @@ public class GameManager : MonoBehaviour
     {
         OnCountdownFinished?.Invoke();
     }
+    private void InitializeScore()
+    {
+        score = 0;
+        scoreTextObject.text = $"Score: {score}";
+        scoreTextObject.gameObject.SetActive(true);
+    }
     private void LoadHighScore()
     {
         highScore = PlayerPrefs.GetInt(HighScoreKey, 0); // Load high score from PlayerPrefs or default to 0
@@ -168,12 +174,7 @@ public class GameManager : MonoBehaviour
         }
         highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }
-    private void InitializeScore()
-    {
-        score = 0;
-        scoreTextObject.text = $"Score: {score}";
-        scoreTextObject.gameObject.SetActive(true);
-    }
+    
 
     private IEnumerator UpdateScore()
     {

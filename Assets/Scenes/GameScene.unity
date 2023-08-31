@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 34}
+  m_AnchoredPosition: {x: 0, y: -1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771860
@@ -659,7 +659,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1080183321}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1413,7 +1413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -38}
+  m_AnchoredPosition: {x: 0, y: -73}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579573433
@@ -1541,7 +1541,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1080183321}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1976,6 +1976,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8085688765740231976, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8085688765740231977, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
       propertyPath: m_Name
       value: Parallax Camera
@@ -2345,7 +2349,7 @@ PrefabInstance:
     - target: {fileID: 2760872010388890157, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: cameraController
       value: 
-      objectReference: {fileID: 2026011735}
+      objectReference: {fileID: 0}
     - target: {fileID: 6067964095150051326, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_Size.x
       value: 3.1900434
@@ -2441,7 +2445,6 @@ RectTransform:
   m_Children:
   - {fileID: 664268006}
   - {fileID: 447462186}
-  - {fileID: 1398300814}
   - {fileID: 1536100450}
   - {fileID: 608180675}
   - {fileID: 322174975}
@@ -2708,12 +2711,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1791244810}
-  m_Father: {fileID: 1080183321}
+  m_Father: {fileID: 1846423274}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 745, y: 460}
+  m_AnchoredPosition: {x: -2, y: 73}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398300815
@@ -2894,7 +2897,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1080183321}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3032,7 +3035,7 @@ MonoBehaviour:
   countdownTextObject: {fileID: 2025438032}
   scoreTextObject: {fileID: 664268007}
   highScoreTextObject: {fileID: 836623265}
-  pauseMenuPanel: {fileID: 783015851}
+  pauseMenuCanvas: {fileID: 0}
 --- !u!4 &1583724985
 Transform:
   m_ObjectHideFlags: 0
@@ -3314,13 +3317,14 @@ RectTransform:
   m_Children:
   - {fileID: 771859}
   - {fileID: 579573432}
+  - {fileID: 1398300814}
   m_Father: {fileID: 783015852}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 346.3, y: 149}
+  m_SizeDelta: {x: 367, y: 251.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846423275
 MonoBehaviour:
@@ -3639,24 +3643,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025438030}
   m_CullTransparentMesh: 1
---- !u!1 &2026011732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8085688765740231977, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
-  m_PrefabInstance: {fileID: 840901970}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2026011735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026011732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a9d94ac16aabe48894288c72f2c618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!1 &2051454118
 GameObject:
   m_ObjectHideFlags: 0
