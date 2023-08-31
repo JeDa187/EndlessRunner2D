@@ -14,6 +14,7 @@ public class LoginScene : MonoBehaviour
     {
         string playerName = playerNameInputField.text;
         string password = passwordInputField.text;
+        PlayerPrefs.SetInt("Online", 1); // 1 for online
 
         if (playerName.Length != 4)
         {
@@ -27,6 +28,17 @@ public class LoginScene : MonoBehaviour
         {
             CheckPlayerName(playerName, password);
         }
+    }
+    public void OnPlayOfflineButtonClicked()
+    {
+        PlayerPrefs.SetInt("Online", 0); // 0 for offline
+        errorMessage.text = "Starting game in offline mode";
+        Invoke("LoadMainMenuScene", 3.0f);
+    }
+
+    private void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void CheckPlayerName(string playerName, string password)

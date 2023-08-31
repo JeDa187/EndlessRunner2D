@@ -12,7 +12,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Leaderboard");
     }
-
+    public void Logout()
+    {
+        PlayerPrefs.DeleteKey("Online");
+        SceneManager.LoadScene("LoginScene");
+    }
     public void QuitGame()
     {
         Application.Quit();
