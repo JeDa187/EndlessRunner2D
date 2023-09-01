@@ -71,6 +71,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; // Reset time scale to normal speed
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
     }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1; // Reset time scale to normal speed
+        SceneManager.LoadScene("MainMenu"); // Load the main menu scene
+    }
     void SendScoreToLeaderboard(int playerScore)
     {
         string playerName = PlayerPrefs.GetString("PlayerName");
@@ -87,6 +93,33 @@ public class GameManager : MonoBehaviour
     {
         DisableDragonflyAndParallax();
         StartCoroutine(DoCountdown());
+    }
+    
+    private IEnumerator DoCountdown()
+    {
+        yield return StartCoroutine(StartCountdown(countdownTime));
+        scoreManager.InitializeScore();
+
+        EnableDragonflyAndParallax();
+        NotifyCountdownFinished();
+        StartCoroutine(scoreManager.UpdateScore());
+    }
+    private void NotifyCountdownFinished()
+    {
+        OnCountdownFinished?.Invoke();
+    }
+    
+    private IEnumerator StartCountdown(float duration)
+    {
+        float currentCountdown = duration;
+        while (currentCountdown > 0)
+        {
+            countdownTextObject.text = currentCountdown.ToString("0");
+            yield return new WaitForSeconds(1.0f);
+            currentCountdown--;
+        }
+
+        countdownTextObject.text = "";
     }
     private void DisableDragonflyAndParallax()
     {
@@ -108,31 +141,5 @@ public class GameManager : MonoBehaviour
         }
 
         parallax.enableScrolling = true;
-    }
-    private IEnumerator DoCountdown()
-    {
-        float currentCountdown = countdownTime;
-        while (currentCountdown > 0)
-        {
-            countdownTextObject.text = currentCountdown.ToString("0");
-            yield return new WaitForSeconds(1.0f);
-            currentCountdown--;
-        }
-
-        countdownTextObject.text = "";
-        scoreManager.InitializeScore();
-
-        EnableDragonflyAndParallax();
-        NotifyCountdownFinished();
-        StartCoroutine(scoreManager.UpdateScore());
-    }
-    private void NotifyCountdownFinished()
-    {
-        OnCountdownFinished?.Invoke();
-    }
-    public void GoToMainMenu()
-    {
-        Time.timeScale = 1; // Reset time scale to normal speed
-        SceneManager.LoadScene("MainMenu"); // Load the main menu scene
     }
 }
