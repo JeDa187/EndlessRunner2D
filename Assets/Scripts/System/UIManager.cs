@@ -12,9 +12,15 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     [SerializeField] Sprite icon;
     [SerializeField] TMP_Text collectedItemsText;
-    [SerializeField] private Button pauseButton;
-    [SerializeField] private GameObject pauseMenuCanvas;
+    [SerializeField] Button pauseButton;
+    [SerializeField] Toggle audioToggle;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject pauseMenuCanvas;
+    [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject settingsMenuPanel;
+    private bool isAudioEnabled = true;
+
+
 
     private void Awake()
     {
@@ -32,6 +38,7 @@ public class UIManager : MonoBehaviour
     {
         UpdateCollectedItemsText(); // P‰ivit‰ tekstikentt‰ alussa
         pauseButton.onClick.AddListener(ShowPauseMenu);
+        audioSource.enabled = isAudioEnabled;
     }
 
     //Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
@@ -66,7 +73,16 @@ public class UIManager : MonoBehaviour
     public void ShowSettingsMenu()
     {
         settingsMenuPanel.SetActive(true);
+        pauseMenuPanel.SetActive(false);
     }
-
-
+    public void ReturnToSettingsMenu()
+    {
+        settingsMenuPanel.SetActive(false);
+        pauseMenuPanel.SetActive(true);
+    }
+    public void AudioToggle()
+    {
+        isAudioEnabled = !isAudioEnabled; // Toggle the state
+        audioSource.enabled = isAudioEnabled; // Apply the new state to the AudioSource
+    }
 }
