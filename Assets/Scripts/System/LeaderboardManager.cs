@@ -14,8 +14,22 @@ public class LeaderboardManager : MonoBehaviour
     // Method called when the script is initialized
     void Start()
     {
-        GetLeaderboard();
+        if (PlayerPrefs.GetInt("Online") == 1)
+        {
+            GetLeaderboard();
+        }
+        else
+        {
+            // show a message to the player that the leaderboard is not available in offline mode
+            for (int i = 0; i < playerNameTexts.Length; i++)
+            {
+                playerNameTexts[i].text = "";
+                playerScoreTexts[i].text = "";
+            }
+            playerNameTexts[0].text = "Leaderboard is not available in offline mode.";
+        }
     }
+
 
     // Method to get the leaderboard data
     void GetLeaderboard()

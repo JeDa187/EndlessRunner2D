@@ -64,7 +64,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         scoreManager.UpdateHighScore();
 
-        SendScoreToLeaderboard(scoreManager.GetScore());         // Lähetä pisteet tulostaululle
+        if (PlayerPrefs.GetInt("Online") == 1)
+        {
+            SendScoreToLeaderboard(scoreManager.GetScore()); 
+        }      
     }
     public void RestartGame()
     {
