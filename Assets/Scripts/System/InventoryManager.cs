@@ -5,7 +5,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    public List<ItemSO> collectedItems = new List<ItemSO>();
+    public List<ItemSO> collectedItems = new();
 
     private void Awake()
     {
