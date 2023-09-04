@@ -26,6 +26,7 @@ public class LoginScene : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetString("PlayerName", playerName); // Tallenna kirjautuneen käyttäjän nimi.
             CheckPlayerName(playerName, password);
         }
     }
