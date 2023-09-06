@@ -16,6 +16,8 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     private InputHandling inputHandling;
     private AbilitySO abilitySO;
 
+    private bool isMultiplierActive = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); // Initialize the Rigidbody2D component here instead of Start
@@ -80,6 +82,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         Debug.Log("coroutine");
         InfiniteParallaxBackground parallaxBG = FindObjectOfType<InfiniteParallaxBackground>();
         float[] originalSpeeds = (float[])parallaxBG.LayerScrollSpeeds.Clone(); // Save the original speeds
+
         for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
         {
             parallaxBG.LayerScrollSpeeds[i] *= 20f;
@@ -101,13 +104,18 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
             Debug.Log("No fire breath particles found");
         }
 
+        isMultiplierActive = true;  // Set the multiplier as active when the ability is active
+
         yield return new WaitForSeconds(abilitySO.abilityDuration);
+
+        isMultiplierActive = false;  // Set the multiplier as inactive when the ability ends
 
         // Reset the speeds back to the original values
         for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
         {
             parallaxBG.LayerScrollSpeeds[i] = originalSpeeds[i];
         }
+
         immortalTimer = 0;
         rb.constraints = originalConstraints;
         GetComponent<Collider2D>().enabled = true;
@@ -116,5 +124,11 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         {
             abilitySO.fireBreathParticles.Stop();
         }
+    }
+
+
+    public int GetScoreMultiplier()
+    {
+        return isMultiplierActive ? 2 : 1;
     }
 }
