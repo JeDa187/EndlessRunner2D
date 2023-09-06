@@ -6,57 +6,72 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
+    // Serialized fields for assigning in the editor
+    [SerializeField] private TMP_Text scoreTextObject; // UI element for displaying the player's current score.
+    [SerializeField] private TMP_Text highScoreTextObject; // UI element for displaying the highest score ever achieved.
 
-    [SerializeField] private TMP_Text scoreTextObject; // Text object to display the player's current score
-    [SerializeField] private TMP_Text highScoreTextObject; // Text object to display the highest score
-    private int score = 0; // Player's current score
-    private int highScore = 0; // Highest score achieved so far
-    private const string HighScoreKey = "HighScore"; // Key used to save/load high score with PlayerPrefs
+    private int score = 0; // Keeps track of the current in-game score.
+    private int highScore = 0; // Keeps track of the highest score achieved across all play sessions.
 
+    // Key for PlayerPrefs to store and retrieve the high score.
+    private const string HighScoreKey = "HighScore";
+
+    // Reference to the DragonflyController which provides the score multiplier.
     private DragonflyController dragonflyController;
-
 
     private void Start()
     {
+        // Get the DragonflyController component at the start of the game.
         dragonflyController = FindObjectOfType<DragonflyController>();
     }
 
+    // Method to get the current score.
     public int GetScore()
     {
         return score;
     }
+
+    // Method to get the text object displaying the score (useful for other scripts).
     public TMP_Text GetScoreTextObject()
     {
         return scoreTextObject;
     }
+
+    // Initializes the score at the start of a new game or round.
     public void InitializeScore()
     {
         score = 0;
         scoreTextObject.text = $"Score: {score}";
-        scoreTextObject.gameObject.SetActive(true);
+        scoreTextObject.gameObject.SetActive(true); // Ensures the score is visible.
     }
+
+    // Load the highest score ever achieved from PlayerPrefs.
     public void LoadHighScore()
     {
-        highScore = PlayerPrefs.GetInt(HighScoreKey, 0); // Load high score from PlayerPrefs or default to 0
-        highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
+        highScore = PlayerPrefs.GetInt(HighScoreKey, 0); // Fetches the high score or defaults to 0 if not found.
+        highScoreTextObject.text = $"High Score: {highScore}";
     }
+
+    // Updates the high score if the current score surpasses it.
     public void UpdateHighScore()
     {
         if (score > highScore)
         {
-            highScore = score; // Update high score if player's score is higher
-            PlayerPrefs.SetInt(HighScoreKey, highScore); // Save new high score to PlayerPrefs
+            highScore = score; // Sets the new high score.
+            PlayerPrefs.SetInt(HighScoreKey, highScore); // Persists the new high score.
         }
-        highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
+        highScoreTextObject.text = $"High Score: {highScore}";
     }
 
+    // Coroutine to continually update the score based on a multiplier from the DragonflyController.
     public IEnumerator UpdateScore()
     {
-        while (true)
+        while (true) // Runs indefinitely, be cautious of infinite loops.
         {
             int multiplier = dragonflyController.GetScoreMultiplier();
 
-            // Update every 0.1 seconds when the multiplier is active
+            // Determines the frequency of score updates based on the multiplier.
+            // If multiplier is greater than 1, updates faster.
             float updateTime = (multiplier > 1) ? 0.4f : 0.5f;
 
             for (int i = 0; i < multiplier; i++)
@@ -67,5 +82,4 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
-
 }
