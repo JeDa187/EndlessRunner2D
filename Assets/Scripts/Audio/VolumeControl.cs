@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class VolumeControl : MonoBehaviour
     public Slider volumeSlider;
     public Slider SFXSlider;
     public AudioManager audioManager;
+    //[SerializeField] List<AudioClip> audioClips = new();
 
     private void Start()
     {
@@ -13,12 +15,12 @@ public class VolumeControl : MonoBehaviour
         SFXSlider.onValueChanged.AddListener(ChangeSFXVolume);
     }
 
-    private void ChangeMusicVolume(float volume)
+    private void ChangeMusicVolume(float musicVolume)
     {
-        audioManager.SetVolume(volume);
+        audioManager.SetMusicVolume(musicVolume);
     }
     private void ChangeSFXVolume(float SFXvolume)
     {
-        audioManager.SetVolume(SFXvolume);
+        audioManager.SetSFXVolume(SFXvolume);
     }
 }

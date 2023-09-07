@@ -62,7 +62,6 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -8691154533515460847}
-  - {fileID: 2677458333233074514}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -84,9 +83,9 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 165be20b5d33ff047a80a331710c6f9e
-    name: MyExposedParam
+    name: MasterVolume
   - guid: a5a66ba519e1d094a81f14e8313d7619
-    name: MIXER_MUSIC
+    name: MusicVolume
   - guid: 846653da04972bf49905594eeeb7be19
     name: SFXVolume
   m_AudioMixerGroupViews:
@@ -142,19 +141,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 8baa79bbc23968146b764ca2cf72e8b7
   m_FloatValues:
-    165be20b5d33ff047a80a331710c6f9e: 0.1080022
+    a5a66ba519e1d094a81f14e8313d7619: -5.4218063
+    846653da04972bf49905594eeeb7be19: -5.7224774
+    165be20b5d33ff047a80a331710c6f9e: -5.824182
   m_TransitionOverrides: {}
---- !u!244 &2677458333233074514
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 4af73ce53c0077e4b89f24b65b9d3e94
-  m_EffectName: Receive
-  m_MixLevel: ae2078426debe1c49b12d2a2acab6fab
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
