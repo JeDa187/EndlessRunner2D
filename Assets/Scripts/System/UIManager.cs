@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pauseMenuCanvas;
     [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject settingsMenuPanel;
-    private bool isAudioEnabled = true;
+    private bool isAudioEnabled;
 
 
 
