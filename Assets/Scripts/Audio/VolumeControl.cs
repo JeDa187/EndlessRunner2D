@@ -7,7 +7,6 @@ public class VolumeControl : MonoBehaviour
     public Slider volumeSlider;
     public Slider SFXSlider;
     public AudioManager audioManager;
-    //[SerializeField] List<AudioClip> audioClips = new();
 
     private void Start()
     {

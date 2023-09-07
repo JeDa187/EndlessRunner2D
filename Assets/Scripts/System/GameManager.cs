@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
 {
     private ScoreManager scoreManager;
     private InfiniteParallaxBackground parallax; // Reference to the parallax scrolling background  
-    [SerializeField] private GameObject gameOverPanel; // UI panel displayed when game is over
-    [SerializeField] private TMP_Text countdownTextObject; // Text object to display the countdown before game starts
+    [SerializeField] GameObject gameOverPanel; // UI panel displayed when game is over
+    [SerializeField] GameObject pauseButton;
+    [SerializeField] TMP_Text countdownTextObject; // Text object to display the countdown before game starts
     private float countdownTime = 3.0f; // Duration of countdown before game starts
     public static GameManager Instance; // Singleton instance of the GameManager
     public event Action OnCountdownFinished; // Event triggered when the countdown is finished
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        pauseButton.SetActive(false);
         gameOverPanel.SetActive(true);
         scoreManager.GetScoreTextObject().gameObject.SetActive(false);
         Time.timeScale = 0;

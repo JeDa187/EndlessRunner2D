@@ -4,16 +4,12 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioMixer audioMixer;
-    [SerializeField] Toggle audioToggle;
     [SerializeField] AudioSource musicSource, effectsSource;
-    [SerializeField] float minVolume = 0.0001f;
     [SerializeField] float maxVolume = 1.0f;
     private bool isAudioEnabled = true;
 
     private void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
         musicSource.enabled = isAudioEnabled;
         effectsSource.enabled = isAudioEnabled;
     }
