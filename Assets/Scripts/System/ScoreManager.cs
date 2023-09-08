@@ -48,32 +48,37 @@ public class ScoreManager : MonoBehaviour
         highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }
 
+    // Tämä vanhaa koodia
+
+    //public IEnumerator UpdateScore()
+    //{
+    //    while (true)
+    //    {
+
+    //        yield return new WaitForSeconds(0.5f);
+    //        score += 1; // Increase score every 0.5 seconds
+    //        scoreTextObject.text = $"Score: {score}"; // Update score text object
+    //    }
+    //}
+
+
+    // Coroutine to continually update the score based on a multiplier from the DragonflyController.
     public IEnumerator UpdateScore()
     {
-        while (true)
+        while (true) // Runs indefinitely, be cautious of infinite loops.
         {
-            yield return new WaitForSeconds(0.5f);
-            score += 1; // Increase score every 0.5 seconds
-            scoreTextObject.text = $"Score: {score}"; // Update score text object
+            int multiplier = dragonflyController.GetScoreMultiplier();
+
+            // Determines the frequency of score updates based on the multiplier.
+            // If multiplier is greater than 1, updates faster.
+            float updateTime = (multiplier > 1) ? 0.4f : 0.5f;
+
+            for (int i = 0; i < multiplier; i++)
+            {
+                score += 1;
+                scoreTextObject.text = $"Score: {score}";
+                yield return new WaitForSeconds(updateTime / multiplier);
+            }
         }
     }
-    //    // Coroutine to continually update the score based on a multiplier from the DragonflyController.
-    //    public IEnumerator UpdateScore()
-    //    {
-    //        while (true) // Runs indefinitely, be cautious of infinite loops.
-    //        {
-    //            int multiplier = dragonflyController.GetScoreMultiplier();
-
-    //            // Determines the frequency of score updates based on the multiplier.
-    //            // If multiplier is greater than 1, updates faster.
-    //            float updateTime = (multiplier > 1) ? 0.4f : 0.5f;
-
-    //            for (int i = 0; i < multiplier; i++)
-    //            {
-    //                score += 1;
-    //                scoreTextObject.text = $"Score: {score}";
-    //                yield return new WaitForSeconds(updateTime / multiplier);
-    //            }
-    //        }
-    //    }
 }

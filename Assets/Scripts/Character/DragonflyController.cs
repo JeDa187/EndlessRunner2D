@@ -15,7 +15,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     private AbilityManager abilityManager;
     private InputHandling inputHandling;
     private AbilitySO abilitySO;
-    private bool isMultiplierActive;
+    private bool isMultiplierActive = false;
 
     private void Awake()
     {
