@@ -12,8 +12,13 @@ public class ScoreManager : MonoBehaviour
     private int score = 0; // Player's current score
     private int highScore = 0; // Highest score achieved so far
     private const string HighScoreKey = "HighScore"; // Key used to save/load high score with PlayerPrefs
+                                                     
+    private DragonflyController dragonflyController;
 
-
+    private void Start()
+    {
+        dragonflyController = FindObjectOfType<DragonflyController>();
+    }
     public int GetScore()
     {
         return score;
@@ -52,4 +57,23 @@ public class ScoreManager : MonoBehaviour
             scoreTextObject.text = $"Score: {score}"; // Update score text object
         }
     }
+    //    // Coroutine to continually update the score based on a multiplier from the DragonflyController.
+    //    public IEnumerator UpdateScore()
+    //    {
+    //        while (true) // Runs indefinitely, be cautious of infinite loops.
+    //        {
+    //            int multiplier = dragonflyController.GetScoreMultiplier();
+
+    //            // Determines the frequency of score updates based on the multiplier.
+    //            // If multiplier is greater than 1, updates faster.
+    //            float updateTime = (multiplier > 1) ? 0.4f : 0.5f;
+
+    //            for (int i = 0; i < multiplier; i++)
+    //            {
+    //                score += 1;
+    //                scoreTextObject.text = $"Score: {score}";
+    //                yield return new WaitForSeconds(updateTime / multiplier);
+    //            }
+    //        }
+    //    }
 }

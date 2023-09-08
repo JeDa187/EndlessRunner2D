@@ -15,6 +15,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     private AbilityManager abilityManager;
     private InputHandling inputHandling;
     private AbilitySO abilitySO;
+    private bool isMultiplierActive;
 
     private void Awake()
     {
@@ -101,7 +102,11 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
             Debug.Log("No fire breath particles found");
         }
 
+        isMultiplierActive = true; // The score multiplier is now active
+
         yield return new WaitForSeconds(abilitySO.abilityDuration);
+
+        isMultiplierActive = false;
 
         // Reset the speeds back to the original values
         for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
@@ -116,5 +121,9 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         {
             abilitySO.fireBreathParticles.Stop();
         }
+    }
+    public int GetScoreMultiplier()
+    {
+        return isMultiplierActive ? 2 : 1; // Return 2 if multiplier is active, otherwise return 1
     }
 }
