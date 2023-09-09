@@ -1,151 +1,142 @@
-using TMPro; // Namespace for TextMesh Pro, an enhanced text rendering package
+using TMPro; // Namespace for TextMesh Pro, an improved text rendering package
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using System; // Namespace for handling system-based operations such as events
-using PlayFab.ClientModels; // For integrating with PlayFab's client models
-using PlayFab; // Namespace for PlayFab SDK
-using System.Collections.Generic; // For using data structures like List
+using System; // Add this to use the Action type
+using PlayFab.ClientModels;
+using PlayFab;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    private ScoreManager scoreManager; // Manager that handles score functionalities
-    private InfiniteParallaxBackground parallax; // Reference to the parallax scrolling background
-
-    [SerializeField] private GameObject gameOverPanel; // UI panel displayed when game is over
-    [SerializeField] private TMP_Text countdownTextObject; // Text object to display the countdown before the game starts
-
-    private float countdownTime = 3.0f; // Duration of the countdown before the game starts
+    private ScoreManager scoreManager;
+    private InfiniteParallaxBackground parallax; // Reference to the parallax scrolling background  
+    [SerializeField] GameObject gameOverPanel; // UI panel displayed when game is over
+    [SerializeField] GameObject pauseButton;
+    [SerializeField] TMP_Text countdownTextObject; // Text object to display the countdown before game starts
+    private float countdownTime = 3.0f; // Duration of countdown before game starts
     public static GameManager Instance; // Singleton instance of the GameManager
-
-    // Event triggered when the countdown is finished
-    public event Action OnCountdownFinished;
+    public event Action OnCountdownFinished; // Event triggered when the countdown is finished
 
     private void Awake()
     {
-        parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Find and assign the parallax background script
-        scoreManager = GetComponent<ScoreManager>(); // Get the ScoreManager attached to this GameObject
-        SetupSingleton(); // Configure the singleton instance
-        scoreManager.LoadHighScore(); // Retrieve the high score from storage (e.g., PlayerPrefs)
-    }
+        parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
+        scoreManager = GetComponent<ScoreManager>();
+        SetupSingleton(); // Set up singleton instance
+        scoreManager.LoadHighScore(); // Load the high score from PlayerPrefs
 
+        if (scoreManager != null)
+        {
+            scoreManager.LoadHighScore(); // Load the high score from PlayerPrefs
+        }
+    }
     private void Start()
     {
-        InitializeGame(); // Setup and prepare the game for play
+        InitializeGame(); // Initialize the game
     }
-
     private void SetupSingleton()
     {
         if (Instance == null)
         {
-            Instance = this; // If there's no instance yet, set this as the singleton instance
+            Instance = this; // If no instance, set this instance as the singleton
         }
         else
         {
-            Destroy(gameObject); // Remove this GameObject if another instance already exists
+            Destroy(gameObject); // Destroy this instance if another one already exists
         }
     }
-
     private void InitializeGame()
     {
-        Time.timeScale = 1; // Reset the game's time scale to normal speed
-        CountdownToStart(); // Begin the countdown sequence before game commencement
+        Time.timeScale = 1; // Reset time scale to normal speed
+        CountdownToStart(); // Start the countdown before the game starts
     }
-
     public void GameOver()
     {
-        gameOverPanel.SetActive(true); // Show the game over UI
-        scoreManager.GetScoreTextObject().gameObject.SetActive(false); // Hide the score display
-        Time.timeScale = 0; // Pause the game by setting the time scale to zero
-        scoreManager.UpdateHighScore(); // Check and update the high score if necessary
+        pauseButton.SetActive(false);
+        gameOverPanel.SetActive(true);
+        scoreManager.GetScoreTextObject().gameObject.SetActive(false);
+        Time.timeScale = 0;
+        scoreManager.UpdateHighScore();
 
         if (PlayerPrefs.GetInt("Online") == 1)
         {
-            SendScoreToLeaderboard(scoreManager.GetScore()); // Send score to online leaderboard if online mode is enabled
-        }
+            SendScoreToLeaderboard(scoreManager.GetScore()); 
+        }      
     }
-
     public void RestartGame()
     {
-        Time.timeScale = 1; // Reset game's time scale to normal speed
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene to restart the game
+        Time.timeScale = 1; // Reset time scale to normal speed
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
     }
 
     public void GoToMainMenu()
     {
-        Time.timeScale = 1; // Reset game's time scale to normal speed
-        SceneManager.LoadScene("MainMenu"); // Switch to the main menu scene
+        Time.timeScale = 1; // Reset time scale to normal speed
+        SceneManager.LoadScene("MainMenu"); // Load the main menu scene
     }
-
     void SendScoreToLeaderboard(int playerScore)
     {
         string playerName = PlayerPrefs.GetString("PlayerName");
-        // Update the player's score on PlayFab's leaderboard
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate> {
             new StatisticUpdate { StatisticName = "PlatformScore", Value = playerScore },
         }
         },
-        result => { Debug.Log("Player stats updated"); }, // Log success
-        error => { Debug.LogError(error.GenerateErrorReport()); }); // Log any errors
+        result => { Debug.Log("Pelaajatilastot päivitetty"); },
+        error => { Debug.LogError(error.GenerateErrorReport()); });
     }
-
     private void CountdownToStart()
     {
-        DisableDragonflyAndParallax(); // Ensure the dragonfly and parallax are not active during countdown
-        StartCoroutine(DoCountdown()); // Begin the countdown coroutine
+        DisableDragonflyAndParallax();
+        StartCoroutine(DoCountdown());
     }
-
+    
     private IEnumerator DoCountdown()
     {
         yield return StartCoroutine(StartCountdown(countdownTime));
-        scoreManager.InitializeScore(); // Set up the score for the game session
+        scoreManager.InitializeScore();
 
-        EnableDragonflyAndParallax(); // Activate the dragonfly and parallax after the countdown
-        NotifyCountdownFinished(); // Notify subscribers that the countdown has concluded
-        StartCoroutine(scoreManager.UpdateScore()); // Start the score updating process
+        EnableDragonflyAndParallax();
+        NotifyCountdownFinished();
+        StartCoroutine(scoreManager.UpdateScore());
     }
-
     private void NotifyCountdownFinished()
     {
-        OnCountdownFinished?.Invoke(); // Trigger the OnCountdownFinished event if there are any subscribers
+        OnCountdownFinished?.Invoke();
     }
-
+    
     private IEnumerator StartCountdown(float duration)
     {
         float currentCountdown = duration;
-        // For each second of the countdown duration
         while (currentCountdown > 0)
         {
             countdownTextObject.text = currentCountdown.ToString("0");
-            yield return new WaitForSeconds(1.0f); // Wait for a second
+            yield return new WaitForSeconds(1.0f);
             currentCountdown--;
         }
 
-        countdownTextObject.text = ""; // Clear the countdown text
+        countdownTextObject.text = "";
     }
-
     private void DisableDragonflyAndParallax()
     {
-        DragonflyController dragonfly = FindObjectOfType<DragonflyController>(); // Get the dragonfly controller
+        DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
         if (dragonfly != null)
         {
-            dragonfly.ToggleRigidbodyMovement(false); // Deactivate dragonfly's movement
-            dragonfly.ResetDragonfly(); // Reset the dragonfly's state
+            dragonfly.ToggleRigidbodyMovement(false);
+            dragonfly.ResetDragonfly();
         }
 
-        parallax.enableScrolling = false; // Turn off parallax scrolling
+        parallax.enableScrolling = false;
     }
-
     private void EnableDragonflyAndParallax()
     {
         DragonflyController dragonfly = FindObjectOfType<DragonflyController>();
         if (dragonfly != null)
         {
-            dragonfly.ToggleRigidbodyMovement(true); // Activate dragonfly's movement
+            dragonfly.ToggleRigidbodyMovement(true);
         }
 
-        parallax.enableScrolling = true; // Turn on parallax scrolling
+        parallax.enableScrolling = true;
     }
 }

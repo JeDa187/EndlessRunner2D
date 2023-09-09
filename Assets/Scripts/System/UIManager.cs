@@ -6,21 +6,14 @@ using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
-
-    //private AbilityManager abilityManager;
-
     public static UIManager Instance;
     [SerializeField] Sprite icon;
     [SerializeField] TMP_Text collectedItemsText;
     [SerializeField] Button pauseButton;
-    [SerializeField] Toggle audioToggle;
-    [SerializeField] AudioSource audioSource;
     [SerializeField] GameObject pauseMenuCanvas;
     [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject settingsMenuPanel;
-    private bool isAudioEnabled;
-
-
+    [SerializeField] GameObject MainMenuSecurePanel;
 
     private void Awake()
     {
@@ -38,14 +31,12 @@ public class UIManager : MonoBehaviour
     {
         UpdateCollectedItemsText(); // P‰ivit‰ tekstikentt‰ alussa
         pauseButton.onClick.AddListener(ShowPauseMenu);
-        audioSource.enabled = isAudioEnabled;
     }
 
     //Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
     public void UpdateUI()
     {
         UpdateCollectedItemsText();
-        // Voit lis‰t‰ muita p‰ivityksi‰ tarpeesi mukaan.
     }
 
     private void UpdateCollectedItemsText()
@@ -75,14 +66,16 @@ public class UIManager : MonoBehaviour
         settingsMenuPanel.SetActive(true);
         pauseMenuPanel.SetActive(false);
     }
-    public void ReturnToSettingsMenu()
+    public void ShowMainMenuOption()
+    {
+        MainMenuSecurePanel.SetActive(true);
+        pauseMenuPanel.SetActive(false);
+        
+    }
+    public void ReturnToPauseMenu()
     {
         settingsMenuPanel.SetActive(false);
+        MainMenuSecurePanel.SetActive(false);
         pauseMenuPanel.SetActive(true);
-    }
-    public void AudioToggle()
-    {
-        isAudioEnabled = !isAudioEnabled; // Toggle the state
-        audioSource.enabled = isAudioEnabled; // Apply the new state to the AudioSource
     }
 }
