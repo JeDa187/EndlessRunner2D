@@ -1286,7 +1286,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 567389406}
-  - {fileID: 2025438031}
   m_Father: {fileID: 1363475551}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3307,6 +3306,7 @@ RectTransform:
   - {fileID: 447462186}
   - {fileID: 1069716311}
   - {fileID: 1852437721}
+  - {fileID: 2025438031}
   m_Father: {fileID: 1363475551}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4321,6 +4321,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6503728123194771994, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
   m_PrefabInstance: {fileID: 1028970082}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1431318266 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2814488166262258483, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
+  m_PrefabInstance: {fileID: 1028970082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490766002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,6 +4783,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 567389405}
   pauseButton: {fileID: 447462185}
   countdownTextObject: {fileID: 2025438032}
+  playerSpriteRenderer: {fileID: 1431318266}
 --- !u!4 &1583724985
 Transform:
   m_ObjectHideFlags: 0
@@ -6109,13 +6115,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025438030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 428227231}
-  m_RootOrder: 1
+  m_Father: {fileID: 1080183321}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}

@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // Singleton instance of the GameManager
     public event Action OnCountdownFinished; // Event triggered when the countdown is finished
 
+    public SpriteRenderer playerSpriteRenderer; // Renderer, joka n‰ytt‰‰ pelaajan hahmon.
+
+
     private void Awake()
     {
         parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
@@ -29,11 +32,26 @@ public class GameManager : MonoBehaviour
         {
             scoreManager.LoadHighScore(); // Load the high score from PlayerPrefs
         }
+        
+
     }
     private void Start()
     {
         InitializeGame(); // Initialize the game
+
+        // Aseta valittu hahmo peliss‰.
+        if (CharacterSelection.Instance != null)
+        {
+            playerSpriteRenderer.sprite = CharacterSelection.Instance.characterSprites[CharacterSelection.Instance.selectedCharacterIndex];
+            Debug.Log($"Set player sprite to: {playerSpriteRenderer.sprite.name}");
+        }
+        else
+        {
+            Debug.LogError("CharacterSelection.Instance is null.");
+        }
     }
+
+
     private void SetupSingleton()
     {
         if (Instance == null)

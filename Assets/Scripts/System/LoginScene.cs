@@ -39,7 +39,7 @@ public class LoginScene : MonoBehaviour
 
     private void LoadMainMenuScene()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("CharacterSelection");
     }
 
     private void CheckPlayerName(string playerName, string password)
@@ -116,7 +116,7 @@ public class LoginScene : MonoBehaviour
         {
             // Successful name update
             // Move to the next scene
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("CharacterSelection");
         }, error =>
         {
             // Error updating the name
