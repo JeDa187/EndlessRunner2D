@@ -9,16 +9,17 @@ public class CharacterSelection : MonoBehaviour
 {
     public static CharacterSelection Instance { get; private set; }
 
-    public Sprite[] characterSprites; // Hahmojen spritet.
-    public int selectedCharacterIndex = 0; // Oletushahmo.
-    public bool[] characterLocked = { false, true, true }; // Oletuksena ensimmäinen hahmo on avoinna ja muut kaksi ovat lukittuja
+    public Sprite[] characterSprites;
+    public int selectedCharacterIndex = 0;
+    public bool[] characterLocked = { false, true, true };
 
-    public Button[] characterButtons; // Hahmojen napit.
-    public Color equippedColor = Color.gray; // Väri, joka näytetään, kun hahmo on varustettu.
+    public Button[] characterButtons;
+    public Color equippedColor = Color.gray;
+
+    public GameObject loadingPanel; // Latauspaneeli
 
     private void Awake()
     {
-        // Tarkista, onko olemassa oleva instanssi samassa kohtauksessa
         if (Instance == null || Instance.gameObject.scene != this.gameObject.scene)
         {
             Instance = this;
@@ -26,7 +27,6 @@ public class CharacterSelection : MonoBehaviour
         }
         else
         {
-            // Jos on olemassa toinen instanssi samassa kohtauksessa, tuhoa tämä instanssi
             if (this != Instance)
             {
                 Destroy(gameObject);
@@ -36,14 +36,27 @@ public class CharacterSelection : MonoBehaviour
 
     private void Start()
     {
-        FetchPlayerHighScore();
-
+        if (PlayerPrefs.GetInt("Online", 1) == 0) // Jos offline-tila
+        {
+            // Lukitse kaikki hahmot paitsi ensimmäinen
+            characterLocked[0] = false;
+            characterLocked[1] = true;
+            characterLocked[2] = true;
+            UpdateButtonTexts();
+            UpdateButtonColors();
+            HideLoadingPanel(); // Piilota latauspaneeli offline-tilassa
+        }
+        else
+        {
+            ShowLoadingPanel();
+            FetchPlayerHighScore();
+        }
     }
 
     public void GoToMainMenu()
     {
         Debug.Log("GoToMainMenu called.");
-        SceneManager.LoadScene("MainMenu"); // Load the main menu scene
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void EquipCharacter(int index)
@@ -75,46 +88,45 @@ public class CharacterSelection : MonoBehaviour
             {
                 if (eachStat.StatisticName == "PlatformScore")
                 {
-                    PlayerPrefs.SetInt("PlayerScore", eachStat.Value); // Tallenna pelaajan pisteet PlayerPrefsiin
+                    PlayerPrefs.SetInt("PlayerScore", eachStat.Value);
                     scoreFound = true;
-                    break; // Lopeta loop, kun pistetulos on löydetty
+                    break;
                 }
             }
 
-            // Jos pistetulosta ei löydy, aseta pisteet nollaksi
             if (!scoreFound)
             {
                 PlayerPrefs.SetInt("PlayerScore", 0);
             }
 
-            UpdateCharacterLocks(); // Päivitä hahmojen lukitusstatukset
-            UpdateButtonTexts(); // Päivitä nappien tekstit
-
+            UpdateCharacterLocks();
+            UpdateButtonTexts();
+            HideLoadingPanel(); // Piilota latauspaneeli kun tiedot on haettu
         },
-        error => { Debug.LogError(error.GenerateErrorReport()); });
+        error => {
+            Debug.LogError(error.GenerateErrorReport());
+            HideLoadingPanel(); // Piilota latauspaneeli virhetilanteessa
+        });
     }
-
 
     void UpdateCharacterLocks()
     {
-        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0); // Hae pelaajan pisteet PlayerPrefsistä
+        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
 
-        characterLocked[0] = false; // Aseta ensimmäinen hahmo aina avoimeksi
+        characterLocked[0] = false;
 
         if (playerScore >= 1000)
         {
-            characterLocked[1] = false; // Avaa toinen hahmo
+            characterLocked[1] = false;
         }
         if (playerScore >= 2000)
         {
-            characterLocked[2] = false; // Avaa kolmas hahmo
+            characterLocked[2] = false;
         }
 
-        UpdateButtonTexts(); // Päivitä nappien tekstit tässä
-        UpdateButtonColors(); // Päivitä nappien värit
+        UpdateButtonTexts();
+        UpdateButtonColors();
     }
-
-
 
     void UpdateButtonColors()
     {
@@ -122,11 +134,11 @@ public class CharacterSelection : MonoBehaviour
         {
             if (i == selectedCharacterIndex)
             {
-                characterButtons[i].image.color = equippedColor; // Aseta varustettu väri
+                characterButtons[i].image.color = equippedColor;
             }
             else
             {
-                characterButtons[i].image.color = Color.white; // Aseta oletusväri
+                characterButtons[i].image.color = Color.white;
             }
         }
     }
@@ -135,23 +147,20 @@ public class CharacterSelection : MonoBehaviour
     {
         for (int i = 0; i < characterButtons.Length; i++)
         {
-            TMP_Text buttonText = characterButtons[i].GetComponentInChildren<TMP_Text>(true); // Etsi TMP_Text-komponentti myös ei-aktiivisista lapsista
+            TMP_Text buttonText = characterButtons[i].GetComponentInChildren<TMP_Text>(true);
             if (buttonText)
             {
                 if (i == selectedCharacterIndex)
                 {
                     buttonText.text = "Equipped";
-                    Debug.Log($"Button {i} set to 'Equipped'");
                 }
                 else if (!characterLocked[i])
                 {
                     buttonText.text = "Equip";
-                    Debug.Log($"Button {i} set to 'Equip'");
                 }
                 else
                 {
                     buttonText.text = "Locked";
-                    Debug.Log($"Button {i} set to 'Locked'");
                 }
             }
             else
@@ -161,4 +170,13 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    void ShowLoadingPanel()
+    {
+        loadingPanel.SetActive(true);
+    }
+
+    void HideLoadingPanel()
+    {
+        loadingPanel.SetActive(false);
+    }
 }
