@@ -16,11 +16,13 @@ public class CharacterSelection : MonoBehaviour
     public Button[] characterButtons; // Array of character selection buttons
     public Color equippedColor = Color.gray; // Color to indicate a character is equipped
 
-    public GameObject loadingPanel; // UI panel for loading
+    public LoadingPanelManager loadingPanelManager; // Referenssi LoadingPanelManager-skriptiin
 
     public Color[] buttonColors; // Array to store default colors for each button
 
     public TMP_Text[] characterUnlockTexts; // Array of text fields for character unlock status
+
+    public TMP_Text infoText; // Text field for displaying information to the player
 
 
     private void Awake()
@@ -51,11 +53,11 @@ public class CharacterSelection : MonoBehaviour
             characterLocked[2] = true;
             UpdateCharacterTexts();
             UpdateButtonColors();
-            HideLoadingPanel(); // Hide the loading panel in offline mode
+            loadingPanelManager.HideLoadingPanel();
         }
         else
         {
-            ShowLoadingPanel();
+            loadingPanelManager.ShowLoadingPanel(); // Kutsu LoadingPanelManagerin metodia
             FetchPlayerHighScore(); // Fetch the player's high score
         }
     }
@@ -110,11 +112,11 @@ public class CharacterSelection : MonoBehaviour
 
             UpdateCharacterLocks();
             UpdateCharacterTexts();
-            HideLoadingPanel(); // Hide the loading panel once data is fetched
+            loadingPanelManager.HideLoadingPanel(); // Hide the loading panel once data is fetched
         },
         error => {
             Debug.LogError(error.GenerateErrorReport());
-            HideLoadingPanel(); // Hide the loading panel in case of an error
+            loadingPanelManager.HideLoadingPanel(); // Hide the loading panel in case of an error
         });
     }
 
@@ -199,18 +201,5 @@ public class CharacterSelection : MonoBehaviour
             characterUnlockTexts[1].text = "Not available in offline mode";
             characterUnlockTexts[2].text = "Not available in offline mode";
         }
-    }
-
-
-    void ShowLoadingPanel()
-    {
-        // Show the loading panel
-        loadingPanel.SetActive(true);
-    }
-
-    void HideLoadingPanel()
-    {
-        // Hide the loading panel
-        loadingPanel.SetActive(false);
     }
 }
