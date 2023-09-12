@@ -23,6 +23,10 @@ public class CharacterSelection : MonoBehaviour
     public TMP_Text[] characterUnlockTexts; // Array of text fields for character unlock status
 
     public TMP_Text infoText; // Text field for displaying information to the player
+    public Image[] characterImages;
+
+
+
 
 
     private void Awake()
@@ -54,17 +58,21 @@ public class CharacterSelection : MonoBehaviour
             UpdateCharacterTexts();
             UpdateButtonColors();
             loadingPanelManager.HideLoadingPanel();
+
+            // Update info text
+            infoText.text = "Additional characters are unavailable in offline mode, Press 'Continue' to play.";
         }
         else
         {
+            infoText.text = "Select a character to play.";
             loadingPanelManager.ShowLoadingPanel(); // Kutsu LoadingPanelManagerin metodia
             FetchPlayerHighScore(); // Fetch the player's high score
         }
     }
 
+
     public void GoToMainMenu()
     {
-        Debug.Log("GoToMainMenu called.");
         SceneManager.LoadScene("MainMenu"); // Load the main menu scene
     }
 
@@ -77,10 +85,13 @@ public class CharacterSelection : MonoBehaviour
             Debug.Log($"Character with index {index} equipped.");
             UpdateButtonColors();
             UpdateCharacterTexts();
+
+            infoText.text = "Character equipped. Press 'Continue' to play."; 
         }
         else if (characterLocked[index])
         {
             Debug.Log($"Character with index {index} is locked.");
+            infoText.text = "This character is still waiting in the shadows, Achieve a higher score to unlock.";
         }
         else
         {
@@ -142,19 +153,26 @@ public class CharacterSelection : MonoBehaviour
 
     void UpdateButtonColors()
     {
-        // Update the color of the character buttons
+        // Update the color of the character buttons and their images
         for (int i = 0; i < characterButtons.Length; i++)
         {
             if (i == selectedCharacterIndex)
             {
                 characterButtons[i].image.color = equippedColor;
+                characterImages[i].color = Color.white; // restore the image's original color
+            }
+            else if (characterLocked[i]) // Check if character is locked
+            {
+                characterImages[i].color = Color.black; // Set the character image color to black for the silhouette
             }
             else if (i < buttonColors.Length) // Ensure we don't go out of bounds
             {
+                characterImages[i].color = Color.white; // restore the image's original color
                 characterButtons[i].image.color = buttonColors[i];
             }
             else
             {
+                characterImages[i].color = Color.white; // restore the image's original color
                 characterButtons[i].image.color = Color.white;
             }
         }
