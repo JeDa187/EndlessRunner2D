@@ -10,6 +10,9 @@ public class LoginScene : MonoBehaviour
     public TextMeshProUGUI errorMessage; // Text field for displaying error messages
     public TMP_InputField passwordInputField; // Input field for password
 
+
+
+
     public void OnContinueButtonClicked()
     {
         string playerName = playerNameInputField.text;

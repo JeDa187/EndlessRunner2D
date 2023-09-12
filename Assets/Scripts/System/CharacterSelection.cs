@@ -4,6 +4,8 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+
 
 public class CharacterSelection : MonoBehaviour
 {
@@ -60,15 +62,32 @@ public class CharacterSelection : MonoBehaviour
             loadingPanelManager.HideLoadingPanel();
 
             // Update info text
-            infoText.text = "Additional characters are unavailable in offline mode, Press 'Continue' to play.";
+            infoText.text = "Additional characters are unavailable in offline mode, Press 'Continue' to play."; // Ei muutosta tähän riviin
         }
         else
         {
-            infoText.text = "Select a character to play.";
             loadingPanelManager.ShowLoadingPanel(); // Kutsu LoadingPanelManagerin metodia
             FetchPlayerHighScore(); // Fetch the player's high score
+
+            // Added this block to inform the player which character is equipped by default
+            switch (selectedCharacterIndex)
+            {
+                case 0:
+                    infoText.text = "Default character equipped. Press 'Continue' to play.";
+                    break;
+                case 1:
+                    infoText.text = "Character 2 equipped. Press 'Continue' to play.";
+                    break;
+                case 2:
+                    infoText.text = "Character 3 equipped. Press 'Continue' to play.";
+                    break;
+                default:
+                    infoText.text = "Select a character to play.";
+                    break;
+            }
         }
     }
+
 
 
     public void GoToMainMenu()
@@ -78,6 +97,8 @@ public class CharacterSelection : MonoBehaviour
 
     public void EquipCharacter(int index)
     {
+        bool isOnline = PlayerPrefs.GetInt("Online", 1) == 1;
+
         // Equip the character if it's not locked
         if (index < characterSprites.Length && !characterLocked[index])
         {
@@ -86,18 +107,45 @@ public class CharacterSelection : MonoBehaviour
             UpdateButtonColors();
             UpdateCharacterTexts();
 
-            infoText.text = "Character equipped. Press 'Continue' to play."; 
+            // This part updates the infoText based on the selected character
+            switch (index)
+            {
+                case 0:
+                    infoText.text = "Default character equipped. Press 'Continue' to play.";
+                    break;
+                case 1:
+                    infoText.text = "Character 2 equipped. Press 'Continue' to play.";
+                    break;
+                case 2:
+                    infoText.text = "Character 3 equipped. Press 'Continue' to play.";
+                    break;
+            }
         }
-        else if (characterLocked[index])
+        else if (characterLocked[index] && isOnline)
         {
             Debug.Log($"Character with index {index} is locked.");
-            infoText.text = "This character is still waiting in the shadows, Achieve a higher score to unlock.";
+            StartCoroutine(DisplayTemporaryMessage("This character is still waiting in the shadows, Achieve a higher score to unlock.", 3f)); // display for 3 seconds.
+
+        }
+        else if (characterLocked[index] && !isOnline)
+        {
+            Debug.Log($"Character with index {index} is locked.");
+            StartCoroutine(DisplayTemporaryMessage("This character is unavailable in offline mode.", 3f));
         }
         else
         {
             Debug.Log($"Invalid index {index}. Character not equipped.");
         }
     }
+    private IEnumerator DisplayTemporaryMessage(string message, float duration)
+    {
+        string previousMessage = infoText.text; // Store the current message
+        infoText.text = message; // Update the text to the temporary message
+        yield return new WaitForSeconds(duration); // Wait for the duration specified
+        infoText.text = previousMessage; // Reset back to the previous message
+    }
+
+
 
     void FetchPlayerHighScore()
     {
