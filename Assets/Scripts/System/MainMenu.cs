@@ -32,9 +32,20 @@ public class MainMenu : MonoBehaviour
     }
     public void Logout()
     {
-        PlayerPrefs.DeleteKey("Online");
-        SceneManager.LoadScene("LoginScene");
+        // Jos ehtoja EI ole hyv‰ksytty
+        if (PlayerPrefs.GetInt("PrivacyPolicyAccepted", 0) == 0)
+        {
+            SceneManager.LoadScene("PrivacyPolicyScene");
+        }
+        // Jos ehtoja on hyv‰ksytty, riippumatta siit‰ onko k‰ytt‰j‰ online vai offline, siirryt‰‰n LoginSceneen
+        else
+        {
+            PlayerPrefs.DeleteKey("Online"); // Poistetaan online-tila
+            SceneManager.LoadScene("LoginScene");
+        }
     }
+
+
     public void QuitGame()
     {
         Application.Quit();
