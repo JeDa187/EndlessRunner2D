@@ -660,21 +660,21 @@ MonoBehaviour:
   - {fileID: 1706909032}
   - {fileID: 340752742}
   - {fileID: 276173301}
-  equippedColor: {r: 0.59457994, g: 0.6132076, b: 0.1475169, a: 1}
-  loadingPanelManager: {fileID: 1676263935}
-  buttonColors:
-  - {r: 0.9333334, g: 0.9607844, b: 0.27450982, a: 1}
-  - {r: 0.9333334, g: 0.9607844, b: 0.27450982, a: 1}
-  - {r: 0.9333334, g: 0.9607844, b: 0.27450982, a: 1}
+  characterImages:
+  - {fileID: 164677216}
+  - {fileID: 1651188311}
+  - {fileID: 1236288326}
   characterUnlockTexts:
   - {fileID: 1709211598}
   - {fileID: 1048489069}
   - {fileID: 132586586}
   infoText: {fileID: 1961059101}
-  characterImages:
-  - {fileID: 164677216}
-  - {fileID: 1651188311}
-  - {fileID: 1236288326}
+  equippedColor: {r: 0.59457994, g: 0.6132076, b: 0.1475169, a: 1}
+  buttonColors:
+  - {r: 0.9333334, g: 0.9607844, b: 0.27450982, a: 1}
+  - {r: 0.9333334, g: 0.9607844, b: 0.27450982, a: 1}
+  - {r: 0.9333334, g: 0.9607844, b: 0.27450982, a: 1}
+  loadingPanelManager: {fileID: 1676263935}
 --- !u!1 &276173299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1560,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236288324}
   m_CullTransparentMesh: 1
+--- !u!114 &1453385338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3517580381894285932, guid: 357bcdfc688948c4b807faf1e76a2fe3, type: 3}
+  m_PrefabInstance: {fileID: 1676263932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651188309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,13 +1656,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1936457827}
     m_Modifications:
+    - target: {fileID: 2233759415634663458, guid: 357bcdfc688948c4b807faf1e76a2fe3, type: 3}
+      propertyPath: tmpText
+      value: 
+      objectReference: {fileID: 1453385338}
     - target: {fileID: 3517580381903744980, guid: 357bcdfc688948c4b807faf1e76a2fe3, type: 3}
       propertyPath: m_Name
       value: LoadingPanel
       objectReference: {fileID: 0}
     - target: {fileID: 3517580381903744980, guid: 357bcdfc688948c4b807faf1e76a2fe3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3517580381903744981, guid: 357bcdfc688948c4b807faf1e76a2fe3, type: 3}
       propertyPath: m_Pivot.x

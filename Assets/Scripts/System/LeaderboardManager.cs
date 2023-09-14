@@ -11,9 +11,13 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text[] playerScoreTexts; // Array of text fields for player scores
     public Button backButton; // Back button
 
-    // Method called when the script is initialized
+    [Header("Loading Panel Reference")]
+    [SerializeField] private LoadingPanelManager loadingPanelManager;  // Viittaus LoadingPanelManager-olioon
+
     void Start()
     {
+        loadingPanelManager.ShowLoadingPanel(); // Näytä loading panel
+
         if (PlayerPrefs.GetInt("Online") == 1)
         {
             GetLeaderboard();
@@ -27,11 +31,11 @@ public class LeaderboardManager : MonoBehaviour
                 playerScoreTexts[i].text = "";
             }
             playerNameTexts[0].text = "Leaderboard is not available in offline mode.";
+
+            loadingPanelManager.HideLoadingPanel(); // Piilota loading panel
         }
     }
 
-
-    // Method to get the leaderboard data
     void GetLeaderboard()
     {
         PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
@@ -41,17 +45,20 @@ public class LeaderboardManager : MonoBehaviour
             MaxResultsCount = 10
         },
         result => {
-            // Update the leaderboard text fields with the received results
             for (int i = 0; i < result.Leaderboard.Count; i++)
             {
                 playerNameTexts[i].text = result.Leaderboard[i].DisplayName;
                 playerScoreTexts[i].text = result.Leaderboard[i].StatValue.ToString();
             }
+
+            loadingPanelManager.HideLoadingPanel(); // Piilota loading panel kun tiedot on haettu
         },
-        error => { Debug.LogError(error.GenerateErrorReport()); });
+        error => {
+            Debug.LogError(error.GenerateErrorReport());
+            loadingPanelManager.HideLoadingPanel(); // Piilota loading panel, jos virhe tapahtuu
+        });
     }
 
-    // Method called when the "Back" button is clicked
     public void OnBackButtonClicked()
     {
         SceneManager.LoadScene("MainMenu");

@@ -55,7 +55,6 @@ public class CharacterSelection : MonoBehaviour
     private void Start()
     {
         selectedCharacterIndex = -1;
-        // Tarkista, onko peli offline-tilassa
         if (PlayerPrefs.GetInt("Online", 1) == 0)
         {
             characterLocked[0] = false;
@@ -63,7 +62,8 @@ public class CharacterSelection : MonoBehaviour
             characterLocked[2] = true;
             UpdateCharacterTexts();
             UpdateButtonColors();
-            loadingPanelManager.HideLoadingPanel();
+
+            loadingPanelManager.ShowLoadingPanel();
             infoText.text = "Additional characters are unavailable in offline mode. You can only select the default character.";
         }
         else
@@ -71,14 +71,12 @@ public class CharacterSelection : MonoBehaviour
             loadingPanelManager.ShowLoadingPanel();
             FetchPlayerHighScore();
 
-            // If a valid character is not selected, set the message to ask the player to select one
             if (selectedCharacterIndex < 0 || selectedCharacterIndex >= characterSprites.Length)
             {
                 infoText.text = "Select your character.";
                 return; // Stop further execution
             }
 
-            // Update the info text based on the selected character
             string additionalMessage = AdditionalCharactersAvailableMessage();
             switch (selectedCharacterIndex)
             {
@@ -94,7 +92,6 @@ public class CharacterSelection : MonoBehaviour
             }
         }
     }
-
 
     // Switch to the Main Menu scene
     public void GoToMainMenu()
@@ -202,14 +199,15 @@ public class CharacterSelection : MonoBehaviour
             {
                 PlayerPrefs.SetInt("PlayerScore", 0);
             }
-            // Update character lock status and texts after fetching the score
+
             UpdateCharacterLocks();
             UpdateCharacterTexts();
-            loadingPanelManager.HideLoadingPanel(); // Hide the loading panel once data is fetched
+
+            loadingPanelManager.HideLoadingPanel();
         },
         error => {
             Debug.LogError(error.GenerateErrorReport());
-            loadingPanelManager.HideLoadingPanel(); // Hide the loading panel in case of an error
+            loadingPanelManager.HideLoadingPanel();
         });
     }
 
