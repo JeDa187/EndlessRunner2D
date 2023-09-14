@@ -5,18 +5,20 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI playerStatusText; // Viittaus uuteen UI-elementtiin.
-
+    public LoadingPanelManager loadingPanelManager; // Reference to LoadingPanelManager script
     private void Start()
     {
         // P‰ivit‰ teksti riippuen siit‰, onko k‰ytt‰j‰ kirjautunut sis‰‰n vai ei.
         if (PlayerPrefs.GetInt("Online") == 1)
         {
+            loadingPanelManager.ShowLoadingPanel();
             //Kirjautuneen k‰ytt‰j‰n nimi on tallennettu PlayerPrefsiin.
             string playerName = PlayerPrefs.GetString("PlayerName", "Unknown");
             playerStatusText.text = playerName;
         }
         else
         {
+            loadingPanelManager.ShowLoadingPanel();
             playerStatusText.text = "Offline Mode";
         }
     }
