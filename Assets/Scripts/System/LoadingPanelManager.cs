@@ -61,7 +61,7 @@ public class LoadingPanelManager : MonoBehaviour
         }
 
         // Wait for x seconds after all letters are displayed
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         isWaiting = false;
         HideLoadingPanel();
