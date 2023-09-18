@@ -18,18 +18,20 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     private AbilitySO abilitySO;
     private bool isMultiplierActive = false;
     private RigidbodyConstraints2D originalConstraints;
-    private float[] originalSpeeds;
 
+    private float[] originalSpeeds;
 
     private void Awake()
     {
+        // Etsi InfiniteParallaxBackground-olio pelimaailmasta
         parallaxBG = FindObjectOfType<InfiniteParallaxBackground>();
+
         rb = GetComponent<Rigidbody2D>(); // Initialize the Rigidbody2D component here instead of Start
         originalConstraints = rb.constraints;
     }
 
     private void Start()
-    {        
+    {
         originalPosition = transform.position; // Save the original position
         abilityManager = GetComponent<AbilityManager>();
         inputHandling = GetComponent<InputHandling>();
@@ -81,70 +83,23 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         }
     }
 
-    private IEnumerator FireBreathCoroutine()
-    {
-        Debug.Log("coroutine");
-
-        // Save original parallax speeds
-        SaveOriginalParallaxSpeeds();
-
-        // Manipulate Parallax Background
-        ManipulateParallaxSpeed(true);
-
-        // Immortal effect
-        ActivateImmortality();
-
-        // Fire Breath Particles
-        HandleFireBreathParticles(true);
-
-        // Score Multiplier
-        isMultiplierActive = true;
-
-        // Wait for ability duration
-        yield return new WaitForSeconds(abilitySO.abilityDuration);
-
-        // Reset Parallax Background Speed to original
-        ResetParallaxSpeed();
-
-        // Score Multiplier
-        isMultiplierActive = false;
-
-        // Reset Parallax Background
-        ManipulateParallaxSpeed(false);
-
-        // Reset Immortal effect
-        DeactivateImmortality();
-
-        // Stop Fire Breath Particles
-        HandleFireBreathParticles(false);
-    }
-
     private void SaveOriginalParallaxSpeeds()
     {
         originalSpeeds = (float[])parallaxBG.LayerScrollSpeeds.Clone();
+
     }
 
-    private void ResetParallaxSpeed()
+    private void ManipulateCameraSpeed(bool increase)
     {
-        ManipulateParallaxSpeed(false);
-    }
-
-    private void ManipulateParallaxSpeed(bool increase)
-    {
-        InfiniteParallaxBackground parallaxBG = FindObjectOfType<InfiniteParallaxBackground>();
         if (increase)
         {
-            for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
-            {
-                parallaxBG.LayerScrollSpeeds[i] *= 20f;
-            }
+            // Kiihdytä kameraa
+            parallaxBG.CameraSpeed *= 10f;
         }
         else
         {
-            for (int i = 0; i < parallaxBG.LayerScrollSpeeds.Length; i++)
-            {
-                parallaxBG.LayerScrollSpeeds[i] = originalSpeeds[i];
-            }
+            // Palauta kameran nopeus alkuperäiseen
+            parallaxBG.CameraSpeed /= 10f;
         }
     }
 
@@ -160,6 +115,50 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         immortalTimer = 0;
         rb.constraints = originalConstraints;
         GetComponent<Collider2D>().enabled = true;
+    }
+
+    private IEnumerator FireBreathCoroutine()
+    {
+        Debug.Log("coroutine");
+
+        // Save original parallax speeds
+        SaveOriginalParallaxSpeeds();
+
+        bool originalKinematicState = rb.isKinematic;       
+
+        ManipulateCameraSpeed(true);
+
+        // Immortal effect
+        ActivateImmortality();
+
+        //// Fire Breath Particles
+        //HandleFireBreathParticles(true);
+
+        // Score Multiplier
+        isMultiplierActive = true;
+
+        // Wait for ability duration
+        yield return new WaitForSeconds(abilitySO.abilityDuration);
+
+        // Score Multiplier
+        isMultiplierActive = false;
+
+        ManipulateCameraSpeed(false);
+
+     
+        // Restore player's ability to move here
+        rb.constraints = originalConstraints;
+        rb.isKinematic = true;
+        rb.isKinematic = originalKinematicState;
+        
+
+        yield return new WaitForSeconds(5f);
+
+        // Reset Immortal effect
+        DeactivateImmortality();
+
+        // Stop Fire Breath Particles
+        //HandleFireBreathParticles(false);
     }
 
     private void HandleFireBreathParticles(bool shouldPlay)
@@ -185,6 +184,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
 
     public int GetScoreMultiplier()
     {
-        return isMultiplierActive ? 2 : 1; // Return 2 if multiplier is active, otherwise return 1
+        // Return 2 if multiplier is active, otherwise return 1
+        return isMultiplierActive ? 2 : 1;
     }
 }
