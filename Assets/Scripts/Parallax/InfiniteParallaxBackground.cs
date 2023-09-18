@@ -6,7 +6,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
 {
 
     public bool enableScrolling = false;                // A flag to enable or disable scrolling of the background
-    public float CameraSpeed = 1.5f;                    // The speed at which the camera moves
+    public float cameraSpeed = 1.5f;                    // The speed at which the camera moves
     private float speedIncreaseRate = 0.05f;            // The rate at which the speed of the layers increases over time
     [Header("Layer Settings")]                          // Header in the Inspector for layer settings
     public float[] LayerScrollSpeeds = new float[7];    // The speed at which each layer scrolls
@@ -16,6 +16,12 @@ public class InfiniteParallaxBackground : MonoBehaviour
     private float spriteWidth;                          // The width of the sprite
     private float spriteSizeX;                          // The scale of the sprite on the X axis
     public float backgroundSpeed;
+
+    public float CameraSpeed
+    {
+        get { return cameraSpeed; }
+        set { cameraSpeed = value; }
+    }
 
     void Start()
     {
@@ -35,10 +41,10 @@ public class InfiniteParallaxBackground : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-		// If scrolling is enabled
-		if (enableScrolling)
+        // If scrolling is enabled
+        if (enableScrolling)
         {
             // Increase the speed of each layer over time
             for (int i = 0; i < LayerScrollSpeeds.Length; i++)
@@ -47,7 +53,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
             }
 
             // Move the main camera to the right
-            mainCamera.position += Vector3.right * Time.deltaTime * CameraSpeed;
+            mainCamera.position += CameraSpeed * Time.deltaTime * Vector3.right;
 
             // Scroll each layer
             for (int i = 0; i < Layers.Length; i++)
@@ -72,9 +78,22 @@ public class InfiniteParallaxBackground : MonoBehaviour
                 // If the layer has scrolled off the screen, move it back
                 if (Layers[i].transform.position.x < mainCamera.position.x - spriteWidth * spriteSizeX)
                 {
-                    Layers[i].transform.position += Vector3.right * spriteWidth * spriteSizeX * 2;
+                    Layers[i].transform.position += 2 * spriteSizeX * spriteWidth * Vector3.right;
                 }
             }
+        }
+    }
+
+    public void SetLayerSpeed(int layerIndex, float newSpeed)
+    {
+        if (layerIndex >= 0 && layerIndex < LayerScrollSpeeds.Length)
+        {
+            Debug.Log("Setting speed for layer " + layerIndex + " to " + newSpeed);
+            LayerScrollSpeeds[layerIndex] = newSpeed;
+        }
+        else
+        {
+            Debug.LogError("Invalid layer index: " + layerIndex);
         }
     }
 }

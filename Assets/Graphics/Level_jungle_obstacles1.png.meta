@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -115,7 +115,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_0
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1636
+        width: 262
+        height: 1459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40fb1b77f17d63b48abe159f939ab3ad
+      internalID: -2042558238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_1
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1636
+        width: 532
+        height: 1480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce16956de56aa9b40928d131af1c28ae
+      internalID: -1650570920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_2
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 1636
+        width: 953
+        height: 1505
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20543c0cca81ef74c8f5b5e62facb9bb
+      internalID: 552817656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_3
+      rect:
+        serializedVersion: 2
+        x: 2374
+        y: 1636
+        width: 827
+        height: 1456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac238db4b1b88a94ba760a24e01bdf76
+      internalID: 646934488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 99
+        width: 354
+        height: 1413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63d5ded2871fab647907180492d7126e
+      internalID: -403618708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_5
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 99
+        width: 651
+        height: 1454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6921d27c62723b547a6bedfbd360e9c4
+      internalID: 1279386958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_6
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 99
+        width: 1059
+        height: 1484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8faa3e60f34c2494f9fd063961e83a15
+      internalID: -571723774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_7
+      rect:
+        serializedVersion: 2
+        x: 2311
+        y: 99
+        width: 477
+        height: 1423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b33c30fd350b7743892a342ed50bc97
+      internalID: 586080755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_jungle_obstacles1_8
+      rect:
+        serializedVersion: 2
+        x: 2936
+        y: 99
+        width: 238
+        height: 1415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796aaa04bf4b85b4ba15d7193b0b402f
+      internalID: -515977524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +315,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Level_jungle_obstacles1_0: -2042558238
+      Level_jungle_obstacles1_1: -1650570920
+      Level_jungle_obstacles1_2: 552817656
+      Level_jungle_obstacles1_3: 646934488
+      Level_jungle_obstacles1_4: -403618708
+      Level_jungle_obstacles1_5: 1279386958
+      Level_jungle_obstacles1_6: -571723774
+      Level_jungle_obstacles1_7: 586080755
+      Level_jungle_obstacles1_8: -515977524
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
