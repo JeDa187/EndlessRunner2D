@@ -35,7 +35,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void LoadHighScore()
     {
-        highScore = PlayerPrefs.GetInt(HighScoreKey, 0); // Load high score from PlayerPrefs or default to 0
+        highScore = SecurePlayerPrefs.GetInt(HighScoreKey, 0); // Load high score from PlayerPrefs or default to 0
         highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }
     public void UpdateHighScore()
@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
         if (score > highScore)
         {
             highScore = score; // Update high score if player's score is higher
-            PlayerPrefs.SetInt(HighScoreKey, highScore); // Save new high score to PlayerPrefs
+            SecurePlayerPrefs.SetInt(HighScoreKey, highScore); // Save new high score to PlayerPrefs
         }
         highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }

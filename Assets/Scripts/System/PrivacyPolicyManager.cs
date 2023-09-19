@@ -58,7 +58,7 @@ public class PrivacyPolicyManager : MonoBehaviour
     public void OnAcceptButtonClicked()
     {
         // Save a value indicating that the user has accepted the terms.
-        PlayerPrefs.SetInt("PrivacyPolicyAccepted", 1);
+        SecurePlayerPrefs.SetInt("PrivacyPolicyAccepted", 1);
         // Load the main menu or the next scene.
         SceneManager.LoadScene("LoginScene");
     }
@@ -67,13 +67,13 @@ public class PrivacyPolicyManager : MonoBehaviour
     public void OnDeclineButtonClicked()
     {
         // Save a value indicating that the user has declined the terms.
-        PlayerPrefs.SetInt("PrivacyPolicyAccepted", 0);
+        SecurePlayerPrefs.SetInt("PrivacyPolicyAccepted", 0);
 
         // Set the player's preference value "Online" to 0 (offline).
-        PlayerPrefs.SetInt("Online", 0);
+        SecurePlayerPrefs.SetInt("Online", 0);
 
         // Save changes in the PlayerPrefs class.
-        PlayerPrefs.Save();
+        SecurePlayerPrefs.Save();
 
         // Load the "CharacterSelection" scene.
         SceneManager.LoadScene("CharacterSelection");

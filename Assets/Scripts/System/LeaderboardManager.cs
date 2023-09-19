@@ -18,7 +18,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         loadingPanelManager.ShowLoadingPanel(); // Näytä loading panel
 
-        if (PlayerPrefs.GetInt("Online") == 1)
+        if (SecurePlayerPrefs.GetInt("Online") == 1)
         {
             GetLeaderboard();
         }

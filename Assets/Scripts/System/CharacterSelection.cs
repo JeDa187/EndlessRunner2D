@@ -55,7 +55,7 @@ public class CharacterSelection : MonoBehaviour
     private void Start()
     {
         selectedCharacterIndex = -1;
-        if (PlayerPrefs.GetInt("Online", 1) == 0)
+        if (SecurePlayerPrefs.GetInt("Online", 1) == 0)
         {
             characterLocked[0] = false;
             characterLocked[1] = true;
@@ -111,7 +111,7 @@ public class CharacterSelection : MonoBehaviour
     // Equip a character based on the index provided
     public void EquipCharacter(int index)
     {
-        bool isOnline = PlayerPrefs.GetInt("Online", 1) == 1;
+        bool isOnline = SecurePlayerPrefs.GetInt("Online", 1) == 1;
 
         if (index < characterSprites.Length && !characterLocked[index])
         {
@@ -189,7 +189,7 @@ public class CharacterSelection : MonoBehaviour
             {
                 if (eachStat.StatisticName == "PlatformScore")
                 {
-                    PlayerPrefs.SetInt("PlayerScore", eachStat.Value);
+                    SecurePlayerPrefs.SetInt("PlayerScore", eachStat.Value);
                     scoreFound = true;
                     break;
                 }
@@ -197,7 +197,7 @@ public class CharacterSelection : MonoBehaviour
 
             if (!scoreFound)
             {
-                PlayerPrefs.SetInt("PlayerScore", 0);
+                SecurePlayerPrefs.SetInt("PlayerScore", 0);
             }
 
             UpdateCharacterLocks();
@@ -215,7 +215,7 @@ public class CharacterSelection : MonoBehaviour
     void UpdateCharacterLocks()
     {
         // Update which characters are locked based on the player's score
-        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
+        int playerScore = SecurePlayerPrefs.GetInt("PlayerScore", 0);
 
         characterLocked[0] = false;
 
@@ -262,7 +262,7 @@ public class CharacterSelection : MonoBehaviour
     // Update text displays on character buttons
     void UpdateCharacterTexts()
     {
-        bool isOnline = PlayerPrefs.GetInt("Online", 1) == 1;
+        bool isOnline = SecurePlayerPrefs.GetInt("Online", 1) == 1;
 
         for (int i = 0; i < characterButtons.Length; i++)
         {

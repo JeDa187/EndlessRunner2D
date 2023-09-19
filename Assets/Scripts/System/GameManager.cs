@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         scoreManager.UpdateHighScore();
 
-        if (PlayerPrefs.GetInt("Online") == 1)
+        if (SecurePlayerPrefs.GetInt("Online") == 1)
         {
             SendScoreToLeaderboard(scoreManager.GetScore()); 
         }      
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     }
     void SendScoreToLeaderboard(int playerScore)
     {
-        string playerName = PlayerPrefs.GetString("PlayerName");
+        string playerName = SecurePlayerPrefs.GetString("PlayerName");
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate> {

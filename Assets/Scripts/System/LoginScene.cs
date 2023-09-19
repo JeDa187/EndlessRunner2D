@@ -17,7 +17,7 @@ public class LoginScene : MonoBehaviour
     {
         string playerName = playerNameInputField.text;
         string password = passwordInputField.text;
-        PlayerPrefs.SetInt("Online", 1); // 1 for online
+        SecurePlayerPrefs.SetInt("Online", 1); // 1 for online
 
         if (playerName.Length != 4)
         {
@@ -29,13 +29,13 @@ public class LoginScene : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetString("PlayerName", playerName); // Tallenna kirjautuneen käyttäjän nimi.
+            SecurePlayerPrefs.SetString("PlayerName", playerName); // Tallenna kirjautuneen käyttäjän nimi.
             CheckPlayerName(playerName, password);
         }
     }
     public void OnPlayOfflineButtonClicked()
     {
-        PlayerPrefs.SetInt("Online", 0); // 0 for offline
+        SecurePlayerPrefs.SetInt("Online", 0); // 0 for offline
         errorMessage.text = "Starting game in offline mode";
         Invoke("LoadMainMenuScene", 3.0f);
     }

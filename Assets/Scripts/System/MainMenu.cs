@@ -9,11 +9,11 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         // P‰ivit‰ teksti riippuen siit‰, onko k‰ytt‰j‰ kirjautunut sis‰‰n vai ei.
-        if (PlayerPrefs.GetInt("Online") == 1)
+        if (SecurePlayerPrefs.GetInt("Online") == 1)
         {
           
             //Kirjautuneen k‰ytt‰j‰n nimi on tallennettu PlayerPrefsiin.
-            string playerName = PlayerPrefs.GetString("PlayerName", "Unknown");
+            string playerName = SecurePlayerPrefs.GetString("PlayerName", "Unknown");
             playerStatusText.text = playerName;
         }
         else
@@ -35,14 +35,14 @@ public class MainMenu : MonoBehaviour
     public void Logout()
     {
         // Jos ehtoja EI ole hyv‰ksytty
-        if (PlayerPrefs.GetInt("PrivacyPolicyAccepted", 0) == 0)
+        if (SecurePlayerPrefs.GetInt("PrivacyPolicyAccepted", 0) == 0)
         {
             SceneManager.LoadScene("PrivacyPolicyScene");
         }
         // Jos ehtoja on hyv‰ksytty, riippumatta siit‰ onko k‰ytt‰j‰ online vai offline, siirryt‰‰n LoginSceneen
         else
         {
-            PlayerPrefs.DeleteKey("Online"); // Poistetaan online-tila
+            SecurePlayerPrefs.DeleteKey("Online"); // Poistetaan online-tila
             SceneManager.LoadScene("LoginScene");
         }
     }
