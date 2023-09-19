@@ -83,6 +83,11 @@ public class InfiniteParallaxBackground : MonoBehaviour
             }
         }
     }
+    public float GetLayer0Speed()
+    {
+        return LayerScrollSpeeds[0];
+    }
+
 
     public void SetLayerSpeed(int layerIndex, float newSpeed)
     {
