@@ -504,41 +504,42 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<b>PRIVACY POLICY \r</b>\n\r\n1. Introduction\n\r\nThis privacy policy
-    describes how TVTPeliPT10 collects, uses, stores, and protects your personal
-    data when you play the Endlessdragonfly2D game. \r\n\r\n2. Personal Data We Collect
-    \r\n\r\nUsername: A 4-letter username used to identify you in the game and display
-    your name on the online leaderboard. \r\n\r\nPassword: A password that is at
-    least 5 characters long, used to secure and protect your account. \r\n\r\n3.
-    How and Why We Use Your Personal Data \r\n\r\nOnline Features: Your username
-    is used on leaderboards and for highscore recordings. \r\n\r\nAccount Security:
-    Your password ensures that only you can access your account information and settings.
-    \r\n\r\n4. Data Storage & Retention \r\n\r\nYour data is stored on the PlayFab
-    service, a third-party cloud service. The data is stored on secure servers, and
-    its processing adheres to high standards of data protection. For more details
-    on their terms, please visit PlayFab's <link=\"PlayFabTerms\"><u>Terms of Service</u></link>\n\n\r\nWe
-    retain your data for as long as your account is active or as needed to provide
-    you the game services. After this period, your personal data is deleted or anonymized.
-    \r\n\r\n5. Data Sharing & International Transfers \r\n\r\nWe do not sell, share,
-    or rent your personal data to third parties. However, data might be accessible
-    to PlayFab, which acts as a data processor and is committed to adhering to stringent
-    data protection standards. \r\n\r\nYour data may be transferred to and processed
-    in countries other than the one in which you reside, depending on the location
-    of PlayFab's servers. We ensure that adequate safeguards are in place to protect
-    your data during these transfers. \r\n\r\n6. Cookies and Local Data \r\n\r\nOur
-    game may use cookies or similar technologies to store certain types of information
-    locally on your device. This is primarily to ensure a smooth gaming experience.
-    \r\n\r\n7. Children's Privacy \r\n\r\nChildren need the consent of a guardian
-    to accept the terms and conditions of our game. If we become aware that we have
-    collected personal data from children without the necessary consent, we will
-    take steps to delete this data as promptly as possible. \r\n\r\n8. Your Rights
-    \r\n\r\nAccess: You can request to see what kind of personal data we have collected
-    about you. \r\n\r\nCorrection: You can ask us to correct or update your personal
-    data. \r\nDeletion: You can request us to delete your personal data from our
-    systems. \r\n\r\n9. Changes to the Privacy Policy \r\n\r\nWe reserve the right
-    to make changes to this privacy policy. We will publish any changes in the game
-    and/or on our official channels, so we recommend checking this policy regularly.
-    \r\n\r\n10. Contact \r\n\r\nIf you have any questions about this privacy policy
-    or our data protection practices, please contact us at: jesse.saarela@edu.taitotalo.fi.\r\n"
+    describes how Endlessdragonfly2Dproject collects, uses, stores, and protects
+    your personal data when you play the Endlessdragonfly2D game. \r\n\r\n2. Personal
+    Data We Collect \r\n\r\nUsername: A 4-letter username used to identify you in
+    the game and display your name on the online leaderboard. \r\n\r\nPassword: A
+    password that is at least 5 characters long, used to secure and protect your
+    account. \r\n\r\n3. How and Why We Use Your Personal Data \r\n\r\nOnline Features:
+    Your username is used on leaderboards and for highscore recordings. \r\n\r\nAccount
+    Security: Your password ensures that only you can access your account information
+    and settings. \r\n\r\n4. Data Storage & Retention \r\n\r\nYour data is stored
+    on the PlayFab service, a third-party cloud service. The data is stored on secure
+    servers, and its processing adheres to high standards of data protection. For
+    more details on their terms, please visit PlayFab's <link=\"PlayFabTerms\"><u>Terms
+    of Service</u></link>\n\n\r\nWe retain your data for as long as your account
+    is active or as needed to provide you the game services. After this period, your
+    personal data is deleted or anonymized. \r\n\r\n5. Data Sharing & International
+    Transfers \r\n\r\nWe do not sell, share, or rent your personal data to third
+    parties. However, data might be accessible to PlayFab, which acts as a data processor
+    and is committed to adhering to stringent data protection standards. \r\n\r\nYour
+    data may be transferred to and processed in countries other than the one in which
+    you reside, depending on the location of PlayFab's servers. We ensure that adequate
+    safeguards are in place to protect your data during these transfers. \r\n\r\n6.
+    Cookies and Local Data \r\n\r\nOur game may use cookies or similar technologies
+    to store certain types of information locally on your device. This is primarily
+    to ensure a smooth gaming experience. \r\n\r\n7. Children's Privacy \r\n\r\nChildren
+    need the consent of a guardian to accept the terms and conditions of our game.
+    If we become aware that we have collected personal data from children without
+    the necessary consent, we will take steps to delete this data as promptly as
+    possible. \r\n\r\n8. Your Rights \r\n\r\nAccess: You can request to see what
+    kind of personal data we have collected about you. \r\n\r\nCorrection: You can
+    ask us to correct or update your personal data. \r\nDeletion: You can request
+    us to delete your personal data from our systems. \r\n\r\n9. Changes to the Privacy
+    Policy \r\n\r\nWe reserve the right to make changes to this privacy policy. We
+    will publish any changes in the game and/or on our official channels, so we recommend
+    checking this policy regularly. \r\n\r\n10. Contact \r\n\r\nIf you have any questions
+    about this privacy policy or our data protection practices, please contact us
+    at: jesse.saarela@edu.taitotalo.fi.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
