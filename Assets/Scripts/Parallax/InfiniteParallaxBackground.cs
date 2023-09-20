@@ -84,16 +84,16 @@ public class InfiniteParallaxBackground : MonoBehaviour
         }
     }
 
-    public void SetLayerSpeed(int layerIndex, float newSpeed)
-    {
-        if (layerIndex >= 0 && layerIndex < LayerScrollSpeeds.Length)
-        {
-            Debug.Log("Setting speed for layer " + layerIndex + " to " + newSpeed);
-            LayerScrollSpeeds[layerIndex] = newSpeed;
-        }
-        else
-        {
-            Debug.LogError("Invalid layer index: " + layerIndex);
-        }
-    }
+    //public void SetLayerSpeed(int layerIndex, float newSpeed)
+    //{
+    //    if (layerIndex >= 0 && layerIndex < LayerScrollSpeeds.Length)
+    //    {
+    //        Debug.Log("Setting speed for layer " + layerIndex + " to " + newSpeed);
+    //        LayerScrollSpeeds[layerIndex] = newSpeed;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Invalid layer index: " + layerIndex);
+    //    }
+    //}
 }

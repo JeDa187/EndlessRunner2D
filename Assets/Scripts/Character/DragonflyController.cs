@@ -79,14 +79,8 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
 
             // Tyhjennä pelaajan currentAbility
             abilityManager.SetCurrentAbility(null);
-            StartCoroutine(FireBreathCoroutine());
+            StartCoroutine(SpeedBoostCoroutine());
         }
-    }
-
-    private void SaveOriginalParallaxSpeeds()
-    {
-        originalSpeeds = (float[])parallaxBG.LayerScrollSpeeds.Clone();
-
     }
 
     private void ManipulateCameraSpeed(bool increase)
@@ -117,12 +111,9 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         GetComponent<Collider2D>().enabled = true;
     }
 
-    private IEnumerator FireBreathCoroutine()
+    private IEnumerator SpeedBoostCoroutine()
     {
         Debug.Log("coroutine");
-
-        // Save original parallax speeds
-        SaveOriginalParallaxSpeeds();
 
         bool originalKinematicState = rb.isKinematic;       
 
@@ -161,26 +152,26 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         //HandleFireBreathParticles(false);
     }
 
-    private void HandleFireBreathParticles(bool shouldPlay)
-    {
-        Debug.Log("Checking fireBreathParticles");
-        if (abilitySO.fireBreathParticles != null)
-        {
-            Debug.Log("Fire breath particles found");
-            if (shouldPlay)
-            {
-                abilitySO.fireBreathParticles.Play();
-            }
-            else
-            {
-                abilitySO.fireBreathParticles.Stop();
-            }
-        }
-        else
-        {
-            Debug.Log("No fire breath particles found");
-        }
-    }
+    //private void HandleFireBreathParticles(bool shouldPlay)
+    //{
+    //    Debug.Log("Checking fireBreathParticles");
+    //    if (abilitySO.fireBreathParticles != null)
+    //    {
+    //        Debug.Log("Fire breath particles found");
+    //        if (shouldPlay)
+    //        {
+    //            abilitySO.fireBreathParticles.Play();
+    //        }
+    //        else
+    //        {
+    //            abilitySO.fireBreathParticles.Stop();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("No fire breath particles found");
+    //    }
+    //}
 
     public int GetScoreMultiplier()
     {
