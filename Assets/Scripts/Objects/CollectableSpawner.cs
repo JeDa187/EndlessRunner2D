@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class ObjectSpawner : MonoBehaviour
+public class CollectableSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemyToSpawn;
-    [SerializeField] float spawnInterval = 2.0f;
+    [SerializeField] GameObject[] collectablesToSpawn;
+    [SerializeField] float spawnInterval = 10.0f;
     [SerializeField] float spawnOffsetX = 10f;
     [SerializeField] float minDeltaY = 1f;  // Minimietäisyys edellisestä korkeudesta
 
@@ -12,19 +12,19 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.OnCountdownFinished += StartSpawning;
+        GameManager.Instance.OnCountdownFinished += SpawnCollectables;
     }
 
-    public void StartSpawning()
+    public void SpawnCollectables()
     {
-        StartCoroutine(SpawnObjects());
+        StartCoroutine(Spawner());
     }
 
-    IEnumerator SpawnObjects()
+    IEnumerator Spawner()
     {
         while (true)
         {
-            GameObject objectToSpawn = enemyToSpawn[Random.Range(0, enemyToSpawn.Length)];
+            GameObject objectToSpawn = collectablesToSpawn[Random.Range(0, collectablesToSpawn.Length)];
 
             float minY = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y;  // Kameran alareuna
             float maxY = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;  // Kameran yläreuna
@@ -36,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
             }
             while (Mathf.Abs(nextY - lastY) < minDeltaY);  // Varmistetaan, että seuraava korkeus on riittävän kaukana edellisestä
 
-            Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x + 
+            Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x +
                 Camera.main.orthographicSize * Camera.main.aspect + spawnOffsetX, nextY);
             Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
 
@@ -48,6 +48,6 @@ public class ObjectSpawner : MonoBehaviour
 
     void OnDestroy()
     {
-        GameManager.Instance.OnCountdownFinished -= StartSpawning;
+        GameManager.Instance.OnCountdownFinished -= SpawnCollectables;
     }
 }

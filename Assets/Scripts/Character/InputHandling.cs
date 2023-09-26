@@ -13,7 +13,6 @@ public class InputHandling : MonoBehaviour
     private void Awake()
     {
         dragonflyController = GetComponent<DragonflyController>();
-        inventoryManager = GetComponent<InventoryManager>(); // Alusta viittaus t‰‰ll‰
         abilityManager = GetComponent<AbilityManager>();
         if (abilityManager == null)
         {
