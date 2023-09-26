@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectablesToSpawn:
   - {fileID: 239924113085819100, guid: 4d2c009cfc599c7419bcb591ae666647, type: 3}
-  spawnInterval: 10.02
+  spawnInterval: 2.01
   spawnOffsetX: 10
   minDeltaY: 1
 --- !u!1 &428227230
@@ -6981,7 +6981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1896637348
 Transform:
   m_ObjectHideFlags: 0

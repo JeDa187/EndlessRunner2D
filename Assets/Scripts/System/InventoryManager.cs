@@ -22,9 +22,17 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemSO item)
     {
+        if (collectedItems.Count < 3)
+    {
         collectedItems.Add(item);
         // Voit suorittaa lisätoimia, kuten päivittää käyttöliittymää inventaarion kanssa.
         UIManager.Instance.UpdateUI();
+    }
+    else
+    {
+        Debug.Log("Inventaarisi on jo täynnä!");
+        // Voit halutessasi lisätä muun käsitellyn logiikan, kuten ilmoituksen pelaajalle, jos inventaari on täynnä.
+    }
     }
 
     public List<ItemSO> GetCollectedItems()
