@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectMover : MonoBehaviour
 {
     // Speed at which the object moves
-    public float moveSpeed = 5.0f;
+    [SerializeField] float moveSpeed;
 
     void Update()
     {

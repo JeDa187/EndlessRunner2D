@@ -61,6 +61,5 @@ public class InputHandling : MonoBehaviour
             AbilitySO currentAbility  = abilityManager.currentAbility;
             abilityManager.UseCurrentAbility();
         }
-
     }
 }

@@ -143,7 +143,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         rb.isKinematic = originalKinematicState;
         
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.4f);
 
         // Reset Immortal effect
         DeactivateImmortality();
