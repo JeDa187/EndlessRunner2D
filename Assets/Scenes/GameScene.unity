@@ -819,7 +819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &212355268
 Transform:
   m_ObjectHideFlags: 0
@@ -3723,11 +3723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202459776860918172, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7315745
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9202459776860918172, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.486499
+      value: 12.9
       objectReference: {fileID: 0}
     - target: {fileID: 9202459776860918172, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3763,6 +3763,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
       propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: SizeModule.y.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: SizeModule.curve.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918173, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9202459776860918175, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
@@ -8146,6 +8174,66 @@ PrefabInstance:
       propertyPath: parallaxBackground
       value: 
       objectReference: {fileID: 2069759166}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: speedIncreaseFactor
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: obstaclePrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: upObstaclePrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 8a87776af7deb6e4b81591b97f475d3b, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: upObstaclePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 65b00e082cb68c649890320329ab32f4, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: upObstaclePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: c09cfd0b35755a742adde901aa3211f5, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: upObstaclePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 8a87776af7deb6e4b81591b97f475d3b, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: 2d4fae5be0aec38478f5e95cd3363fda, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
     - target: {fileID: 1260655613941811227, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
