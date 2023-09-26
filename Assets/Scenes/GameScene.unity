@@ -8176,7 +8176,7 @@ PrefabInstance:
       objectReference: {fileID: 2069759166}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: speedIncreaseFactor
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: obstaclePrefabs.Array.size
