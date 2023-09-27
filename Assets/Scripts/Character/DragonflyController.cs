@@ -77,8 +77,12 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
             InventoryManager.Instance.UseAbilityAndClearInventory(currentAbility);
             abilitySO = currentAbility;
 
-            // Tyhjennä pelaajan currentAbility
-            abilityManager.SetCurrentAbility(null);
+            if (InventoryManager.Instance.GetCollectedItems().Count == 0)
+            {
+                abilityManager.SetCurrentAbility(null);
+                Debug.Log("Inventory on tyhjä");
+            }
+
             StartCoroutine(SpeedBoostCoroutine());
         }
     }

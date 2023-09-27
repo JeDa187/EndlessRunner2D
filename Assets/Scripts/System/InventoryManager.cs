@@ -30,7 +30,7 @@ public class InventoryManager : MonoBehaviour
     }
     else
     {
-        Debug.Log("Inventaarisi on jo täynnä!");
+        Debug.Log("Inventaario on jo täynnä!");
         // Voit halutessasi lisätä muun käsitellyn logiikan, kuten ilmoituksen pelaajalle, jos inventaari on täynnä.
     }
     }

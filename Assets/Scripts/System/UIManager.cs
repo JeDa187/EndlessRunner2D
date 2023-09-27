@@ -36,7 +36,12 @@ public class UIManager : MonoBehaviour
     //Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
     public void UpdateUI()
     {
-        UpdateCollectedItemsText();
+        // Tarkista, ett‰ InventoryManagerin instanssi on olemassa
+        if (InventoryManager.Instance != null)
+        {
+            // P‰ivit‰ ker‰ttyjen objektien teksti
+            UpdateCollectedItemsText();
+        }
     }
 
     private void UpdateCollectedItemsText()
