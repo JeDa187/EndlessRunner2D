@@ -4,7 +4,7 @@
 
 //public interface IAbilityActivator
 //{
-//    void UseAbility();
+//    void Activate();
 //}
 
 
