@@ -1,0 +1,190 @@
+{
+  "main": {
+    "id": "664de5472d6ce21c",
+    "type": "split",
+    "children": [
+      {
+        "id": "2fcbcd33ec5f406b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b852ebe9c209aff",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "90b07fcd783dddca",
+    "type": "split",
+    "children": [
+      {
+        "id": "789fb2a4041742d2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "99c5963ac274eda4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "bd6b09ebbb557b6b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9d2f91ca36505860",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "261dbd6b8de2a011",
+    "type": "split",
+    "children": [
+      {
+        "id": "935e7f9475382c2e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0df43ea62a338f79",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1c0bbfc8e77669c8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0ebee55e5aa7b061",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a5eac29f5d1f466a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "1b852ebe9c209aff",
+  "lastOpenFiles": [
+    "Dokumentaatio/Bugit ja niiden korjaus/UI Nappien Ongelma ja Virheenkorjaus.md",
+    "Dokumentaatio/System/Törmäysominaisuus.md",
+    "Images/Näyttökuva 2023-08-16 134159.png",
+    "Images/Näyttökuva 2023-08-16 134204.png",
+    "Dokumentaatio/System/Pause Menu Luominen.md",
+    "Dokumentaatio/PlayFab systems/PlayFabin Mahdolliset Muut Käyttötavat.md",
+    "Dokumentaatio/PlayFab systems/PlayFab Esitelmä ja Ohjeet.md",
+    "Dokumentaatio/Log In Scene/Kirjautumisviestin viive.md",
+    "Dokumentaatio/PlayFab systems/PlayFab toimintojen jalostus.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Pelaajien nimet eivät ilmesty tulostaulukkoon.md",
+    "Dokumentaatio/PlayFab systems/PlayFab Palvelun Käyttöönotto.md",
+    "Dokumentaatio/Security/PlayerPrefs Salaus.md",
+    "Dokumentaatio/Security",
+    "Dokumentaatio/System/Loading Panel.md",
+    "Dokumentaatio/Effects/2D Sade Efekti.md",
+    "Dokumentaatio/ScoreSystem/Local Score-järjestelmä.md",
+    "Dokumentaatio/Effects",
+    "Dokumentaatio/ScoreSystem",
+    "Dokumentaatio/Log In Scene/Salasanan Näkyvyystoggle.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
+    "Dokumentaatio/System/Peli-tilan Hallinta (GameManager).md",
+    "Dokumentaatio/Bugit ja niiden korjaus/InventoryManager Null Reference Ongelma ja Ratkaisu.md",
+    "Dokumentaatio/Pelaaja/Ability System.md",
+    "Dokumentaatio/Spawners/Obstacle Spawner.md",
+    "Dokumentaatio/Spawners/ObjectSpawn.md",
+    "Dokumentaatio/Spawners/CollectableSpawner.md",
+    "Dokumentaatio/PlayFab systems/PlayFab Leaderboard (discarded).md",
+    "Dokumentaatio/Pelaaja/Character Creation.md",
+    "Untitled.canvas",
+    "PRIVACY POLICY.md",
+    "linkki_tähän.md",
+    "Images/privacypolicy.png",
+    "Dokumentaatio/System",
+    "Images/Parallax tausta.png",
+    "Dokumentaatio/Log In Scene",
+    "Images/Mainmenucreation (4).png",
+    "Images/Mainmenucreation (3).png",
+    "Images/Mainmenucreation (2).png",
+    "Images/Mainmenucreation.png",
+    "Images/Näyttökuva 2023-09-29 100721.png",
+    "Images/Näyttökuva 2023-09-29 100707.png",
+    "Dokumentaatio/PlayFab systems",
+    "Dokumentaatio/Main Menu",
+    "Effects",
+    "Dokumentaatio/Bugit ja niiden korjaus",
+    "Images"
+  ]
+}
