@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "2fcbcd33ec5f406b",
+        "id": "c58b414ee7f56c33",
         "type": "tabs",
         "children": [
           {
-            "id": "1b852ebe9c209aff",
+            "id": "e8cfda80877fba1a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Dokumentaatio/Effects/2D Sade Efekti.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Dokumentaatio/Effects/2D Sade Efekti.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Dokumentaatio/Effects/2D Sade Efekti.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Dokumentaatio/Effects/2D Sade Efekti.md"
+              }
             }
           }
         ]
@@ -138,35 +146,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1b852ebe9c209aff",
+  "active": "e8cfda80877fba1a",
   "lastOpenFiles": [
+    "Dokumentaatio/PlayFab systems/PlayFab Leaderboard (discarded).md",
+    "Dokumentaatio/PlayFab systems/PlayFab Esitelmä ja Ohjeet.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/InventoryManager Null Reference Ongelma ja Ratkaisu.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
+    "Dokumentaatio/Log In Scene/Kirjautumisviestin viive.md",
+    "Dokumentaatio/Effects/2D Sade Efekti.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Pelaajien nimet eivät ilmesty tulostaulukkoon.md",
     "Dokumentaatio/Bugit ja niiden korjaus/UI Nappien Ongelma ja Virheenkorjaus.md",
+    "Projektin aloitus.md",
+    "Dokumentaatio/PlayFab systems/PlayFab toimintojen jalostus.md",
+    "Dokumentaatio/PlayFab systems/PlayFab Palvelun Käyttöönotto.md",
+    "Dokumentaatio/ScoreSystem/Local Score-järjestelmä.md",
+    "Dokumentaatio/Security/PlayerPrefs Salaus.md",
     "Dokumentaatio/System/Törmäysominaisuus.md",
     "Images/Näyttökuva 2023-08-16 134159.png",
     "Images/Näyttökuva 2023-08-16 134204.png",
     "Dokumentaatio/System/Pause Menu Luominen.md",
     "Dokumentaatio/PlayFab systems/PlayFabin Mahdolliset Muut Käyttötavat.md",
-    "Dokumentaatio/PlayFab systems/PlayFab Esitelmä ja Ohjeet.md",
-    "Dokumentaatio/Log In Scene/Kirjautumisviestin viive.md",
-    "Dokumentaatio/PlayFab systems/PlayFab toimintojen jalostus.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Pelaajien nimet eivät ilmesty tulostaulukkoon.md",
-    "Dokumentaatio/PlayFab systems/PlayFab Palvelun Käyttöönotto.md",
-    "Dokumentaatio/Security/PlayerPrefs Salaus.md",
     "Dokumentaatio/Security",
     "Dokumentaatio/System/Loading Panel.md",
-    "Dokumentaatio/Effects/2D Sade Efekti.md",
-    "Dokumentaatio/ScoreSystem/Local Score-järjestelmä.md",
     "Dokumentaatio/Effects",
     "Dokumentaatio/ScoreSystem",
     "Dokumentaatio/Log In Scene/Salasanan Näkyvyystoggle.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
     "Dokumentaatio/System/Peli-tilan Hallinta (GameManager).md",
-    "Dokumentaatio/Bugit ja niiden korjaus/InventoryManager Null Reference Ongelma ja Ratkaisu.md",
     "Dokumentaatio/Pelaaja/Ability System.md",
     "Dokumentaatio/Spawners/Obstacle Spawner.md",
     "Dokumentaatio/Spawners/ObjectSpawn.md",
     "Dokumentaatio/Spawners/CollectableSpawner.md",
-    "Dokumentaatio/PlayFab systems/PlayFab Leaderboard (discarded).md",
     "Dokumentaatio/Pelaaja/Character Creation.md",
     "Untitled.canvas",
     "PRIVACY POLICY.md",
