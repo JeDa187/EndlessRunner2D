@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ff4d96d23c28d274bbb711fa8cc91fcc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kamikaze 3D Gradient
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1102fb15305d5ac4aaeee799fe9014a8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

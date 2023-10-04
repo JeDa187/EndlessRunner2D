@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8c2867032819f3f4bb9d231bdfb9a93d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kamikaze
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b8701e958ed53a641a6fe2a9adee5960, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
