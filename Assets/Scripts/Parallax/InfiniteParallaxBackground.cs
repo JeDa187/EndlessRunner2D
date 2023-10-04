@@ -49,7 +49,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
             // Increase the speed of each layer over time
             for (int i = 0; i < LayerScrollSpeeds.Length; i++)
             {
-                LayerScrollSpeeds[i] -= speedIncreaseRate * Time.deltaTime;
+                LayerScrollSpeeds[i] += speedIncreaseRate * Time.deltaTime;
             }
 
             // Move the main camera to the right
@@ -59,8 +59,8 @@ public class InfiniteParallaxBackground : MonoBehaviour
             for (int i = 0; i < Layers.Length; i++)
             {
                 // Calculate the offset based on the camera's position and the layer's scroll speed
-                float offset = (mainCamera.position.x * (1 - LayerScrollSpeeds[i]));
-                float scrollDistance = mainCamera.position.x * LayerScrollSpeeds[i];
+                float offset = (mainCamera.position.x * (1 + LayerScrollSpeeds[i]));
+                float scrollDistance = mainCamera.position.x * -LayerScrollSpeeds[i];
 
                 // Set the new position of the layer
                 Layers[i].transform.position = new Vector2(initialPositions[i] + scrollDistance, Layers[i].transform.position.y);
@@ -82,8 +82,8 @@ public class InfiniteParallaxBackground : MonoBehaviour
                 }
             }
         }
-
     }
+
 
 
     //public void SetLayerSpeed(int layerIndex, float newSpeed)

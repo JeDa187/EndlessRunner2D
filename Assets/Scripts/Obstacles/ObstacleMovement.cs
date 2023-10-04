@@ -2,25 +2,20 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-    private InfiniteParallaxBackground parallaxBackground; // Referenssi taustan skriptiin
-    private float layerSpeed; // Layerin nopeus, jota haluamme seurata (t‰ss‰ tapauksessa index 4: "Ground_Second")
+    private InfiniteParallaxBackground parallaxBackground;
 
     void Start()
     {
-        // Oletetaan, ett‰ InfiniteParallaxBackground-skripti sijaitsee samassa objektissa kuin t‰m‰ skripti tai voit m‰‰ritt‰‰ sen manuaalisesti
+        // Automatically get the reference to the InfiniteParallaxBackground script
         parallaxBackground = FindObjectOfType<InfiniteParallaxBackground>();
-        if (parallaxBackground && parallaxBackground.LayerScrollSpeeds.Length > 4) // Varmista, ett‰ index 4 on olemassa
-        {
-            layerSpeed = parallaxBackground.LayerScrollSpeeds[4];
-        }
     }
 
     void Update()
     {
-        // Liikuta esteit‰ perustuen Ground_Second layerin nopeuteen
-        if (parallaxBackground && parallaxBackground.enableScrolling)
-        {
-            transform.position += Vector3.left * layerSpeed * Time.deltaTime;
-        }
+        // Get the speed of the specified parallax layer in real-time
+        float layerSpeed = parallaxBackground.LayerScrollSpeeds[4];
+
+        // Move the obstacle at the same speed as the parallax layer but to the left
+        transform.position += Vector3.left * layerSpeed * Time.deltaTime;
     }
 }
