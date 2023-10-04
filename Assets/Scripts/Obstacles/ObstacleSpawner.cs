@@ -7,10 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject[] upObstaclePrefabs;
     public Camera mainCamera;
     public float obstacleSpawnRate;
-    public float speedIncreaseFactor = 0.1f; // New variable to increase speed with each new object
-    public InfiniteParallaxBackground parallaxBackground;
 
-    private float speedIncrease = 0f; // Track the increased speed
     private float spawnXPositionOffset = 6f;
 
     private void Start()
@@ -29,9 +26,9 @@ public class ObstacleSpawner : MonoBehaviour
             float spawnXPosition = mainCamera.transform.position.x + cameraHalfWidth + spawnXPositionOffset;
 
             int listChoice = Random.Range(0, 2);
-
             GameObject obstaclePrefab;
             float randomY;
+            Quaternion rotation = Quaternion.identity; // Alustetaan oletusarvoiseksi
 
             if (listChoice == 0)
             {
@@ -42,21 +39,10 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 obstaclePrefab = upObstaclePrefabs[Random.Range(0, upObstaclePrefabs.Length)];
                 randomY = Random.Range(4f, 13f);
+                rotation = Quaternion.Euler(180, 0, 0); // Jos "up"-este, käännä ylösalaisin
             }
 
-            GameObject obstacle = Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), Quaternion.identity);
-
-            if (listChoice == 1)
-            {
-                obstacle.transform.eulerAngles = new Vector3(180, 0, 0);
-            }
-
-            speedIncrease += speedIncreaseFactor; // Increase the speed by speedIncreaseFactor
-            float layer0Speed = parallaxBackground.CameraSpeed * (1 - parallaxBackground.LayerScrollSpeeds[0]) + speedIncrease;
-            obstacle.GetComponent<ObstacleMovement>().SetSpeed(layer0Speed);
-
-            float destructionPosition = mainCamera.transform.position.x - cameraHalfWidth - 2f;
-            obstacle.GetComponent<ObstacleMovement>().SetDestructionXPosition(destructionPosition);
+            Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), rotation); // Käytetään rotation-muuttujaa
         }
     }
 }
