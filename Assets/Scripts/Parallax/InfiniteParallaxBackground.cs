@@ -82,10 +82,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
                 }
             }
         }
-    }
-    public float GetLayer0Speed()
-    {
-        return LayerScrollSpeeds[0];
+
     }
 
 

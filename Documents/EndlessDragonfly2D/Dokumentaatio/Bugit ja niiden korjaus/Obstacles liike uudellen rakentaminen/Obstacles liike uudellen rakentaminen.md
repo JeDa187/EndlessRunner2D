@@ -30,7 +30,7 @@ Jotta voisimme rakentaa tehokkaamman ja toimivan liikkumisjärjestelmän, päät
 
 3. **Alustavien muutosten testaus**:
    Testasimme muutokset varmistaaksemme, että esteet spawnautuvat oikein ja että liikkumislogiikka on poistettu onnistuneesti.
-   
+
 [[Esteiden liikkumisen ja tuhoamisen päivitys]]
 [[`ObstacleSpawner`-scriptin päivitys]]
 

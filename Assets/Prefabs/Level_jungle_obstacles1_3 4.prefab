@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7037017270569299521}
   - component: {fileID: 2626198816612283742}
   - component: {fileID: 6563426193347227560}
+  - component: {fileID: 8484648931594929900}
   m_Layer: 0
   m_Name: Level_jungle_obstacles1_3 4
   m_TagString: Hazard
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxBackground: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
 --- !u!60 &6563426193347227560
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -261,3 +261,16 @@ PolygonCollider2D:
       - {x: 1.425835, y: -7.0341825}
       - {x: 1.4097705, y: -6.9377956}
       - {x: 1.2651905, y: -6.2470245}
+--- !u!114 &8484648931594929900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037017270569299522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2230673ff4c05b54eb31c10bbe93ab33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxBackground: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}

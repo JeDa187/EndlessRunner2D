@@ -23,12 +23,8 @@
             "id": "d3c7e1832e51d758",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ],
@@ -98,7 +94,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +110,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +131,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -161,10 +153,10 @@
   },
   "active": "d3c7e1832e51d758",
   "lastOpenFiles": [
-    "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Esteiden liikkumisen ja tuhoamisen päivitys.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Obstacles liike uudellen rakentaminen.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Esteiden liikkumisen ja tuhoamisen päivitys.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen",
     "Dokumentaatio/Log In Scene/Offline Pelitila Napit ja Toiminnot.md",
     "Dokumentaatio/Log In Scene/Kirjautumisviestin viive.md",

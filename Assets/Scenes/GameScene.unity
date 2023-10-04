@@ -1742,7 +1742,7 @@ GameObject:
   - component: {fileID: 474113484}
   - component: {fileID: 474113483}
   m_Layer: 0
-  m_Name: Level_grounds1_2
+  m_Name: Ground_Second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,7 +2734,7 @@ GameObject:
   - component: {fileID: 754428180}
   - component: {fileID: 754428181}
   m_Layer: 0
-  m_Name: Jungle_paralax_3
+  m_Name: Jungle_First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,7 +3141,7 @@ GameObject:
   - component: {fileID: 805485372}
   - component: {fileID: 805485373}
   m_Layer: 0
-  m_Name: Jungle_paralax_0
+  m_Name: ParallaxBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3227,7 +3227,7 @@ GameObject:
   - component: {fileID: 831584700}
   - component: {fileID: 831584701}
   m_Layer: 0
-  m_Name: Level_grounds1_2 (1)
+  m_Name: Ground_First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3530,7 +3530,7 @@ GameObject:
   - component: {fileID: 868454576}
   - component: {fileID: 868454577}
   m_Layer: 0
-  m_Name: Jungle_paralax_1
+  m_Name: Jungle_Third
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6782,7 +6782,7 @@ GameObject:
   - component: {fileID: 1830229022}
   - component: {fileID: 1830229023}
   m_Layer: 0
-  m_Name: Jungle_paralax_2
+  m_Name: Jungle_Second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8594,11 +8594,11 @@ PrefabInstance:
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: Layers.Array.data[4]
       value: 
-      objectReference: {fileID: 831584699}
+      objectReference: {fileID: 474113482}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: Layers.Array.data[5]
       value: 
-      objectReference: {fileID: 474113482}
+      objectReference: {fileID: 831584699}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: Layers.Array.data[6]
       value: 
@@ -8645,7 +8645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: LayerScrollSpeeds.Array.data[4]
-      value: -1.3
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: LayerScrollSpeeds.Array.data[5]
