@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hazard
   - FireGem
+  - Ground_Second
   layers:
   - Default
   - TransparentFX

@@ -10,7 +10,7 @@ Ratkaisu on tarkistaa, onko hiiri tai kosketus UI-elementin päällä, kun käsi
 
 ## Ohjeet 
 
-1. **Lisää `UnityEngine.EventSystems` -nimiavaruus koodin alkuun**, jotta voimme käyttää `EventSystem` -luokkaa: 
+1. **Lisätään `UnityEngine.EventSystems` -nimiavaruus koodin alkuun**, jotta voimme käyttää `EventSystem` -luokkaa: 
 
 ```csharp
 using UnityEngine;
@@ -18,7 +18,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 ```
 
-2. **Muokkaa `HandleInput` -metodia** tarkistamaan, onko hiiri tai kosketus UI-elementin päällä. Jos se on, palauta heti metodi. Lisätään myös `IsTouchOverUI`-apumetodi kosketuksen tarkistamiseksi. 
+2. **Muokataan `HandleInput` -metodia** tarkistamaan, onko hiiri tai kosketus UI-elementin päällä. Jos se on, palauta heti metodi. Lisätään myös `IsTouchOverUI`-apumetodi kosketuksen tarkistamiseksi. 
 
 ```csharp
 private void HandleInput() 
