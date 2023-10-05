@@ -44,3 +44,5 @@ Alkuperäinen liikkumisongelma on poistettu, ja meillä on nyt selkeämpi pohja 
 **Tulevat toimenpiteet**:
 Seuraava vaihe on suunnitella ja toteuttaa uusi liikkumisjärjestelmä. Koska olemme jo poistaneet vanhan epäluotettavan liikkumislogiikan, meillä on nyt selkeämpi ja modulaarisempi pohja rakentaa uutta järjestelmää, joka vastaa paremmin pelin vaatimuksia ja parantaa pelikokemusta.
 
+[[Uusi Esteiden Liikumisjärjestelmä]]
+

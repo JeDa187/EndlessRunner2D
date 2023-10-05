@@ -23,8 +23,12 @@
             "id": "d3c7e1832e51d758",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ],
@@ -94,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md"
+              }
             }
           }
         ]
@@ -153,8 +161,13 @@
   },
   "active": "d3c7e1832e51d758",
   "lastOpenFiles": [
-    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Esteiden liikkumisen ja tuhoamisen päivitys.md",
+    "Dokumentaatio/Parallax/Parallax-taustan Rakentaminen.md",
+    "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
+    "Dokumentaatio/Parallax",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Obstacles liike uudellen rakentaminen.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Uusi Esteiden Liikumisjärjestelmä.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Esteiden liikkumisen ja tuhoamisen päivitys.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen",
@@ -180,11 +193,6 @@
     "Dokumentaatio/System/Loading Panel.md",
     "Dokumentaatio/Effects",
     "Dokumentaatio/ScoreSystem",
-    "Dokumentaatio/Log In Scene/Salasanan Näkyvyystoggle.md",
-    "Dokumentaatio/System/Peli-tilan Hallinta (GameManager).md",
-    "Dokumentaatio/Pelaaja/Ability System.md",
-    "Dokumentaatio/Spawners/Obstacle Spawner.md",
-    "Dokumentaatio/Spawners/ObjectSpawn.md",
     "Untitled.canvas",
     "Images/privacypolicy.png",
     "Dokumentaatio/System",
@@ -198,7 +206,6 @@
     "Images/Näyttökuva 2023-09-29 100707.png",
     "Dokumentaatio/PlayFab systems",
     "Dokumentaatio/Main Menu",
-    "Effects",
-    "Dokumentaatio/Bugit ja niiden korjaus"
+    "Effects"
   ]
 }
