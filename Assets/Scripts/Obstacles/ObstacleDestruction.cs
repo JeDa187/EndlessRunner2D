@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class ObstacleDestruction : MonoBehaviour
 {
-    private float destructionXPosition;
+    public Camera mainCamera;
 
-    private void Update()
+    void Update()
     {
-        if (transform.position.x < destructionXPosition)
+        float cameraLeftEdge = mainCamera.transform.position.x - (mainCamera.orthographicSize * mainCamera.aspect);
+
+        if (transform.position.x < cameraLeftEdge)
         {
             Destroy(gameObject);
         }
-    }
-
-    public void SetDestructionXPosition(float position)
-    {
-        destructionXPosition = position;
     }
 }

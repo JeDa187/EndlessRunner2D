@@ -10,10 +10,17 @@ public class ObstacleSpawner : MonoBehaviour
     public InfiniteParallaxBackground infiniteParallaxBackground;
 
     private float spawnXPositionOffset = 6f;
+    private bool firstObstacleSpawned = false;
 
     private void Start()
     {
-        obstacleSpawnRate = Random.Range(3.0f, 12.0f) / infiniteParallaxBackground.CameraSpeed;
+        // Aseta obstacleSpawnRate ensimmäiselle spawnille
+        obstacleSpawnRate = 0.0f; // Tämä voi olla mikä tahansa arvo, joka tarkoittaa "heti"
+
+        // Kutsu SpawnObstacle-funktiota kerran pelin alussa
+        SpawnObstacles();
+
+        // Aloita normaali ajoitettu spawnaus
         StartCoroutine(SpawnObstacles());
     }
 
@@ -39,7 +46,14 @@ public class ObstacleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(obstacleSpawnRate);
 
-            obstacleSpawnRate = Random.Range(3.0f, 12.0f) / infiniteParallaxBackground.CameraSpeed;
+            if (!firstObstacleSpawned)
+            {
+                firstObstacleSpawned = true;
+            }
+            else
+            {
+                obstacleSpawnRate = Random.Range(3.0f, 12.0f) / infiniteParallaxBackground.CameraSpeed;
+            }
 
             float cameraHalfWidth = mainCamera.orthographicSize * mainCamera.aspect;
             float spawnXPosition = mainCamera.transform.position.x + cameraHalfWidth + spawnXPositionOffset;
