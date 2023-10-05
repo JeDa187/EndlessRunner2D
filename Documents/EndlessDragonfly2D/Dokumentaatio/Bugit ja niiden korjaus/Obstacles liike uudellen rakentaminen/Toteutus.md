@@ -96,3 +96,51 @@ public class ObstacleDestruction : MonoBehaviour
 **Loppusanat**
 
 Tämän dokumentin avulla voit yhdistää esteiden spawnausjärjestelmän `Ground_Second` -kerroksen kanssa, jolloin saat esteet liikkumaan sujuvasti ja tuhoutumaan kun ne liikkuvat pois kameran näkökentästä. Varmista aina, että `Ground_Second` tagi on oikein asetettu ja että `destructionXPosition` on asetettu oikein esteiden tuhoamiseksi oikeassa kohdassa.
+
+
+---
+
+## Lisämuutokset `ObstacleSpawner` skriptiin
+
+Tavoitteena oli saada ensimmäinen este ilmestymään heti pelin alussa, joten teimme seuraavat muutokset:
+
+1. **Uusi `SpawnObstacle` metodi**: Jotta voisimme helposti hallita yksittäisen esteen luomista, erottelimme esteen luomislogiikan omaksi metodikseen nimeltään `SpawnObstacle`.
+
+```csharp
+private void SpawnObstacle()
+{
+    // ... (esteiden luontilogiikka) ...
+}
+```
+
+2. **Muutokset `Start` metodissa**: Kutsuimme `SpawnObstacle` metodia heti `Start` metodin alussa, jotta ensimmäinen este ilmestyisi pelin käynnistyttyä.
+
+```csharp
+private void Start()
+{
+    obstacleSpawnRate = Random.Range(3.0f, 12.0f) / infiniteParallaxBackground.CameraSpeed;
+    
+    // Spawn the first obstacle immediately
+    SpawnObstacle();
+
+    StartCoroutine(SpawnObstacles());
+}
+```
+
+3. **Muutokset `SpawnObstacles` korutiinissa**: Nyt kun meillä on `SpawnObstacle` metodi, voimme yksinkertaisesti kutsua sitä korutiinin sisällä joka kerta kun haluamme luoda uuden esteen. Tämä tekee koodista selkeämmän ja helpomman ylläpitää.
+
+```csharp
+IEnumerator SpawnObstacles()
+{
+    while (true)
+    {
+        yield return new WaitForSeconds(obstacleSpawnRate);
+        obstacleSpawnRate = Random.Range(3.0f, 12.0f) / infiniteParallaxBackground.CameraSpeed;
+
+        SpawnObstacle();
+    }
+}
+```
+
+---
+

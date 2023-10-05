@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md"
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md"
               }
             }
           }
@@ -161,12 +161,12 @@
   },
   "active": "d3c7e1832e51d758",
   "lastOpenFiles": [
-    "Dokumentaatio/Parallax/Parallax-taustan Rakentaminen.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
     "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
+    "Dokumentaatio/Parallax/Parallax-taustan Rakentaminen.md",
     "Dokumentaatio/Parallax",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Obstacles liike uudellen rakentaminen.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Uusi Esteiden Liikumisjärjestelmä.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Esteiden liikkumisen ja tuhoamisen päivitys.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
