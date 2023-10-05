@@ -8,11 +8,17 @@ public class ObstacleSpawner : MonoBehaviour
     public Camera mainCamera;
     public float obstacleSpawnRate;
     public InfiniteParallaxBackground infiniteParallaxBackground;
+    public PolygonCollider2D playerCollider;
+    public LayerMask obstacleLayerMask; // Add this for the Obstacle layer mask
 
     private float spawnXPositionOffset = 6f;
+    private float safeDistance;
 
     private void Start()
     {
+        // K‰ytet‰‰n bounds.extents.y saadaksemme hahmon korkeuden puolikkaan
+        safeDistance = 10 * playerCollider.bounds.extents.y;
+
         obstacleSpawnRate = Random.Range(2.0f, 6.0f);
 
         // Spawn the first obstacle immediately
@@ -20,6 +26,8 @@ public class ObstacleSpawner : MonoBehaviour
 
         StartCoroutine(SpawnObstacles());
     }
+
+
     private GameObject GetRightmostGroundSecond()
     {
         GameObject[] grounds = GameObject.FindGameObjectsWithTag("Ground_Second");
@@ -42,7 +50,7 @@ public class ObstacleSpawner : MonoBehaviour
         BoxCollider2D groundCollider = rightmostGround.GetComponent<BoxCollider2D>();
 
         if (groundCollider == null)
-            return; // Varotoimenpide, jos objektilla ei ole BoxCollider2D:ta
+            return;
 
         float groundWidth = groundCollider.size.x * rightmostGround.transform.localScale.x;
         float spawnXPosition = rightmostGround.transform.position.x - groundWidth / 2 + spawnXPositionOffset + Random.Range(0, groundWidth - 2 * spawnXPositionOffset);
@@ -64,19 +72,26 @@ public class ObstacleSpawner : MonoBehaviour
             rotation = Quaternion.Euler(180, 0, 0);
         }
 
+        // Safety check for obstacle spawn position based on the safe distance
+        Collider2D[] nearbyObstacles = Physics2D.OverlapBoxAll(new Vector2(spawnXPosition, randomY), new Vector2(1f, safeDistance), 0f, obstacleLayerMask);
+        foreach (Collider2D nearbyObstacle in nearbyObstacles)
+        {
+            if (Mathf.Abs(nearbyObstacle.bounds.min.y - randomY) < safeDistance || Mathf.Abs(nearbyObstacle.bounds.max.y - randomY) < safeDistance)
+            {
+                return;
+            }
+        }
+
         GameObject newObstacle = Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), rotation);
         newObstacle.transform.parent = rightmostGround.transform;
     }
-
 
     IEnumerator SpawnObstacles()
     {
         while (true)
         {
             yield return new WaitForSeconds(obstacleSpawnRate);
-
             obstacleSpawnRate = Random.Range(2.0f, 6.0f);
-
             SpawnObstacle();
         }
     }

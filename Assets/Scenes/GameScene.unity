@@ -6416,6 +6416,11 @@ Transform:
   m_Father: {fileID: 1852092494}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1487808471 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4214478647589730869, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
+  m_PrefabInstance: {fileID: 1028970082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490766002
 GameObject:
   m_ObjectHideFlags: 0
@@ -9365,6 +9370,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1852092496}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 1487808471}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: backgroundScript
       value: 
       objectReference: {fileID: 2069759166}
@@ -9377,6 +9386,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: obstacleLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: infiniteParallaxBackground
       value: 
       objectReference: {fileID: 2069759166}
@@ -9386,7 +9399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: upObstaclePrefabs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: obstaclePrefabs.Array.data[0]
@@ -9406,7 +9419,7 @@ PrefabInstance:
       objectReference: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: downObstaclePrefabs.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: upObstaclePrefabs.Array.data[0]
@@ -9420,6 +9433,10 @@ PrefabInstance:
       propertyPath: upObstaclePrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 7037017270569299522, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: upObstaclePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7236743857955695768, guid: 3ade3b5caaccc6045a907d5458d6ae8a, type: 3}
     - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: downObstaclePrefabs.Array.data[0]
       value: 
@@ -9436,6 +9453,14 @@ PrefabInstance:
       propertyPath: downObstaclePrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4271423794510670648, guid: f50ce94c4f6b6eb40959bc5b0da23dea, type: 3}
+    - target: {fileID: 1260655613941811226, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
+      propertyPath: downObstaclePrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1586297651701597823, guid: fcb2f2e6324efda47a8f0e03ed5a6ada, type: 3}
     - target: {fileID: 1260655613941811227, guid: 06c3c0676df5b8d4f9218bff766303e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
