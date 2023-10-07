@@ -13,16 +13,14 @@ public class ObstacleSpawner : MonoBehaviour
 
     private float spawnXPositionOffset = 6f;
     private float safeDistance;
-    private GameObject lastRightmostGround;
 
     private void Start()
     {
-        safeDistance = 10 * playerCollider.bounds.extents.y;
+        safeDistance = 5 * playerCollider.bounds.size.y; // 5 times the player height as safe distance.
         obstacleSpawnRate = Random.Range(2.0f, 6.0f);
         SpawnObstacle();
         StartCoroutine(SpawnObstacles());
 
-        // Tilaa tapahtuma
         foreach (var layer in infiniteParallaxBackground.parallaxLayers)
         {
             layer.onLayerShifted += HandleLayerShifted;
@@ -31,7 +29,6 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void HandleLayerShifted(Transform shiftedLayer)
     {
-        // Tarkista, onko siirretty kerros oikea
         if (shiftedLayer.parent.CompareTag("Ground_Second"))
         {
             foreach (Transform child in shiftedLayer)
@@ -43,7 +40,6 @@ public class ObstacleSpawner : MonoBehaviour
             }
         }
     }
-
 
     private GameObject GetRightmostGroundSecond()
     {
@@ -62,8 +58,6 @@ public class ObstacleSpawner : MonoBehaviour
 
         return rightmostGround;
     }
-
-
     private void SpawnObstacle()
     {
         GameObject rightmostGround = GetRightmostGroundSecond();
@@ -80,7 +74,6 @@ public class ObstacleSpawner : MonoBehaviour
         float randomY;
         Quaternion rotation = Quaternion.identity;
 
-        // T‰m‰ lis‰ttiin, satunnainen mahdollisuus k‰‰nt‰‰ esteit‰ y-akselin ymp‰ri
         int flipChance = Random.Range(0, 2);
         bool flipObstacle = flipChance == 1;
 
@@ -88,22 +81,27 @@ public class ObstacleSpawner : MonoBehaviour
         {
             obstaclePrefab = downObstaclePrefabs[Random.Range(0, downObstaclePrefabs.Length)];
             randomY = Random.Range(-12f, -2.85f);
-            rotation = flipObstacle ? Quaternion.Euler(0, 180, 0) : Quaternion.identity; // Jos flipObstacle on tosi, k‰‰nnet‰‰n este y-akselin ymp‰ri
+            rotation = flipObstacle ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
         }
         else
         {
             obstaclePrefab = upObstaclePrefabs[Random.Range(0, upObstaclePrefabs.Length)];
             randomY = Random.Range(4f, 13f);
-            rotation = flipObstacle ? Quaternion.Euler(180, 180, 0) : Quaternion.Euler(180, 0, 0); // Samoin t‰‰ll‰, mutta ottaen huomioon, ett‰ upObstacle on jo k‰‰ntynyt 180 astetta
+            rotation = flipObstacle ? Quaternion.Euler(180, 180, 0) : Quaternion.Euler(180, 0, 0);
         }
 
-        Collider2D[] nearbyObstacles = Physics2D.OverlapBoxAll(new Vector2(spawnXPosition, randomY), new Vector2(1f, safeDistance), 0f, obstacleLayerMask);
-        foreach (Collider2D nearbyObstacle in nearbyObstacles)
+        PolygonCollider2D newObstacleCollider = obstaclePrefab.GetComponent<PolygonCollider2D>();
+        if (newObstacleCollider == null)
+            return;
+
+        float obstacleHeight = newObstacleCollider.bounds.size.y;
+
+        // Check if there are other obstacles within the safety distance using a circle overlap check.
+        Collider2D[] nearbyObstacles = Physics2D.OverlapCircleAll(new Vector2(spawnXPosition, randomY), obstacleHeight / 2 + safeDistance, obstacleLayerMask);
+
+        if (nearbyObstacles.Length > 0)
         {
-            if (Mathf.Abs(nearbyObstacle.bounds.min.y - randomY) < safeDistance || Mathf.Abs(nearbyObstacle.bounds.max.y - randomY) < safeDistance)
-            {
-                return;
-            }
+            return; // Don't spawn if other obstacles are too close.
         }
 
         GameObject newObstacle = Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), rotation);
@@ -124,11 +122,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Poista tapahtumankuuntelija, kun objekti tuhoutuu
         foreach (var layer in infiniteParallaxBackground.parallaxLayers)
         {
             layer.onLayerShifted -= HandleLayerShifted;
         }
     }
-
 }
