@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 746616767903060695}
   m_Layer: 6
   m_Name: Obstacle_container
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_jungle_obstacles1_3
       objectReference: {fileID: 0}
+    - target: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
 --- !u!4 &3767515114035502753 stripped
@@ -204,6 +208,10 @@ PrefabInstance:
     - target: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
       propertyPath: m_Name
       value: Level_jungle_obstacles1_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037017270569299522, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cc368cdb898b74692c60c66b562010, type: 3}

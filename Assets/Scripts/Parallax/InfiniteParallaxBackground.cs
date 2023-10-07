@@ -9,6 +9,9 @@ public class InfiniteParallaxBackground : MonoBehaviour
     [System.Serializable]
     public class ParallaxLayer
     {
+        public delegate void OnLayerShifted(Transform shiftedLayer);
+        public event OnLayerShifted onLayerShifted;
+
         public float scrollSpeed;
         public Transform parentObject; // Viittaus parent GameObjectiin
         private Transform[] childSprites = new Transform[3]; // Lapsispritet
@@ -30,9 +33,13 @@ public class InfiniteParallaxBackground : MonoBehaviour
             {
                 childSprites[i].position += new Vector3(-scrollSpeed * Time.deltaTime * cameraSpeed, 0, 0);
 
+                // Kun yksittäinen childSprite menee kameran vasemmalle puolelle
                 if (childSprites[i].position.x < cameraPosition - spriteWidth)
                 {
                     childSprites[i].position += new Vector3(3 * spriteWidth, 0, 0);
+
+                    // Tämä laukaisee tapahtuman
+                    onLayerShifted?.Invoke(childSprites[i]);
                 }
             }
         }

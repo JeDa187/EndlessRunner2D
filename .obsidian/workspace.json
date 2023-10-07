@@ -1,0 +1,163 @@
+{
+  "main": {
+    "id": "182219788c9b3a9a",
+    "type": "split",
+    "children": [
+      {
+        "id": "f4a635e41a1ff0f7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8685d0db0679b171",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "aee165f4aa7dcf12",
+    "type": "split",
+    "children": [
+      {
+        "id": "7842ae4d639255e3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9e25419e3cf03874",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "327ed8964e999b46",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3eb11a1946e97fe2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "55f2d45ba2834a36",
+    "type": "split",
+    "children": [
+      {
+        "id": "a6e64346aa5b6264",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "87aa242c3615bac2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "96d793c55cc0e4dd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9508b2129e2306b5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e78a9300b712cc8a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "8685d0db0679b171",
+  "lastOpenFiles": [
+    "Temp/UnityTempFile-6f4a1540d4e370b43b7542ec077aa70e",
+    "Library/Artifacts/b4/b4596cba85c494fb95134fbc8e149ec3",
+    "Library/Artifacts/c8/c8381545946d7993660f7926881625c1",
+    "Library/Artifacts/fc/fc26d9442fbbc5797dc809486fa0f18f",
+    "Library/Artifacts/67/679c76f5f88596e8469182e9934364ec",
+    "Library/Artifacts/8d/8d197344c7c3b9c3164567c1b016c471",
+    "Library/Artifacts/b2/b2302b8bd6c3b9820bb4ae4abf5841cf",
+    "Library/Artifacts/47/47d7f87b1e703cf2fc1a8a33358ec5e9",
+    "Library/Artifacts/63/63df35f94e6c5d9c96091fcd4d5f7668",
+    "Library/Artifacts/38/3873f5f68fa8caad1fedb6e95242ba72",
+    "Temp/FSTimeGet-63333619d5db6bd469dc6193ebcb35f9"
+  ]
+}
