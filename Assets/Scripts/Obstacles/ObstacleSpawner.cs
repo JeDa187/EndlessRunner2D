@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [SerializeField]
     private float minSpawnRate = 2.0f;
+    [SerializeField]
     private float maxSpawnRate = 6.0f;
     private ObstacleManager obstacleManager;
 
