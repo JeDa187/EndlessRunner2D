@@ -127,3 +127,5 @@ public class ParallaxEventHandler : MonoBehaviour
 ### 5. Yhteenveto
 
 Jakamalla alkuperäinen `ObstacleSpawner`-scripti kolmeen erilliseen osaan olemme tehneet koodista selkeämmän ja helpommin ylläpidettävän. Jokainen osa voi nyt toimia itsenäisesti ja tarjota erityiset palvelut muille komponenteille, mikä lisää modularisuutta ja joustavuutta jatkokehitykselle.
+
+[[New Obtacle Spawner]]

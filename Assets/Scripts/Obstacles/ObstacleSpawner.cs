@@ -9,6 +9,10 @@ public class ObstacleSpawner : MonoBehaviour
     private float maxSpawnRate = 6.0f;
     private ObstacleManager obstacleManager;
 
+    public InfiniteParallaxBackground backgroundScroller;
+
+    private const float CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT = 8.0f; // M‰‰ritelty raja, jonka j‰lkeen spawn-tahti ei en‰‰ nopeudu
+
     private void Start()
     {
         obstacleManager = GetComponent<ObstacleManager>();
@@ -20,8 +24,16 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(minSpawnRate, maxSpawnRate));
+            float currentCameraSpeed = Mathf.Min(backgroundScroller.CameraSpeed, CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT); // Spawn-tahti ei nopeudu rajoitteen j‰lkeen
+            float cameraSpeedModifier = currentCameraSpeed / 1.5f;
+            float adjustedMinSpawnRate = minSpawnRate / cameraSpeedModifier;
+            float adjustedMaxSpawnRate = maxSpawnRate / cameraSpeedModifier;
+
+            float timeToNextSpawn = Random.Range(adjustedMinSpawnRate, adjustedMaxSpawnRate);
+
+            yield return new WaitForSeconds(timeToNextSpawn);
             obstacleManager.SpawnObstacle();
         }
     }
+
 }

@@ -40,11 +40,6 @@ public class ObstacleManager : MonoBehaviour
 
         Collider2D hit = Physics2D.OverlapBox(location, new Vector2(obstacleWidth, obstacleHeight), 0, LayerMask.GetMask("Obstacle"));
 
-        if (hit != null)
-        {
-            Debug.Log("Location " + location + " is not free for prefab: " + prefab.name + " due to overlap with " + hit.name);
-        }
-
         return hit == null;
     }
 
@@ -86,18 +81,24 @@ public class ObstacleManager : MonoBehaviour
 
         if (currentAttempt == maxAttempts)
         {
-            Debug.LogWarning("Maximum spawn attempts reached for position " + spawnXPosition);
             return;
         }
 
         Quaternion rotation = Quaternion.identity;
-        if (listChoice == 1)
+
+        if (Random.Range(0, 2) == 0) // 50% mahdollisuus
         {
-            rotation = Quaternion.Euler(0, 0, 180);
+            rotation = Quaternion.Euler(0, 180, 0); // Käännä y-akselin suhteen
+        }
+
+        if (listChoice == 1) // Jos este on yläpuolella, käännä se ylösalaisin
+        {
+            rotation *= Quaternion.Euler(0, 0, 180);
         }
 
         GameObject newObstacle = Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), rotation);
         newObstacle.tag = "Hazard";
         newObstacle.transform.parent = rightmostGround.transform;
     }
+
 }

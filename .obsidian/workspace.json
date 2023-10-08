@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Uusi FiregemSpawner.md",
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/ObstacleSpawner-scriptin jakaminen osiin.md",
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/ObstacleSpawner-scriptin jakaminen osiin.md",
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/ObstacleSpawner-scriptin jakaminen osiin.md"
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md"
               }
             }
           }
@@ -146,22 +146,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9e25419e3cf03874",
+  "active": "8685d0db0679b171",
   "lastOpenFiles": [
-    "Temp/UnityTempFile-432da4178b10acd4ca9ef9f8587ebad1",
-    "Library/Search/propertyDatabase.db_495f727971984b81ab134f0bf7ad69aa_temp",
-    "Library/Search/propertyAliases.db_11679d5a905e4643852d7388b98e5587_temp",
-    "Temp/UnityTempFile-92ce020473991804e8b7f6701fc45ed8",
+    "Temp/UnityTempFile-cf0403bc3c5b5d142a4142f2af208a62",
+    "Temp/UnityTempFile-a40a2ad94e50d7e4881c3415fb9dd3c2",
+    "Temp/UnityTempFile-46d676691ed902447bdcc262a6d17d08",
     "Library/Bee/backend_profiler0.traceevents",
-    "Library/Artifacts/7a/7a91f804451dd343d21eb5d24fa702d6",
-    "Temp/UnityTempFile-45db9f4cd76ab3f47bb7bfc20f04651f",
-    "Library/Artifacts/38/38f63ef39fb295d95de8aa37cd7dabef",
-    "Temp/UnityTempFile-fddb788637ce24b45b730c81336733e3",
     "Library/Bee/TundraBuildState.state",
-    "Library/Artifacts/e9/e92d6d700ea90408465c8f2fe399a100",
-    "Uusi FiregemSpawner.md",
+    "Library/Artifacts/41/417a026dfefb6ab79dec00bc176fe350",
+    "Temp/UnityTempFile-ccad704b489df9345a942628516ff1d5",
+    "Temp/UnityTempFile-a452da583d78a5d47b82165055893b09",
+    "Temp/UnityTempFile-e062a14784088d743bc53bdf07f7a1ca",
+    "Temp/UnityTempFile-75cf6179218f22841afae5ef38d0ff7a",
+    "Temp/UnityTempFile-2833372c7e909854badf98d25b9084e4",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Uusi FiregemSpawner.md",
     "Documents/EndlessDragonfly2D/Dokumentaatio/ObstacleSpawner-scriptin jakaminen osiin.md",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/CollectableSpawner.md",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md"
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/ObjectSpawn.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/CollectableSpawner.md"
   ]
 }
