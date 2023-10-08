@@ -7,24 +7,43 @@ public class ObstacleManager : MonoBehaviour
     public float spawnXPositionOffset = 6f;
     private GroundManager groundManager;
 
-    [SerializeField]
-    private float minimumObstacleDistance = 2.0f;  
 
     private void Awake()
     {
         groundManager = GetComponent<GroundManager>();
     }
-    
 
-    private bool IsLocationFree(Vector2 location, GameObject prefab)
+    private bool IsLocationFree(Vector2 location)
+    {
+        foreach (GameObject prefab in downObstaclePrefabs)
+        {
+            if (!IsLocationFreeForPrefab(location, prefab))
+                return false;
+        }
+
+        foreach (GameObject prefab in upObstaclePrefabs)
+        {
+            if (!IsLocationFreeForPrefab(location, prefab))
+                return false;
+        }
+
+        return true;
+    }
+
+    private bool IsLocationFreeForPrefab(Vector2 location, GameObject prefab)
     {
         Collider2D collider = prefab.GetComponent<Collider2D>();
         if (collider == null) return true;
 
-        float obstacleWidth = collider.bounds.size.x + minimumObstacleDistance;
-        float obstacleHeight = collider.bounds.size.y + minimumObstacleDistance;
+        float obstacleWidth = collider.bounds.size.x + 15;  
+        float obstacleHeight = collider.bounds.size.y + 30;
 
         Collider2D hit = Physics2D.OverlapBox(location, new Vector2(obstacleWidth, obstacleHeight), 0, LayerMask.GetMask("Obstacle"));
+
+        if (hit != null)
+        {
+            Debug.Log("Location " + location + " is not free for prefab: " + prefab.name + " due to overlap with " + hit.name);
+        }
 
         return hit == null;
     }
@@ -63,9 +82,13 @@ public class ObstacleManager : MonoBehaviour
 
             currentAttempt++;
         }
-        while (!IsLocationFree(new Vector2(spawnXPosition, randomY), obstaclePrefab) && currentAttempt < maxAttempts);
+        while (!IsLocationFree(new Vector2(spawnXPosition, randomY)) && currentAttempt < maxAttempts);
 
-        if (currentAttempt == maxAttempts) return; // Jos emme löydä vapaata paikkaa, lopeta.
+        if (currentAttempt == maxAttempts)
+        {
+            Debug.LogWarning("Maximum spawn attempts reached for position " + spawnXPosition);
+            return;
+        }
 
         Quaternion rotation = Quaternion.identity;
         if (listChoice == 1)
