@@ -92,12 +92,12 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         if (increase)
         {
             // Kiihdytä kameraa
-            parallaxBG.CameraSpeed *= 10f;
+            parallaxBG.CameraSpeed *= 8f;
         }
         else
         {
             // Palauta kameran nopeus alkuperäiseen
-            parallaxBG.CameraSpeed /= 10f;
+            parallaxBG.CameraSpeed /= 8f;
         }
     }
 

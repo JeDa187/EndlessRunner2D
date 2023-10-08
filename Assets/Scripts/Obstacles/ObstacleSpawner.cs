@@ -1,83 +1,39 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject[] downObstaclePrefabs;
-    public GameObject[] upObstaclePrefabs;
-    public Camera mainCamera;
-    public float obstacleSpawnRate;
-    public InfiniteParallaxBackground infiniteParallaxBackground;
+    [SerializeField]
+    private float minSpawnRate = 2.0f;
+    [SerializeField]
+    private float maxSpawnRate = 6.0f;
+    private ObstacleManager obstacleManager;
 
-    private float spawnXPositionOffset = 6f;
+    public InfiniteParallaxBackground backgroundScroller;
+
+    private const float CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT = 8.0f; // M‰‰ritelty raja, jonka j‰lkeen spawn-tahti ei en‰‰ nopeudu
 
     private void Start()
     {
-        obstacleSpawnRate = Random.Range(2.0f, 6.0f);
-
-        // Spawn the first obstacle immediately
-        SpawnObstacle();
-
+        obstacleManager = GetComponent<ObstacleManager>();
+        obstacleManager.SpawnObstacle();
         StartCoroutine(SpawnObstacles());
     }
-    private GameObject GetRightmostGroundSecond()
-    {
-        GameObject[] grounds = GameObject.FindGameObjectsWithTag("Ground_Second");
-        GameObject rightmostGround = null;
-        float maxX = float.NegativeInfinity;
-        foreach (GameObject ground in grounds)
-        {
-            if (ground.transform.position.x > maxX)
-            {
-                maxX = ground.transform.position.x;
-                rightmostGround = ground;
-            }
-        }
-        return rightmostGround;
-    }
-
-    private void SpawnObstacle()
-    {
-        GameObject rightmostGround = GetRightmostGroundSecond();
-        BoxCollider2D groundCollider = rightmostGround.GetComponent<BoxCollider2D>();
-
-        if (groundCollider == null)
-            return; // Varotoimenpide, jos objektilla ei ole BoxCollider2D:ta
-
-        float groundWidth = groundCollider.size.x * rightmostGround.transform.localScale.x;
-        float spawnXPosition = rightmostGround.transform.position.x - groundWidth / 2 + spawnXPositionOffset + Random.Range(0, groundWidth - 2 * spawnXPositionOffset);
-
-        int listChoice = Random.Range(0, 2);
-        GameObject obstaclePrefab;
-        float randomY;
-        Quaternion rotation = Quaternion.identity;
-
-        if (listChoice == 0)
-        {
-            obstaclePrefab = downObstaclePrefabs[Random.Range(0, downObstaclePrefabs.Length)];
-            randomY = Random.Range(-12f, -2.85f);
-        }
-        else
-        {
-            obstaclePrefab = upObstaclePrefabs[Random.Range(0, upObstaclePrefabs.Length)];
-            randomY = Random.Range(4f, 13f);
-            rotation = Quaternion.Euler(180, 0, 0);
-        }
-
-        GameObject newObstacle = Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), rotation);
-        newObstacle.transform.parent = rightmostGround.transform;
-    }
-
 
     IEnumerator SpawnObstacles()
     {
         while (true)
         {
-            yield return new WaitForSeconds(obstacleSpawnRate);
+            float currentCameraSpeed = Mathf.Min(backgroundScroller.CameraSpeed, CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT); // Spawn-tahti ei nopeudu rajoitteen j‰lkeen
+            float cameraSpeedModifier = currentCameraSpeed / 1.5f;
+            float adjustedMinSpawnRate = minSpawnRate / cameraSpeedModifier;
+            float adjustedMaxSpawnRate = maxSpawnRate / cameraSpeedModifier;
 
-            obstacleSpawnRate = Random.Range(2.0f, 6.0f);
+            float timeToNextSpawn = Random.Range(adjustedMinSpawnRate, adjustedMaxSpawnRate);
 
-            SpawnObstacle();
+            yield return new WaitForSeconds(timeToNextSpawn);
+            obstacleManager.SpawnObstacle();
         }
     }
+
 }

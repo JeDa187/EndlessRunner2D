@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7037017270569299521}
   - component: {fileID: 2626198816612283742}
   - component: {fileID: 4857770904580117086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Level_jungle_obstacles1_3 2
   m_TagString: Hazard
   m_Icon: {fileID: 0}
