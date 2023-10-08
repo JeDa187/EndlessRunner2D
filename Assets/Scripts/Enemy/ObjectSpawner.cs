@@ -4,15 +4,21 @@ using System.Collections;
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyToSpawn;
-    [SerializeField] float spawnInterval = 2.0f;
+    [SerializeField] float initialSpawnInterval = 2.0f;
+    [SerializeField] float spawnIntervalMin = 2.0f;
+    [SerializeField] float spawnIntervalMax = 4.0f;
+    [SerializeField] float currentSpawnInterval;
     [SerializeField] float spawnOffsetX = 10f;
-    [SerializeField] float minDeltaY = 1f;  // Minimietäisyys edellisestä korkeudesta
+    [SerializeField] float minDeltaY = 1f;
+    [SerializeField] float minY = -7f;  // Alin mahdollinen korkeus
+    [SerializeField] float maxY = 7.5f;  // Ylin mahdollinen korkeus
 
-    private float lastY;  // Viimeksi spawnatun objektin korkeus
+    private float lastY;
 
     void Start()
     {
         GameManager.Instance.OnCountdownFinished += StartSpawning;
+        currentSpawnInterval = initialSpawnInterval;
     }
 
     public void StartSpawning()
@@ -26,23 +32,21 @@ public class ObjectSpawner : MonoBehaviour
         {
             GameObject objectToSpawn = enemyToSpawn[Random.Range(0, enemyToSpawn.Length)];
 
-            float minY = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y;  // Kameran alareuna
-            float maxY = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;  // Kameran yläreuna
-
             float nextY;
             do
             {
                 nextY = Random.Range(minY, maxY);
             }
-            while (Mathf.Abs(nextY - lastY) < minDeltaY);  // Varmistetaan, että seuraava korkeus on riittävän kaukana edellisestä
+            while (Mathf.Abs(nextY - lastY) < minDeltaY);
 
-            Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x + 
+            Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x +
                 Camera.main.orthographicSize * Camera.main.aspect + spawnOffsetX, nextY);
             Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
 
-            lastY = nextY;  // Tallennetaan viimeksi spawnatun objektin korkeus
+            lastY = nextY;
 
-            yield return new WaitForSeconds(spawnInterval);
+            currentSpawnInterval = Random.Range(spawnIntervalMin, spawnIntervalMax);
+            yield return new WaitForSeconds(currentSpawnInterval);
         }
     }
 

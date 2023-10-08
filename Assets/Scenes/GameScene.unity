@@ -455,6 +455,16 @@ MonoBehaviour:
   - {fileID: 7037017270569299522, guid: c09cfd0b35755a742adde901aa3211f5, type: 3}
   - {fileID: 7037017270569299522, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
   - {fileID: 7236743857955695768, guid: 3ade3b5caaccc6045a907d5458d6ae8a, type: 3}
+  downObstacle2Prefabs:
+  - {fileID: 720119788704876002, guid: 5fe25fab4a5f84a4690a65acc69f04b9, type: 3}
+  - {fileID: 6218615320588049445, guid: b41154bbf0556e941949c3d07d91cca6, type: 3}
+  - {fileID: 7768144237948611925, guid: e73cbdfe61e171d4d94bb78fea3b5c44, type: 3}
+  - {fileID: 2772668181357250239, guid: c0a09bbc1f264f94cbaf942ad28ba460, type: 3}
+  - {fileID: 1291147670015299486, guid: bb74363d578370a4b854cf1605822547, type: 3}
+  upObstacle2Prefabs:
+  - {fileID: 2878624904145182333, guid: 455104973d1a8e4439c656ad7992a543, type: 3}
+  - {fileID: 6330469132446448674, guid: 1139bd0ae2a9f7e40bc757e0e46f63b9, type: 3}
+  - {fileID: 187665110372507731, guid: 2b81d2a8e712fe345aeeb5fa23a6a026, type: 3}
   spawnXPositionOffset: 6
 --- !u!114 &127072590
 MonoBehaviour:
@@ -4664,6 +4674,10 @@ PrefabInstance:
     - target: {fileID: 2410163301480943888, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410163301480943888, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2760872010388890157, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: jumpForce
