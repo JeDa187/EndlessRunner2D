@@ -23,4 +23,11 @@ public class ObjectMover : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void SetSpeed(float cameraSpeed)
+    {
+        // Esimerkiksi, voit tehd‰ moveSpeedin suuremmaksi kertomalla se kameran nopeudella. 
+        // Voit muuttaa kerrointa (t‰ss‰ 0.5f) s‰‰t‰‰ksesi kuinka paljon nopeutta lis‰t‰‰n.
+        moveSpeed = moveSpeed * cameraSpeed * 0.5f;
+    }
+
 }

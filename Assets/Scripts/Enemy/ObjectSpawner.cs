@@ -14,11 +14,13 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] float maxY = 7.5f;  // Ylin mahdollinen korkeus
 
     private float lastY;
+    private InfiniteParallaxBackground parallaxBackground;  // Lis‰tty t‰h‰n viittaus InfiniteParallaxBackground-objektiin
 
     void Start()
     {
         GameManager.Instance.OnCountdownFinished += StartSpawning;
         currentSpawnInterval = initialSpawnInterval;
+        parallaxBackground = FindObjectOfType<InfiniteParallaxBackground>();  // Haetaan viittaus InfiniteParallaxBackground-objektiin
     }
 
     public void StartSpawning()
@@ -41,7 +43,13 @@ public class ObjectSpawner : MonoBehaviour
 
             Vector2 spawnPosition = new Vector2(Camera.main.transform.position.x +
                 Camera.main.orthographicSize * Camera.main.aspect + spawnOffsetX, nextY);
-            Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+
+            GameObject spawnedObject = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+            ObjectMover mover = spawnedObject.GetComponent<ObjectMover>();
+            if (mover)
+            {
+                mover.SetSpeed(parallaxBackground.CameraSpeed);  // K‰ytet‰‰n haettua viittausta
+            }
 
             lastY = nextY;
 
