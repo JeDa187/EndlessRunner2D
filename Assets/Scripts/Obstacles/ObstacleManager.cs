@@ -113,10 +113,14 @@ public class ObstacleManager : MonoBehaviour
             rotation = Quaternion.Euler(0, 180, 0);
         }
 
-        if (listChoice == 1 || listChoice == 3) // Updated for 4 lists
+        // Tarkistetaan onko upObstacle2Prefabs listan kolmas elementti
+        bool isUpObstacle2Index2 = (listChoice == 3 && obstaclePrefab == upObstacle2Prefabs[2]);
+
+        if ((listChoice == 1) || (listChoice == 3 && !isUpObstacle2Index2))
         {
             rotation *= Quaternion.Euler(0, 0, 180);
         }
+
 
         GameObject newObstacle = Instantiate(obstaclePrefab, new Vector2(spawnXPosition, randomY), rotation);
         newObstacle.tag = "Hazard";
