@@ -74,6 +74,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7236743857955695769}
     m_Modifications:
+    - target: {fileID: 2766032544579253467, guid: c09cfd0b35755a742adde901aa3211f5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037017270569299520, guid: c09cfd0b35755a742adde901aa3211f5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -126,7 +130,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hazard
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6969914280416993785, guid: c09cfd0b35755a742adde901aa3211f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c09cfd0b35755a742adde901aa3211f5, type: 3}
 --- !u!4 &416184799029604012 stripped
 Transform:
@@ -140,6 +145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7236743857955695769}
     m_Modifications:
+    - target: {fileID: 3014512090072160076, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037017270569299520, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -192,7 +201,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hazard
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5506800016127817410, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87f495a919fe1314dbfd156c640b2e34, type: 3}
 --- !u!4 &416184800425808559 stripped
 Transform:

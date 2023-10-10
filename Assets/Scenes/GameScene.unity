@@ -5108,6 +5108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain
       objectReference: {fileID: 0}
+    - target: {fileID: 9202459776860918175, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bafe406dab846d14095f49cb2c96943c, type: 3}
 --- !u!1 &991532480
@@ -7226,7 +7230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1490766003
 Transform:
   m_ObjectHideFlags: 0
@@ -10738,8 +10742,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
-      propertyPath: cameraSpeed
+      propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
+      propertyPath: cameraSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: Layers.Array.size
