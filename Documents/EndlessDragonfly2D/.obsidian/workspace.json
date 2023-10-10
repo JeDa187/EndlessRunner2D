@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "986634d12647629b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dokumentaatio/QuitSystem/QuitManager.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
+                "file": "Dokumentaatio/QuitSystem/QuitManager.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
+                "file": "Dokumentaatio/QuitSystem/QuitManager.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md"
+                "file": "Dokumentaatio/QuitSystem/QuitManager.md"
               }
             }
           }
@@ -159,9 +171,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d3c7e1832e51d758",
+  "active": "986634d12647629b",
   "lastOpenFiles": [
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
+    "Dokumentaatio/QuitSystem/QuitManager.md",
+    "Dokumentaatio/QuitSystem",
     "Dokumentaatio/Parallax/Parllax refakturointi ja optimointi.md",
     "Dokumentaatio/Parallax/Parallax-taustan Rakentaminen.md",
     "Dokumentaatio/Parallax",
@@ -205,7 +219,6 @@
     "Images/Näyttökuva 2023-09-29 100721.png",
     "Images/Näyttökuva 2023-09-29 100707.png",
     "Dokumentaatio/PlayFab systems",
-    "Dokumentaatio/Main Menu",
-    "Effects"
+    "Dokumentaatio/Main Menu"
   ]
 }
