@@ -22,12 +22,15 @@ public class CollisionAndBoundaryCheck : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if collision occurred with an object that can destroy the character
-        if (collision.gameObject.CompareTag("Hazard"))
+        if (collision.gameObject.CompareTag("Hazard") ||
+            collision.gameObject.CompareTag("Enemy1") ||
+            collision.gameObject.CompareTag("Enemy2"))
         {
             GameManager.Instance.GameOver(); // End the game
             Destroy(gameObject);            // Destroy the dragonfly game object
         }
     }
+
 
     private void CheckOutOfScreenBounds()
     {
