@@ -66,6 +66,8 @@ public class InfiniteParallaxBackground : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
+
         if (enableScrolling)
         {
             cameraSpeed += accelerationFactor * Time.deltaTime; // T‰m‰ lis‰‰ nopeutta tasaisesti
