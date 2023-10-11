@@ -3,11 +3,24 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
+    private DragonflyController dragonflyController;
 
-    private void FixedUpdate()
+    private void Start()
     {
+        dragonflyController = FindObjectOfType<DragonflyController>();
+        if (!dragonflyController)
+        {
+            Debug.LogError("DragonflyController was not found in the scene!");
+        }
+    }
+
+    private void LateUpdate()
+    {
+        // Check if SpeedBoost is active
+        float speedMultiplier = (dragonflyController && dragonflyController.IsSpeedBoostActive()) ? 8.0f : 1.0f;
+
         // Move the object to the left
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        transform.position += Vector3.left * moveSpeed * speedMultiplier * Time.deltaTime;
 
         // Check if the object has gone off the left side of the screen
         Vector2 screenPosition = Camera.main.WorldToViewportPoint(transform.position);

@@ -37,7 +37,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         inputHandling = GetComponent<InputHandling>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!canMove) return; // If canMove is false, exit the function
         inputHandling.HandleInput();        // Check and process player input
@@ -86,7 +86,11 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
             StartCoroutine(SpeedBoostCoroutine());
         }
     }
-
+    public bool IsSpeedBoostActive()
+    {
+        // Return the state of the speed boost (true if active, false otherwise)
+        return isMultiplierActive;
+    }
     private void ManipulateCameraSpeed(bool increase)
     {
         if (increase)
