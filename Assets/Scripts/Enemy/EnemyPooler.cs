@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyPooler : MonoBehaviour
+public class EnemyPooler : ObjectPoolingSystem
 {
     // Class to represent individual pools of game objects.
     [System.Serializable]
@@ -14,7 +14,6 @@ public class EnemyPooler : MonoBehaviour
     }
 
     public List<Pool> pools;   // List of all available object pools.
-    private Dictionary<string, Queue<GameObject>> poolDictionary; // Dictionary to quickly access object pools by tag.
 
     [SerializeField] private float initialSpawnInterval = 2.0f; // Initial interval between spawns.
     [SerializeField] private float spawnIntervalMin = 2.0f;     // Minimum interval between spawns.
@@ -41,7 +40,7 @@ public class EnemyPooler : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("More than one instance of UnifiedObjectPooler found!");
+            Debug.LogWarning("More than one instance of EnemyPooler found!");
             Destroy(gameObject);
             return;
         }
@@ -51,7 +50,7 @@ public class EnemyPooler : MonoBehaviour
     }
 
     // Create object pools based on provided definitions.
-    private void InitializePools()
+    public override void InitializePools()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
@@ -91,7 +90,6 @@ public class EnemyPooler : MonoBehaviour
         StartCoroutine(SpawnObjects());
     }
 
-
     // Coroutine to spawn objects.
     IEnumerator SpawnObjects()
     {
@@ -117,37 +115,6 @@ public class EnemyPooler : MonoBehaviour
 
             currentSpawnInterval = Random.Range(spawnIntervalMin, spawnIntervalMax); // Choose next spawn interval.
             yield return new WaitForSeconds(currentSpawnInterval);
-        }
-    }
-
-    // Spawn an object from a specific pool.
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
-    {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning($"Pool with tag {tag} doesn't exist.");
-            return null;
-        }
-
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
-
-        return objectToSpawn;
-    }
-
-    // Return an object to its pool.
-    public void ReturnToPool(string tag, GameObject objectToReturn)
-    {
-        objectToReturn.SetActive(false);
-        if (poolDictionary.ContainsKey(tag))
-        {
-            poolDictionary[tag].Enqueue(objectToReturn);
-        }
-        else
-        {
-            Debug.LogWarning($"Trying to return an object to a pool with tag {tag} that doesn't exist.");
         }
     }
 }

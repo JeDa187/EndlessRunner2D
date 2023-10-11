@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ObstaclePooler : MonoBehaviour
+
+public class ObstaclePooler : ObjectPoolingSystem
 {
     public GameObject[] downObstaclePrefabs;
     public GameObject[] upObstaclePrefabs;
@@ -10,7 +11,6 @@ public class ObstaclePooler : MonoBehaviour
     public float spawnXPositionOffset = 6f;
 
     private GroundManager groundManager;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
 
     private const string TAG_OBSTACLE_DOWN1 = "ObstacleDown1";
     private const string TAG_OBSTACLE_UP1 = "ObstacleUp1";
@@ -24,11 +24,11 @@ public class ObstaclePooler : MonoBehaviour
     {
         Instance = this;
         groundManager = GetComponent<GroundManager>();
-        InitializePool();
+        InitializePools();
     }
     #endregion
 
-    void InitializePool()
+    public override void InitializePools()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
@@ -57,24 +57,7 @@ public class ObstaclePooler : MonoBehaviour
         poolDictionary.Add(tag, objectPool);
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
-    {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-            return null;
-        }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
-
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
-        return objectToSpawn;
-    }
 
     private bool IsLocationFree(Vector2 location, GameObject[] prefabs)
     {
@@ -155,19 +138,6 @@ public class ObstaclePooler : MonoBehaviour
         newObstacle.transform.parent = rightmostGround.transform;
     }
 
-    public void ReturnToPool(string tag, GameObject obj)
-    {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-            return;
-        }
-
-        obj.SetActive(false);
-        obj.transform.SetParent(this.transform); // Ensure that the obstacle is returned under the correct parent
-        poolDictionary[tag].Enqueue(obj);
-    }
-
     private string GetPoolTag(int listChoice)
     {
         switch (listChoice)
@@ -180,3 +150,5 @@ public class ObstaclePooler : MonoBehaviour
         }
     }
 }
+
+
