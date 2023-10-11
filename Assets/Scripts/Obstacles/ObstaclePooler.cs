@@ -45,15 +45,17 @@ public class ObstaclePooler : MonoBehaviour
 
         for (int i = 0; i < obstaclePrefabs.Length; i++)
         {
-            GameObject obj = Instantiate(obstaclePrefabs[i]);
-            obj.transform.SetParent(this.transform);  // Asettaa objektin `ObstaclePooler`-objektin lapseksi
-            obj.SetActive(false);
-            objectPool.Enqueue(obj);
+            for (int j = 0; j < 2; j++)  // Lisätään jokainen este kaksi kertaa
+            {
+                GameObject obj = Instantiate(obstaclePrefabs[i]);
+                obj.transform.SetParent(this.transform);  // Asettaa objektin `ObstaclePooler`-objektin lapseksi
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
         }
 
         poolDictionary.Add(tag, objectPool);
     }
-
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {

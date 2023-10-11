@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 187665110372507729}
   - component: {fileID: 187665110372507730}
   - component: {fileID: 6713255104874653858}
+  - component: {fileID: -9045652930872448692}
   m_Layer: 6
   m_Name: Level_jungle_obstacles2_5
   m_TagString: ObstacleUp2
@@ -101,3 +102,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07048845, y: 0.028925419}
   m_Size: {x: 4.925708, y: 8.940923}
   m_Direction: 0
+--- !u!114 &-9045652930872448692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187665110372507731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  obstaclePooler: {fileID: 0}

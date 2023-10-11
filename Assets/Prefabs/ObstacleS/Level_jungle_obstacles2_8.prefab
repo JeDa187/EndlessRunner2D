@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2772668181357250225}
   - component: {fileID: 2772668181357250224}
   - component: {fileID: 9151687119029003098}
+  - component: {fileID: 8910195014963837573}
   m_Layer: 6
   m_Name: Level_jungle_obstacles2_8
   m_TagString: ObstacleDown2
@@ -101,3 +102,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.035930157, y: -0.31}
   m_Size: {x: 6.2705183, y: 8.4981575}
   m_Direction: 0
+--- !u!114 &8910195014963837573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772668181357250239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  obstaclePooler: {fileID: 0}

@@ -24,17 +24,35 @@ public class ParallaxEventHandler : MonoBehaviour
     {
         if (shiftedLayer.parent.CompareTag("Ground_Second"))
         {
-            foreach (Transform child in shiftedLayer)
+            // Etsi oikeanpuoleisin pala
+            Transform rightmostChild = null;
+            float maxX = float.MinValue;
+
+            foreach (Transform child in shiftedLayer.parent)
             {
-                if (child.CompareTag("ObstacleDown1") ||
-                    child.CompareTag("ObstacleDown2") ||
-                    child.CompareTag("ObstacleUp1") ||
-                    child.CompareTag("ObstacleUp2"))
+                if (child.position.x > maxX)
+                {
+                    maxX = child.position.x;
+                    rightmostChild = child;
+                }
+            }
+
+            // Jos oikeanpuoleista palaa ei löytynyt, lopeta tässä
+            if (rightmostChild == null) return;
+
+            // Käy läpi oikeanpuoleisen palan lapset
+            foreach (Transform grandChild in rightmostChild)
+            {
+                if (grandChild.CompareTag("ObstacleDown1") ||
+                    grandChild.CompareTag("ObstacleDown2") ||
+                    grandChild.CompareTag("ObstacleUp1") ||
+                    grandChild.CompareTag("ObstacleUp2"))
                 {
                     // Palauta este pooliin sen tagin perusteella
-                    ObstaclePooler.Instance.ReturnToPool(child.tag, child.gameObject);
+                    ObstaclePooler.Instance.ReturnToPool(grandChild.tag, grandChild.gameObject);
                 }
             }
         }
     }
+
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7037017270569299520}
   - component: {fileID: 7037017270569299521}
   - component: {fileID: -6361550363925310472}
+  - component: {fileID: 6914411166815937728}
   m_Layer: 6
   m_Name: Level_jungle_obstacles1_3 2
   m_TagString: ObstacleDown1
@@ -111,3 +112,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.187142, y: 13.9024725}
   m_EdgeRadius: 0
+--- !u!114 &6914411166815937728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037017270569299522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  obstaclePooler: {fileID: 0}

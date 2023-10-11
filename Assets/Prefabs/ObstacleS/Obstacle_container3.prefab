@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7236743857955695769}
   - component: {fileID: 8307182526661810676}
+  - component: {fileID: -4297816057579338925}
   m_Layer: 6
   m_Name: Obstacle_container3
   m_TagString: ObstacleUp1
@@ -67,6 +68,20 @@ PolygonCollider2D:
       - {x: 10.325954, y: -9.842711}
       - {x: 10.604488, y: 4.0937433}
       - {x: 2.0343695, y: 4.4067698}
+--- !u!114 &-4297816057579338925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7236743857955695768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  obstaclePooler: {fileID: 0}
 --- !u!1001 &7236743856774037740
 PrefabInstance:
   m_ObjectHideFlags: 0
