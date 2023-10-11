@@ -1010,9 +1010,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 212355268}
-  - component: {fileID: 212355269}
+  - component: {fileID: 212355270}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemyPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,7 +1033,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &212355269
+--- !u!114 &212355270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1042,21 +1042,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 212355267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa45d8264e24724daa350c0859f8ea8, type: 3}
+  m_Script: {fileID: 11500000, guid: 76b5e31bfc5f5a84ca518afe3b11d3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn:
-  - {fileID: 4313518782463425633, guid: 0b1d02a6a7d83904eae663c02ee0256a, type: 3}
-  - {fileID: 2196609216277172133, guid: 83a8cd59f8ab2d840b60282c1d52cc01, type: 3}
+  pools:
+  - tag: Enemy1
+    prefab: {fileID: 4313518782463425633, guid: 0b1d02a6a7d83904eae663c02ee0256a, type: 3}
+    size: 3
+  - tag: Enemy2
+    prefab: {fileID: 2196609216277172133, guid: 83a8cd59f8ab2d840b60282c1d52cc01, type: 3}
+    size: 3
   initialSpawnInterval: 2
   spawnIntervalMin: 2
   spawnIntervalMax: 4
-  currentSpawnInterval: 0
   spawnOffsetX: 10
   minDeltaY: 1
   minY: -7
   maxY: 7.5
-  poolSize: 10
 --- !u!1 &273254625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,6 +4017,10 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8085688765740231979, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
+      propertyPath: far clip plane
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
 --- !u!1 &840901971 stripped
@@ -4634,7 +4640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410163301480943888, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2760872010388890157, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: jumpForce

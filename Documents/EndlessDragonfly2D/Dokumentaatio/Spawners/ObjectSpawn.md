@@ -45,3 +45,6 @@ Tämän skriptin tavoitteena on spawnata objekteja pelissä. Jokainen objekti sp
 
 5. **Testaus ja optimointi:**
     - Varmistettiin, että pelissä objektit liikkuvat vasemmalle ja tuhoutuvat, kun ne ylittävät kameran vasemman reunan.
+
+
+[[Uusi Enemy Pooler]]
