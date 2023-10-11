@@ -4702,7 +4702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410163301480943888, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2760872010388890157, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: jumpForce
