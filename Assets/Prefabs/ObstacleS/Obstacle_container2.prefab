@@ -83,8 +83,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  obstaclePooler: {fileID: 0}
+  mainCamera: {fileID: 8085688765740231979, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
+  obstaclePooler: {fileID: 739123069936370428, guid: 33e878763641cee4d9724429ac19e92e, type: 3}
 --- !u!1001 &2373478872937607615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,6 +92,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1586297651701597696}
     m_Modifications:
+    - target: {fileID: -3032554812336577144, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3032554812336577144, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
+      propertyPath: obstaclePooler
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 505209043149404651, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -163,6 +171,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1586297651701597696}
     m_Modifications:
+    - target: {fileID: -3032554812336577144, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3032554812336577144, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
+      propertyPath: obstaclePooler
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 505209043149404651, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
       propertyPath: m_Enabled
       value: 1

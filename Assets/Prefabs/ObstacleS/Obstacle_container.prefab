@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8ce50a870cb94d9ab14ffafb28d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  obstaclePooler: {fileID: 0}
+  mainCamera: {fileID: 8085688765740231979, guid: 0d5977f571b3dba419d87c2c2ff42ed3, type: 3}
+  obstaclePooler: {fileID: 739123069936370428, guid: 33e878763641cee4d9724429ac19e92e, type: 3}
 --- !u!1001 &6188059019468484833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,6 +82,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4271423794510670663}
     m_Modifications:
+    - target: {fileID: -156028800550214808, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -156028800550214808, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+      propertyPath: obstaclePooler
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7037017270569299520, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -153,6 +161,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4271423794510670663}
     m_Modifications:
+    - target: {fileID: -156028800550214808, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -156028800550214808, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
+      propertyPath: obstaclePooler
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7037017270569299520, guid: c3cc368cdb898b74692c60c66b562010, type: 3}
       propertyPath: m_RootOrder
       value: 1
