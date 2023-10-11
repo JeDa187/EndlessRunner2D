@@ -26,9 +26,13 @@ public class ParallaxEventHandler : MonoBehaviour
         {
             foreach (Transform child in shiftedLayer)
             {
-                if (child.CompareTag("Hazard"))
+                if (child.CompareTag("ObstacleDown1") ||
+                    child.CompareTag("ObstacleDown2") ||
+                    child.CompareTag("ObstacleUp1") ||
+                    child.CompareTag("ObstacleUp2"))
                 {
-                    Destroy(child.gameObject);
+                    // Palauta este pooliin sen tagin perusteella
+                    ObstaclePooler.Instance.ReturnToPool(child.tag, child.gameObject);
                 }
             }
         }

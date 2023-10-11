@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6713255104874653858}
   m_Layer: 6
   m_Name: Level_jungle_obstacles2_5
-  m_TagString: Hazard
+  m_TagString: ObstacleUp2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.26235867, y: 0.011406422}
-  m_Size: {x: 5.591402, y: 9.606618}
+  m_Offset: {x: 0.07048845, y: 0.028925419}
+  m_Size: {x: 4.925708, y: 8.940923}
   m_Direction: 0

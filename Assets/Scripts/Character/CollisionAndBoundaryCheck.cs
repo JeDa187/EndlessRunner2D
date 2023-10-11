@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class CollisionAndBoundaryCheck : MonoBehaviour
 {
-
-    //private DragonflyController dragonflyController;
     private Renderer rend;
+    private string[] tagsToCheck = { "Hazard", "Enemy1", "Enemy2", "ObstacleDown1", "ObstacleDown2", "ObstacleUp1", "ObstacleUp2" };
 
     private void Awake()
     {
-        //dragonflyController = GetComponent<DragonflyController>();
         rend = GetComponent<Renderer>(); // Get the Renderer component
-
     }
+
     private void Update()
     {
         CheckOutOfScreenBounds();
@@ -21,27 +19,32 @@ public class CollisionAndBoundaryCheck : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if collision occurred with an object that can destroy the character
-        if (collision.gameObject.CompareTag("Hazard") ||
-            collision.gameObject.CompareTag("Enemy1") ||
-            collision.gameObject.CompareTag("Enemy2"))
+        if (IsTagMatched(collision.gameObject.tag))
         {
             GameManager.Instance.GameOver(); // End the game
             Destroy(gameObject);            // Destroy the dragonfly game object
         }
     }
 
+    private bool IsTagMatched(string tagToCheck)
+    {
+        foreach (string tag in tagsToCheck)
+        {
+            if (tagToCheck == tag)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void CheckOutOfScreenBounds()
     {
-        // Convert object bounds to viewport positions
         Vector2 viewportPositionMin = Camera.main.WorldToViewportPoint(rend.bounds.min);
         Vector2 viewportPositionMax = Camera.main.WorldToViewportPoint(rend.bounds.max);
 
-        // Get the height of the object in viewport coordinates
         float objectHeightInViewport = viewportPositionMax.y - viewportPositionMin.y;
 
-        // If the dragonfly is more than half outside the screen vertically
         if (viewportPositionMax.y < 0.5f * objectHeightInViewport || viewportPositionMin.y > 1 - 0.5f * objectHeightInViewport)
         {
             GameManager.Instance.GameOver(); // End the game

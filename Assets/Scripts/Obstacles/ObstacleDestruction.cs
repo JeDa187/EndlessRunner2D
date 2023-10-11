@@ -3,14 +3,23 @@ using UnityEngine;
 public class ObstacleDestruction : MonoBehaviour
 {
     public Camera mainCamera;
+    public ObstaclePooler obstaclePooler;
 
-    void Update()
+    private void FixedUpdate()
     {
         float cameraLeftEdge = mainCamera.transform.position.x - (mainCamera.orthographicSize * mainCamera.aspect);
 
         if (transform.position.x < cameraLeftEdge)
         {
-            Destroy(gameObject);
+            ReturnToPool();
         }
+    }
+
+    private void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+
+        // Käytämme ReturnToPool-metodia ObstaclePooler-luokassa.
+        obstaclePooler.ReturnToPool(gameObject.tag, gameObject);
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9151687119029003098}
   m_Layer: 6
   m_Name: Level_jungle_obstacles2_8
-  m_TagString: Hazard
+  m_TagString: ObstacleDown2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

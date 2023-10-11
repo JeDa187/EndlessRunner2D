@@ -8,6 +8,12 @@ TagManager:
   - FireGem
   - Ground_Second
   - Obstacle
+  - Enemy1
+  - Enemy2
+  - ObstacleDown1
+  - ObstacleDown2
+  - ObstacleUp1
+  - ObstacleUp2
   layers:
   - Default
   - TransparentFX

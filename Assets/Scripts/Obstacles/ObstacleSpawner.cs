@@ -7,7 +7,8 @@ public class ObstacleSpawner : MonoBehaviour
     private float minSpawnRate = 2.0f;
     [SerializeField]
     private float maxSpawnRate = 6.0f;
-    private ObstacleManager obstacleManager;
+
+    private ObstaclePooler obstaclePooler; // Päivitetty viittaus
 
     public InfiniteParallaxBackground backgroundScroller;
 
@@ -15,8 +16,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Start()
     {
-        obstacleManager = GetComponent<ObstacleManager>();
-        obstacleManager.SpawnObstacle();
+        obstaclePooler = GetComponent<ObstaclePooler>(); // Päivitetty viittaus
+        obstaclePooler.SpawnObstacle();
         StartCoroutine(SpawnObstacles());
     }
 
@@ -32,7 +33,7 @@ public class ObstacleSpawner : MonoBehaviour
             float timeToNextSpawn = Random.Range(adjustedMinSpawnRate, adjustedMaxSpawnRate);
 
             yield return new WaitForSeconds(timeToNextSpawn);
-            obstacleManager.SpawnObstacle();
+            obstaclePooler.SpawnObstacle(); // Päivitetty viittaus
         }
     }
 

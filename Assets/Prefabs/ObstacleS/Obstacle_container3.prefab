@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8307182526661810676}
   m_Layer: 6
   m_Name: Obstacle_container3
-  m_TagString: Hazard
+  m_TagString: ObstacleUp1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

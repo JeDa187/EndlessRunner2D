@@ -4,7 +4,7 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Move the object to the left
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
