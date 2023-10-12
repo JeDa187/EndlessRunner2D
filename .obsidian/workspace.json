@@ -21,14 +21,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Documents/ObjectPoolingSystem/Modulaarinen Objektipoolausjärjestelmä.md",
+                "file": "Documents/ObjectPoolingSystem/EnemyPooler.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5fe0a12c13f0d236",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Uusi Enemy Pooler.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0857fb9a5e3c13a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Documents/ObjectPoolingSystem/ObstaclePooler.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -94,7 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documents/ObjectPoolingSystem/Modulaarinen Objektipoolausjärjestelmä.md",
+                "file": "Documents/ObjectPoolingSystem/ObstaclePooler.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +135,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documents/ObjectPoolingSystem/Modulaarinen Objektipoolausjärjestelmä.md",
+                "file": "Documents/ObjectPoolingSystem/ObstaclePooler.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documents/ObjectPoolingSystem/Modulaarinen Objektipoolausjärjestelmä.md"
+                "file": "Documents/ObjectPoolingSystem/ObstaclePooler.md"
               }
             }
           }
@@ -155,9 +179,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "435893803f0392ae",
+  "active": "0857fb9a5e3c13a3",
   "lastOpenFiles": [
-    "Documents/ObjectPoolingSystem/Modulaarinen Objektipoolausjärjestelmä.md",
+    "Documents/ObjectPoolingSystem/EnemyPooler.md",
+    "Documents/ObjectPoolingSystem/Objektipoolausjärjestelmä.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Siirtyminen Spawnereista Poolaukseen.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Uusi Enemy Pooler.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/ObjectSpawn.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md",
+    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/CollectableSpawner.md",
+    "Documents/ObjectPoolingSystem/ObstaclePooler.md",
+    "Temp/UnityTempFile-ad1be8c310b75b5419a692b9c2cae637",
     "Documents/ObjectPoolingSystem",
     "Temp/UnityTempFile-6f845be90076a2540924c1b13189e577",
     "Library/TempArtifacts/Extra/95ab3b6a9611e374083b47b4243d1567",
@@ -167,14 +200,8 @@
     "Library/Bee/TundraBuildState.state",
     "Library/Artifacts/77/7753eb881626c0f64cad80823e1527de",
     "Library/Artifacts/df/dff89c861c6d15fe989721b6ea641335",
-    "Library/Artifacts/0e/0e555f0bb7d47391f95e2c0ca9cd5caa",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Uusi Enemy Pooler.md",
     "Untitled.canvas",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/ObjectSpawn.md",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/New Obtacle Spawner.md",
     "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Uusi FiregemSpawner.md",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/ObstacleSpawner-scriptin jakaminen osiin.md",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/Obstacle Spawner.md",
-    "Documents/EndlessDragonfly2D/Dokumentaatio/Spawners/CollectableSpawner.md"
+    "Documents/EndlessDragonfly2D/Dokumentaatio/ObstacleSpawner-scriptin jakaminen osiin.md"
   ]
 }

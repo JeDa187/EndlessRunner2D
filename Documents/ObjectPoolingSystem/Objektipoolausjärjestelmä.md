@@ -1,4 +1,4 @@
-**ObjectPoolingSystem
+**ObjectPoolingSystem**
 
 ---
 
@@ -12,7 +12,6 @@
 - **Poolien alustus**: Abstrakti metodi, joka odottaa perityltä luokalta konkreettista toteutusta objektipoolien alustamiselle.
 - **Objektien nouto ja palautus**: Mahdollistaa objektien uudelleenkäytön noutamalla ne poolista ja palauttamalla ne takaisin.
 
-### 3. **Koodisnippet**:
 
 ```csharp
 public abstract class ObjectPoolingSystem : MonoBehaviour
@@ -25,15 +24,15 @@ public abstract class ObjectPoolingSystem : MonoBehaviour
 }
 ```
 
-### 4. **Modulaarinen suunnittelu**:
+### 3. **Modulaarinen suunnittelu**:
 
 Tämän järjestelmän modulaarisuus johtuu sen abstraktista luonteesta. `ObjectPoolingSystem` tarjoaa yleisen pohjan, mutta vaatii, että johdannainen tai perivä luokka määrittää, kuinka objektipoolit alustetaan. Tämä tarkoittaa, että voit mukauttaa ja laajentaa sitä helposti erilaisiin käyttötapauksiin.
 
-Esimerkiksi `EnemyPooler` tai `ObstaclePooler` voivat periytyä `ObjectPoolingSystem`istä ja tarjota erityisiä toteutuksia `InitializePools`-metodille. Samalla ne voivat hyödyntää `SpawnFromPool` ja `ReturnToPool` -metodeja ilman, että niitä tarvitsee uudelleenkirjoittaa.
+Esimerkiksi [[EnemyPooler]] tai [[ObstaclePooler]] voivat periytyä `ObjectPoolingSystem`istä ja tarjota erityisiä toteutuksia `InitializePools`-metodille. Samalla ne voivat hyödyntää `SpawnFromPool` ja `ReturnToPool` -metodeja ilman, että niitä tarvitsee uudelleenkirjoittaa.
 
 ---
 
-### 5. **Edut ja soveltuvuus**:
+### 4. **Edut ja soveltuvuus**:
 
 `ObjectPoolingSystem`in suunnittelu tekee siitä erityisen sopivan peleihin, joissa objekteja luodaan ja tuhotaan usein, kuten ammuntapeleissä tai rytmipeleissä. Sen sijaan, että luotaisiin ja tuhottaisiin objekteja, jotka aiheuttavat suorituskyvyn pudotuksen ja roskaantumisen, objektit palautetaan pooliin uudelleenkäyttöä varten.
 
