@@ -10,6 +10,8 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text[] playerNameTexts; // Array of text fields for player names
     public TMP_Text[] playerScoreTexts; // Array of text fields for player scores
     public Button backButton; // Back button
+    public TMP_Text ErrorText; // Uusi TMP tekstikenttä virheilmoituksille
+    public GameObject leaderboardPanel; // Viittaus uuteen leaderboard-paneeliin
 
     [Header("Loading Panel Reference")]
     [SerializeField] private LoadingPanelManager loadingPanelManager;  // Viittaus LoadingPanelManager-olioon
@@ -20,17 +22,21 @@ public class LeaderboardManager : MonoBehaviour
 
         if (SecurePlayerPrefs.GetInt("Online") == 1)
         {
+            ErrorText.gameObject.SetActive(false); // Piilota virheilmoitus, kun ollaan online
+            leaderboardPanel.SetActive(true); // Aktivoi leaderboard-paneeli online-tilassa
             GetLeaderboard();
         }
         else
         {
-            // show a message to the player that the leaderboard is not available in offline mode
+            // Näytä viesti pelaajalle, että leaderboard ei ole saatavilla offline-tilassa
             for (int i = 0; i < playerNameTexts.Length; i++)
             {
                 playerNameTexts[i].text = "";
                 playerScoreTexts[i].text = "";
             }
-            playerNameTexts[0].text = "Leaderboard is not available in offline mode.";
+            ErrorText.gameObject.SetActive(true); // Näytä virheilmoitus offline-tilassa
+            ErrorText.text = "Leaderboard is not available in offline mode.";
+            leaderboardPanel.SetActive(false); // Deaktivoi leaderboard-paneeli offline-tilassa
 
             loadingPanelManager.HideLoadingPanel(); // Piilota loading panel
         }
