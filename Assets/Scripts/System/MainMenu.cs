@@ -1,25 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI; // Required for UI elements
 
 public class MainMenu : MonoBehaviour
 {
-    public TextMeshProUGUI playerStatusText; // Viittaus uuteen UI-elementtiin.
-   
+    public TextMeshProUGUI playerStatusText;
+    public TextMeshProUGUI errorMessage;  // Text field for displaying error messages
+    public Button accountManagerButton;  // Reference to the Account Manager button
+    public Color dimmedButtonColor = new Color(0.7f, 0.7f, 0.7f); // dimmed color for the button                                                                  // Dimmed color for the button
+    private Color originalButtonColor; // Store the original color of the button
+
     private void Start()
     {
-        // P‰ivit‰ teksti riippuen siit‰, onko k‰ytt‰j‰ kirjautunut sis‰‰n vai ei.
-        if (SecurePlayerPrefs.GetInt("Online") == 1)
+        // Get the original color of the button
+        originalButtonColor = accountManagerButton.image.color;
+
+        if (IsOnline())
         {
-          
-            //Kirjautuneen k‰ytt‰j‰n nimi on tallennettu PlayerPrefsiin.
-            string playerName = SecurePlayerPrefs.GetString("PlayerName", "Unknown");
-            playerStatusText.text = playerName;
+            playerStatusText.text = SecurePlayerPrefs.GetString("PlayerName", "Unknown");
+            accountManagerButton.image.color = originalButtonColor; // Set the button to its original color
         }
         else
         {
-        
             playerStatusText.text = "Offline Mode";
+            accountManagerButton.image.color = dimmedButtonColor; // Dim the button color
         }
     }
 
@@ -32,28 +37,52 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Leaderboard");
     }
+
+    public void OpenAccountManager()
+    {
+        if (IsOnline())
+        {
+            SceneManager.LoadScene("AccountManager");
+        }
+        else
+        {
+            errorMessage.text = "User Statistics is not available in Offline Mode.";
+        }
+    }
+
     public void Logout()
     {
-        // Jos ehtoja EI ole hyv‰ksytty
         if (SecurePlayerPrefs.GetInt("PrivacyPolicyAccepted", 0) == 0)
         {
             SceneManager.LoadScene("PrivacyPolicyScene");
         }
-        // Jos ehtoja on hyv‰ksytty, riippumatta siit‰ onko k‰ytt‰j‰ online vai offline, siirryt‰‰n LoginSceneen
         else
         {
-            SecurePlayerPrefs.DeleteKey("Online"); // Poistetaan online-tila
+            SecurePlayerPrefs.DeleteKey("Online");
             SceneManager.LoadScene("LoginScene");
         }
     }
 
-
     public void QuitGame()
     {
-        Application.Quit();
+        // Call QuitManager's ToggleQuitPanel method to display the exit window
+        if (QuitManager.Instance != null)
+        {
+            QuitManager.Instance.ToggleQuitPanel();
+        }
+        else
+        {
+            Debug.LogWarning("QuitManager.Instance not found.");
+        }
     }
+
     public void CharacterSelection()
     {
         SceneManager.LoadScene("CharacterSelection");
+    }
+
+    private bool IsOnline()
+    {
+        return SecurePlayerPrefs.GetInt("Online") == 1;
     }
 }

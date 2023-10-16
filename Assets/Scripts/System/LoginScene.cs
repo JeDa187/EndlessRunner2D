@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using PlayFab;
 using PlayFab.ClientModels;
+using System.Collections.Generic;
+using System;
 
 public class LoginScene : MonoBehaviour
 {
@@ -101,13 +103,26 @@ public class LoginScene : MonoBehaviour
         }, result =>
         {
             // Successful registration
-            // Update the display name and move to the next scene
-            UpdateDisplayName(playerName);
+            SaveAccountCreationDate(); // Tallenna tilin luomispäivämäärä
+            UpdateDisplayName(playerName); // Päivitä näyttönimi ja siirry seuraavaan kohtaukseen
         }, error =>
         {
             // Error registering
             errorMessage.text = error.ErrorMessage;
         });
+    }
+
+    private void SaveAccountCreationDate()
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>
+        {
+            { "AccountCreationDate", DateTime.UtcNow.ToString() }
+        }
+        },
+        result => Debug.Log("Account creation date saved successfully."),
+        error => Debug.LogError(error.GenerateErrorReport()));
     }
 
     private void UpdateDisplayName(string playerName)
