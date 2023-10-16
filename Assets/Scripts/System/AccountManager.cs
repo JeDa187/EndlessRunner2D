@@ -13,6 +13,8 @@ public class AccountManager : MonoBehaviour
     public TMP_Text highscoreText;
     public TMP_Text accountCreationDateText;
     public TMP_Text totalPlayTimeText;
+    public TMP_Text unlockedCharactersText;
+
 
     [Header("Varoituspaneeli")]
     public GameObject warningPanel;
@@ -23,8 +25,7 @@ public class AccountManager : MonoBehaviour
     [Header("Tilin poisto-ohjeet")]
     public TMP_Text accountDeletionInstructionsText;
     public GameObject accountDeletionInstructionsPanel;
-    public Button openAccountDeletionInstructionsButton;
-    public Button closeAccountDeletionInstructionsButton;
+
 
     [Header("Muut")]
     private QuitManager quitManager;
@@ -49,6 +50,11 @@ public class AccountManager : MonoBehaviour
 
         playerName = SecurePlayerPrefs.GetString("PlayerName");
         FetchPlayerInfo();
+
+        // Get the character info from the CharacterSelection instance
+        var characterInfo = CharacterSelection.Instance.GetCharacterInfo();
+
+        unlockedCharactersText.text = characterInfo.UnlockedCount + " out of " + characterInfo.TotalCount + " characters unlocked";
     }
 
     void FetchPlayerInfo()

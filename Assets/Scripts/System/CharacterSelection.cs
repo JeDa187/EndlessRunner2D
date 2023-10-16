@@ -258,6 +258,18 @@ public class CharacterSelection : MonoBehaviour
             }
         }
     }
+    public (int UnlockedCount, int TotalCount) GetCharacterInfo()
+    {
+        int unlockedCount = 0;
+        int totalCount = characterLocked.Length;  // This will give the total number of characters
+
+        foreach (bool isLocked in characterLocked)
+        {
+            if (!isLocked) unlockedCount++;
+        }
+
+        return (unlockedCount, totalCount);
+    }
 
     // Update text displays on character buttons
     void UpdateCharacterTexts()

@@ -114,16 +114,27 @@ public class LoginScene : MonoBehaviour
 
     private void SaveAccountCreationDate()
     {
+        string currentDate = DateTime.UtcNow.Date.ToString("yyyy-MM-dd");
+
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>
         {
-            { "AccountCreationDate", DateTime.UtcNow.ToString() }
+            { "AccountCreationDate", currentDate }
         }
         },
-        result => Debug.Log("Account creation date saved successfully."),
-        error => Debug.LogError(error.GenerateErrorReport()));
+        result =>
+        {
+        // This is the response handler for a successful save.
+        Debug.Log("Account creation date saved successfully: " + currentDate);
+        },
+        error =>
+        {
+        // This is the error handler if something goes wrong.
+        Debug.LogError("Failed to save account creation date. Error: " + error.ErrorMessage);
+        });
     }
+
 
     private void UpdateDisplayName(string playerName)
     {
