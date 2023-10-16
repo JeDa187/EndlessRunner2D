@@ -31,6 +31,10 @@ public class AccountManager : MonoBehaviour
     public Button MainMenu;
     private string playerName;
 
+    // Loading Panel
+    [Header("Loading Panel")]
+    public LoadingPanelManager loadingPanelManager; // Reference to LoadingPanelManager script
+
     private void Start()
     {
         quitManager = QuitManager.Instance;
@@ -49,77 +53,80 @@ public class AccountManager : MonoBehaviour
 
     void FetchPlayerInfo()
     {
+        loadingPanelManager.ShowLoadingPanel(); // Show the loading panel at the start of the method.
+
         playerNameText.text = "" + playerName;
 
         // Fetch player statistics
         PlayFabClientAPI.GetPlayerStatistics(new GetPlayerStatisticsRequest(),
             result =>
             {
-                bool hasHighscore = false; // Assume player hasn't achieved a highscore by default
+                bool hasHighscore = false;
 
                 foreach (var eachStat in result.Statistics)
                 {
                     if (eachStat.StatisticName == "PlatformScore" && eachStat.Value > 0)
                     {
                         highscoreText.text = "Highscore: " + eachStat.Value;
-                        hasHighscore = true; // Player has a highscore
-                        break; // Exit the loop as we found the highscore
+                        hasHighscore = true;
+                        break;
                     }
                 }
 
-                // If the player hasn't achieved a highscore yet
                 if (!hasHighscore)
                 {
                     highscoreText.text = "No highscore yet! Play now and set your record!";
                 }
+
+                // Fetch player user data inside the first callback
+                string playFabId = SecurePlayerPrefs.GetString("PlayFabId");
+
+                PlayFabClientAPI.GetUserData(new GetUserDataRequest { PlayFabId = playFabId },
+                    userDataResult =>
+                    {
+                        if (userDataResult.Data.ContainsKey("AccountCreationDate"))
+                        {
+                            accountCreationDateText.text = "Account Created On: " + userDataResult.Data["AccountCreationDate"].Value;
+                        }
+
+                        if (userDataResult.Data != null && userDataResult.Data.ContainsKey("TotalPlayTime"))
+                        {
+                            float retrievedPlayTime;
+                            if (float.TryParse(userDataResult.Data["TotalPlayTime"].Value, out retrievedPlayTime) && retrievedPlayTime > 0)
+                            {
+                                int hours = Mathf.FloorToInt(retrievedPlayTime / 3600);
+                                int minutes = Mathf.FloorToInt((retrievedPlayTime % 3600) / 60);
+                                int seconds = Mathf.FloorToInt(retrievedPlayTime % 60);
+
+                                totalPlayTimeText.text = "Total Play Time: " + hours.ToString("00") + ":" + minutes.ToString("00") + ":" + seconds.ToString("00");
+                            }
+                            else
+                            {
+                                totalPlayTimeText.text = "You haven't played yet! Dive in and enjoy the game!";
+                            }
+                        }
+                        else
+                        {
+                            totalPlayTimeText.text = "You haven't played yet! Dive in and enjoy the game!";
+                        }
+
+                        loadingPanelManager.HideLoadingPanel(); // Hide the loading panel after all data is fetched.
+                    },
+                    userDataError =>
+                    {
+                        Debug.LogError(userDataError.GenerateErrorReport());
+                        ShowWarning("Failed to fetch user data.");
+                        loadingPanelManager.HideLoadingPanel(); // Hide the loading panel if there's an error.
+                    }
+                );
             },
             error =>
             {
                 Debug.LogError(error.GenerateErrorReport());
                 ShowWarning("Failed to fetch highscore data.");
+                loadingPanelManager.HideLoadingPanel(); // Hide the loading panel if there's an error.
             }
         );
-
-        // Get the stored PlayFabId from PlayerPrefs 
-        string playFabId = SecurePlayerPrefs.GetString("PlayFabId");
-
-        // Fetch player user data
-        PlayFabClientAPI.GetUserData(new GetUserDataRequest { PlayFabId = playFabId },
-            result =>
-            {
-                if (result.Data.ContainsKey("AccountCreationDate"))
-                {
-                    accountCreationDateText.text = "Account Created On: " + result.Data["AccountCreationDate"].Value;
-                }
-
-                if (result.Data != null && result.Data.ContainsKey("TotalPlayTime"))
-                {
-                    float retrievedPlayTime;
-                    if (float.TryParse(result.Data["TotalPlayTime"].Value, out retrievedPlayTime) && retrievedPlayTime > 0)
-                    {
-                        int hours = Mathf.FloorToInt(retrievedPlayTime / 3600);
-                        int minutes = Mathf.FloorToInt((retrievedPlayTime % 3600) / 60);
-                        int seconds = Mathf.FloorToInt(retrievedPlayTime % 60);
-
-                        totalPlayTimeText.text = "Total Play Time: " + hours.ToString("00") + ":" + minutes.ToString("00") + ":" + seconds.ToString("00");
-                    }
-                    else
-                    {
-                        totalPlayTimeText.text = "You haven't played yet! Dive in and enjoy the game!";
-                    }
-                }
-                else
-                {
-                    totalPlayTimeText.text = "You haven't played yet! Dive in and enjoy the game!";
-                }
-            },
-            error =>
-            {
-                Debug.LogError(error.GenerateErrorReport());
-                ShowWarning("Failed to fetch user data.");
-            }
-        );
-
     }
 
     public void ShowAccountDeletionInstructions()
