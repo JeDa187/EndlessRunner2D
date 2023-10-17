@@ -60,6 +60,7 @@ public class MainMenu : MonoBehaviour
         else
         {
             SecurePlayerPrefs.DeleteKey("Online");
+            SecurePlayerPrefs.DeleteKey("RememberMe"); 
             SceneManager.LoadScene("LoginScene");
         }
     }

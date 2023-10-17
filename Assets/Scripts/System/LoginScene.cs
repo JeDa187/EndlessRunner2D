@@ -1,25 +1,52 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+
 using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 public class LoginScene : MonoBehaviour
 {
+    // Muuttuja, joka kertoo onko automaattinen kirjautuminen jo yritetty
+    private bool autoLoginAttempted = false;
+
     public TMP_InputField playerNameInputField; // Input field for player name
     public TextMeshProUGUI errorMessage; // Text field for displaying error messages
     public TMP_InputField passwordInputField; // Input field for password
+    public Toggle rememberMeToggle; // Toggle for "Remember Me" function
 
-
-
+    private void Start()
+    {
+        // Tarkistetaan, onko "Remember Me" -toiminto aktivoitu ja yritetään automaattista kirjautumista vain kerran
+        if (SecurePlayerPrefs.GetInt("RememberMe", 0) == 1 && !autoLoginAttempted)
+        {
+            playerNameInputField.text = SecurePlayerPrefs.GetString("PlayerName", "");
+            passwordInputField.text = SecurePlayerPrefs.GetString("PlayerPassword", "");
+            autoLoginAttempted = true; // Merkitään automaattinen kirjautuminen yritetyksi
+            OnContinueButtonClicked();
+        }
+    }
 
     public void OnContinueButtonClicked()
     {
         string playerName = playerNameInputField.text;
         string password = passwordInputField.text;
         SecurePlayerPrefs.SetInt("Online", 1); // 1 for online
+
+        if (rememberMeToggle.isOn) // Save login info if "Remember Me" is checked
+        {
+            SecurePlayerPrefs.SetString("PlayerName", playerName);
+            SecurePlayerPrefs.SetString("PlayerPassword", password);
+            SecurePlayerPrefs.SetInt("RememberMe", 1);
+        }
+        else
+        {
+            ClearSavedLoginInfo();
+            SecurePlayerPrefs.SetInt("RememberMe", 0);
+        }
 
         if (playerName.Length != 4)
         {
@@ -35,6 +62,7 @@ public class LoginScene : MonoBehaviour
             CheckPlayerName(playerName, password);
         }
     }
+
     public void OnPlayOfflineButtonClicked()
     {
         SecurePlayerPrefs.SetInt("Online", 0); // 0 for offline
@@ -56,23 +84,66 @@ public class LoginScene : MonoBehaviour
         }, result =>
         {
             // Successful login
-            // Show logging in message
             errorMessage.text = "Logging in to existing account";
-            // Wait for 3 seconds, then update the display name and move to the next scene
             Invoke("UpdateDisplayNameAndMoveToNextScene", 3.0f);
         }, error =>
         {
-            if (error.Error == PlayFabErrorCode.AccountNotFound)
+            if (error.HttpCode == 0)
             {
-                // Account not found
-                // Show creating new user message and try to create a new account
-                errorMessage.text = "Creating new user";
-                Invoke("CreateNewAccountAndMoveToNextScene", 3.0f);
+                errorMessage.text = "Network error. Please check your connection.";
+                return;
             }
-            else
+
+            switch (error.Error)
             {
-                // Other error
-                errorMessage.text = error.ErrorMessage;
+                case PlayFabErrorCode.AccountNotFound:
+                    errorMessage.text = "Creating a new user";
+                    Invoke("CreateNewAccountAndMoveToNextScene", 3.0f);
+                    break;
+                case PlayFabErrorCode.InvalidUsernameOrPassword:
+                    errorMessage.text = "Invalid username or password. Please try again.";
+                    break;
+                case PlayFabErrorCode.AccountBanned:
+                    errorMessage.text = "This account is banned.";
+                    break;
+                case PlayFabErrorCode.AccountDeleted:
+                    errorMessage.text = "This account has been deleted.";
+                    break;
+                default:
+                    errorMessage.text = error.ErrorMessage;
+                    break;
+            }
+        });
+    }
+
+    private void CreateNewAccount(string playerName, string password)
+    {
+        PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest
+        {
+            Username = playerName,
+            Password = password,
+            RequireBothUsernameAndEmail = false
+        }, result =>
+        {
+            SaveAccountCreationDate();
+            UpdateDisplayName(playerName);
+        }, error =>
+        {
+            if (error.HttpCode == 0)
+            {
+                errorMessage.text = "Network error. Please check your connection.";
+                return;
+            }
+
+            switch (error.Error)
+            {
+                case PlayFabErrorCode.NameNotAvailable:
+                    errorMessage.text = "Username is already taken. Please choose a different one.";
+                    break;
+                // Add more specific error cases if needed
+                default:
+                    errorMessage.text = error.ErrorMessage;
+                    break;
             }
         });
     }
@@ -90,28 +161,6 @@ public class LoginScene : MonoBehaviour
         CreateNewAccount(playerName, password);
     }
 
-
-
-
-    private void CreateNewAccount(string playerName, string password)
-    {
-        PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest
-        {
-            Username = playerName,
-            Password = password,
-            RequireBothUsernameAndEmail = false
-        }, result =>
-        {
-            // Successful registration
-            SaveAccountCreationDate(); // Tallenna tilin luomispäivämäärä
-            UpdateDisplayName(playerName); // Päivitä näyttönimi ja siirry seuraavaan kohtaukseen
-        }, error =>
-        {
-            // Error registering
-            errorMessage.text = error.ErrorMessage;
-        });
-    }
-
     private void SaveAccountCreationDate()
     {
         string currentDate = DateTime.UtcNow.Date.ToString("yyyy-MM-dd");
@@ -119,22 +168,21 @@ public class LoginScene : MonoBehaviour
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>
-        {
-            { "AccountCreationDate", currentDate }
-        }
+            {
+                { "AccountCreationDate", currentDate }
+            }
         },
         result =>
         {
-        // This is the response handler for a successful save.
-        Debug.Log("Account creation date saved successfully: " + currentDate);
+            // This is the response handler for a successful save.
+            Debug.Log("Account creation date saved successfully: " + currentDate);
         },
         error =>
         {
-        // This is the error handler if something goes wrong.
-        Debug.LogError("Failed to save account creation date. Error: " + error.ErrorMessage);
+            // This is the error handler if something goes wrong.
+            Debug.LogError("Failed to save account creation date. Error: " + error.ErrorMessage);
         });
     }
-
 
     private void UpdateDisplayName(string playerName)
     {
@@ -151,5 +199,11 @@ public class LoginScene : MonoBehaviour
             // Error updating the name
             errorMessage.text = error.ErrorMessage;
         });
+    }
+
+    public void ClearSavedLoginInfo()
+    {
+        SecurePlayerPrefs.DeleteKey("PlayerName");
+        SecurePlayerPrefs.DeleteKey("PlayerPassword");
     }
 }
