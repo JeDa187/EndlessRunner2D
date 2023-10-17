@@ -90,7 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 403.5
   },
   "right": {
     "id": "261dbd6b8de2a011",
@@ -163,7 +163,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "986634d12647629b",
+  "active": "99c5963ac274eda4",
   "lastOpenFiles": [
     "Dokumentaatio/PlayFab systems/PlayFab toimintojen jalostus.md",
     "Dokumentaatio/PlayFab systems/PlayFabin Mahdolliset Muut Käyttötavat.md",
