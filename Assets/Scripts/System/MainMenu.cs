@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI; // Required for UI elements
 
+
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI playerStatusText;
@@ -78,6 +79,14 @@ public class MainMenu : MonoBehaviour
 
     public void CharacterSelection()
     {
+        // Tuhotaan instanssi jos se on olemassa
+        CharacterSelection instance = FindObjectOfType<CharacterSelection>();
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+        }
+
+        // Ladataan skene
         SceneManager.LoadScene("CharacterSelection");
     }
 
