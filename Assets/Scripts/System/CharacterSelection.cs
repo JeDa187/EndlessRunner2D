@@ -151,6 +151,12 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    public void SetControlledCharacter(PlayerCharacterSO characterSO)
+    {
+        // Voit toteuttaa t‰m‰n tarpeen mukaan, esimerkiksi vaihtamalla pelaajan ohjaamaa hahmoa.
+        // T‰ss‰ voit p‰ivitt‰‰ hahmon graafista esityst‰ tai muuttaa pelaajan ohjaaman hahmon logiikkaa.
+    }
+
     // Message to display additional available characters
     private string AdditionalCharactersAvailableMessage()
     {
