@@ -54,9 +54,20 @@ public class CharacterSelection : MonoBehaviour
 
     private void Start()
     {
-        selectedCharacterIndex = -1;
-        if (SecurePlayerPrefs.GetInt("Online", 1) == 0)
+
+        // Tarkista onko pelaaja lukittu ja tallenna tulos muuttujaan
+        bool isPlayerLocked = SecurePlayerPrefs.GetInt("Online", 1) == 0;
+
+        // Kutsu metodia, joka k‰sittelee pelaajan lukituksen
+        HandlePlayerLockStatus(isPlayerLocked);
+    }
+
+    // Metodi k‰sittelee pelaajan lukituksen
+    private void HandlePlayerLockStatus(bool isLocked)
+    {
+        if (isLocked)
         {
+            // Aseta lukitus ja p‰ivit‰ teksti ja v‰rit
             characterLocked[0] = false;
             characterLocked[1] = true;
             characterLocked[2] = true;
@@ -71,26 +82,13 @@ public class CharacterSelection : MonoBehaviour
             loadingPanelManager.ShowLoadingPanel();
             FetchPlayerHighScore();
 
-            if (selectedCharacterIndex < 0 || selectedCharacterIndex >= characterSprites.Length)
-            {
-                infoText.text = "Select your character.";
-                return; // Stop further execution
-            }
-
-            string additionalMessage = AdditionalCharactersAvailableMessage();
-            switch (selectedCharacterIndex)
-            {
-                case 0:
-                    infoText.text = "Default character equipped. Press Continue to play. " + additionalMessage;
-                    break;
-                case 1:
-                    infoText.text = "Character 2 equipped. Press Continue to play. " + additionalMessage;
-                    break;
-                case 2:
-                    infoText.text = "Character 3 equipped. Press Continue to play. " + additionalMessage;
-                    break;
-            }
+            // Kutsu uutta metodia, joka k‰sittelee valitun hahmon
+            HandleSelectedCharacter();
         }
+    }
+    public void SetSelectedCharacterIndex(int index)
+    {
+        selectedCharacterIndex = index;
     }
 
     // Switch to the Main Menu scene
@@ -106,6 +104,30 @@ public class CharacterSelection : MonoBehaviour
         }
 
         SceneManager.LoadScene("MainMenu"); // Load the main menu scene
+    }
+
+    // Uusi metodi valitun hahmon k‰sittelylle
+    private void HandleSelectedCharacter()
+    {
+        if (selectedCharacterIndex < 0 || selectedCharacterIndex >= characterSprites.Length)
+        {
+            infoText.text = "Select your character.";
+            return; // Keskeytet‰‰n suoritus
+        }
+
+        string additionalMessage = AdditionalCharactersAvailableMessage();
+        switch (selectedCharacterIndex)
+        {
+            case 0:
+                infoText.text = "Default character equipped. Press Continue to play. " + additionalMessage;
+                break;
+            case 1:
+                infoText.text = "Character 2 equipped. Press Continue to play. " + additionalMessage;
+                break;
+            case 2:
+                infoText.text = "Character 3 equipped. Press Continue to play. " + additionalMessage;
+                break;
+        }
     }
 
     // Equip a character based on the index provided
@@ -149,12 +171,6 @@ public class CharacterSelection : MonoBehaviour
         {
             Debug.Log($"Invalid index {index}. Character not equipped.");
         }
-    }
-
-    public void SetControlledCharacter(PlayerCharacterSO characterSO)
-    {
-        // Voit toteuttaa t‰m‰n tarpeen mukaan, esimerkiksi vaihtamalla pelaajan ohjaamaa hahmoa.
-        // T‰ss‰ voit p‰ivitt‰‰ hahmon graafista esityst‰ tai muuttaa pelaajan ohjaaman hahmon logiikkaa.
     }
 
     // Message to display additional available characters
