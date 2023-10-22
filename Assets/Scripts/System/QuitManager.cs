@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+// Lis‰‰ PlayFab-kirjastot
+using PlayFab;
+using PlayFab.ClientModels;
+using System.Collections.Generic;
 
 public class QuitManager : MonoBehaviour
 {
@@ -9,6 +13,9 @@ public class QuitManager : MonoBehaviour
     private GameObject activeQuitPanel;
     private TMP_Text quitMessage;
     private bool isSecondConfirmation = false;
+
+    // Muuttuja peliajan seurantaa varten.
+    private float sessionTime = 0.0f;
 
     private void Awake()
     {
@@ -29,6 +36,9 @@ public class QuitManager : MonoBehaviour
         {
             ToggleQuitPanel();
         }
+
+        // Seuraa peliaikaa
+        sessionTime += Time.deltaTime;
     }
 
     public void ToggleQuitPanel()
@@ -39,7 +49,6 @@ public class QuitManager : MonoBehaviour
             quitMessage = activeQuitPanel.GetComponentInChildren<TMP_Text>();
             Button[] buttons = activeQuitPanel.GetComponentsInChildren<Button>();
 
-            // Oletetaan, ett‰ ensimm‰inen painike on "Yes" ja toinen on "No"
             buttons[0].onClick.AddListener(HandleYesButton);
             buttons[1].onClick.AddListener(ToggleQuitPanel);
         }
@@ -47,7 +56,7 @@ public class QuitManager : MonoBehaviour
         {
             Destroy(activeQuitPanel);
             activeQuitPanel = null;
-            isSecondConfirmation = false; // Resetoi toisen tason varmistus, kun paneeli suljetaan.
+            isSecondConfirmation = false;
         }
     }
 
@@ -61,13 +70,51 @@ public class QuitManager : MonoBehaviour
         }
         else
         {
+            SavePlaytimeToPlayFab();  // Tallenna peliaika ennen poistumista.
             QuitGame();
         }
     }
 
+    public void SavePlaytimeToPlayFab()
+    {
+        // Tarkistetaan, onko pelaaja online-tilassa ennen PlayFab-kutsun tekemist‰
+        if (SecurePlayerPrefs.GetInt("Online") == 1)
+        {
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), result =>
+            {
+                float totalPlayTime = sessionTime;
+
+                if (result.Data != null && result.Data.ContainsKey("TotalPlayTime"))
+                {
+                    float previousPlayTime;
+                    if (float.TryParse(result.Data["TotalPlayTime"].Value, out previousPlayTime))
+                    {
+                        totalPlayTime += previousPlayTime;
+                    }
+                }
+
+                PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
+                {
+                    Data = new Dictionary<string, string>
+                {
+                    { "TotalPlayTime", totalPlayTime.ToString() }
+                }
+                },
+                success => Debug.Log("Playtime saved successfully."),
+                error => Debug.LogError(error.GenerateErrorReport()));
+            },
+            error => Debug.LogError(error.GenerateErrorReport()));
+        }
+        else
+        {
+            // Jos pelaaja on offline-tilassa, voit jatkaa normaalisti ilman PlayFab-kutsua.
+            Debug.Log("Player is offline, playtime will not be saved.");
+        }
+    }
+
+
     public void QuitGame()
     {
-        // T‰h‰n kohtaan voi lis‰t‰ toimintoja, kuten tallennuksen, ennen pelin sulkemista.
         Application.Quit();
     }
 }

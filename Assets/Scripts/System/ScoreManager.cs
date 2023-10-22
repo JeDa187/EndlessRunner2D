@@ -48,20 +48,6 @@ public class ScoreManager : MonoBehaviour
         highScoreTextObject.text = $"High Score: {highScore}"; // Update high score text object
     }
 
-    // Tämä vanhaa koodia
-
-    //public IEnumerator UpdateScore()
-    //{
-    //    while (true)
-    //    {
-
-    //        yield return new WaitForSeconds(0.5f);
-    //        score += 1; // Increase score every 0.5 seconds
-    //        scoreTextObject.text = $"Score: {score}"; // Update score text object
-    //    }
-    //}
-
-
     // Coroutine to continually update the score based on a multiplier from the DragonflyController.
     public IEnumerator UpdateScore()
     {

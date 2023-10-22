@@ -151,6 +151,12 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    public void SetControlledCharacter(PlayerCharacterSO characterSO)
+    {
+        // Voit toteuttaa t‰m‰n tarpeen mukaan, esimerkiksi vaihtamalla pelaajan ohjaamaa hahmoa.
+        // T‰ss‰ voit p‰ivitt‰‰ hahmon graafista esityst‰ tai muuttaa pelaajan ohjaaman hahmon logiikkaa.
+    }
+
     // Message to display additional available characters
     private string AdditionalCharactersAvailableMessage()
     {
@@ -257,6 +263,18 @@ public class CharacterSelection : MonoBehaviour
                 characterButtons[i].image.color = Color.white;
             }
         }
+    }
+    public (int UnlockedCount, int TotalCount) GetCharacterInfo()
+    {
+        int unlockedCount = 0;
+        int totalCount = characterLocked.Length;  // This will give the total number of characters
+
+        foreach (bool isLocked in characterLocked)
+        {
+            if (!isLocked) unlockedCount++;
+        }
+
+        return (unlockedCount, totalCount);
     }
 
     // Update text displays on character buttons
