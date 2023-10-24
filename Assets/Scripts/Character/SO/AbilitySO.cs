@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum AbilityType { FireBreath /*, Lis‰‰ muita kykytyyppej‰ tarvittaessa*/ }
+public enum AbilityType { SpeedBoost, ScoreMultiplier/*, Lis‰‰ muita kykytyyppej‰ tarvittaessa*/ }
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "Custom/Ability")]
 public class AbilitySO : ScriptableObject/*IAbilityActivator*/
@@ -10,10 +10,8 @@ public class AbilitySO : ScriptableObject/*IAbilityActivator*/
     public string abilityName;
     public string description;
     public Sprite icon;
-    public float screenSpeedMultiplier;
     public float abilityDuration = 5.0f;
-    public GameObject abilityEffect;
-    public ParticleSystem fireBreathParticles;
+    public ParticleSystem particleEffect;
 
     public AbilityType abilityType;
 

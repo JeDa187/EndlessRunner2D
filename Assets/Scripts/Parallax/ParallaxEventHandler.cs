@@ -8,7 +8,7 @@ public class ParallaxEventHandler : MonoBehaviour
     {
         foreach (var layer in infiniteParallaxBackground.parallaxLayers)
         {
-            layer.onLayerShifted += HandleLayerShifted;
+            layer.LayerShifted += HandleLayerShifted;
         }
     }
 
@@ -16,7 +16,7 @@ public class ParallaxEventHandler : MonoBehaviour
     {
         foreach (var layer in infiniteParallaxBackground.parallaxLayers)
         {
-            layer.onLayerShifted -= HandleLayerShifted;
+            layer.LayerShifted -= HandleLayerShifted;
         }
     }
 

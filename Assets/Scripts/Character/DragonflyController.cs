@@ -19,7 +19,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     private bool isMultiplierActive = false;
     private RigidbodyConstraints2D originalConstraints;
 
-    private float[] originalSpeeds;
+    //private float[] originalSpeeds;
 
     private void Awake()
     {

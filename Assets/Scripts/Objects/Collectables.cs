@@ -20,7 +20,6 @@ public class Collectables : MonoBehaviour
             if (currentInventorySize < inventoryCapacity)
             {
                 // Tässä voit suorittaa toiminnon objektin keräämisen yhteydessä
-                // Esimerkiksi lisätä objektin tiedot ScriptableObjectiin
                 InventoryManager.Instance.AddItem(collectedItem);
                 abilityManager.SetCurrentAbility(collectedItem.abilityToGrant);
                 // Lopuksi voit poistaa objektin pelimaailmasta
