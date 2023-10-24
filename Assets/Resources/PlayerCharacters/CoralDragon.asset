@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: CoralDragon
   characterMenuSprite: {fileID: 1888864062, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
   characterPlayableSprite: {fileID: 263239279, guid: b5b77c7aeed7d4f41a8bcd96bcf32519, type: 3}
-  jumpHeight: 12.8
+  jumpForce: 12.8
   inventorySize: 3
   unlockScore: 2000

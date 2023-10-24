@@ -40,10 +40,29 @@ public class GameManager : MonoBehaviour
         InitializeGame(); // Initialize the game
 
         // Aseta valittu hahmo pelissä.
+        //if (CharacterSelection.Instance != null)
+        //{
+        //    playerSpriteRenderer.sprite = CharacterSelection.Instance.characters
+        //        [CharacterSelection.Instance.selectedCharacterIndex].characterPlayableSprite;
+        //    Debug.Log($"Set player sprite to: {playerSpriteRenderer.sprite.name}");
+        //}
+        //else
+        //{
+        //    Debug.LogError("CharacterSelection.Instance is null.");
+        //}
         if (CharacterSelection.Instance != null)
         {
-            playerSpriteRenderer.sprite = CharacterSelection.Instance.characterSprites[CharacterSelection.Instance.selectedCharacterIndex];
-            Debug.Log($"Set player sprite to: {playerSpriteRenderer.sprite.name}");
+            DragonflyController player = FindObjectOfType<DragonflyController>(); // Oletetaan, että pelissä on vain yksi Player-olio.
+            if (player != null)
+            {
+                PlayerCharacterSO selectedCharacter = CharacterSelection.Instance.characters[CharacterSelection.Instance.selectedCharacterIndex];
+                selectedCharacter.ApplyCharacter(player);
+                Debug.Log($"Set player sprite to: {selectedCharacter.characterName}");
+            }
+            else
+            {
+                Debug.LogError("Player object was not found in the scene.");
+            }
         }
         else
         {

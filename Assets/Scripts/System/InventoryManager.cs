@@ -20,9 +20,27 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public int GetInventoryCapacity()
+    {
+        return collectedItems.Capacity;
+    }
+
+    public void SetInventorySize(int size)
+    {
+        if (collectedItems.Capacity != size)
+        {
+            if (collectedItems.Count > size)
+            {
+                Debug.LogWarning("Inventory size set smaller than current item count. Removing excess items.");
+                collectedItems.RemoveRange(size, collectedItems.Count - size);
+            }
+            collectedItems.Capacity = size;
+        }
+    }
+
     public void AddItem(ItemSO item)
     {
-        if (collectedItems.Count < 3)
+        if (collectedItems.Count < collectedItems.Capacity)
         {
             collectedItems.Add(item);
             // Voit suorittaa lisätoimia, kuten päivittää käyttöliittymää inventaarion kanssa.
