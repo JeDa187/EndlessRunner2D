@@ -14,7 +14,10 @@ public class Collectables : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (InventoryManager.Instance.GetCollectedItems().Count < 3)
+            int currentInventorySize = InventoryManager.Instance.GetCollectedItems().Count;
+            int inventoryCapacity = InventoryManager.Instance.GetInventoryCapacity();
+
+            if (currentInventorySize < inventoryCapacity)
             {
                 // Tässä voit suorittaa toiminnon objektin keräämisen yhteydessä
                 // Esimerkiksi lisätä objektin tiedot ScriptableObjectiin

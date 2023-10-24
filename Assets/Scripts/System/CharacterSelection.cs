@@ -14,9 +14,10 @@ public class CharacterSelection : MonoBehaviour
 
     // Character Details
     [Header("Character Details")]
-    public Sprite[] characterSprites; // Array of character sprites
+    private Sprite[] characterSprites; // Array of character sprites
     public int selectedCharacterIndex = -1; // Index of currently selected character
     public bool[] characterLocked = { false, true, true }; // Array indicating if a character is locked
+    public PlayerCharacterSO[] characters; // Array of PlayerCharacterSO
 
     // UI Elements
     [Header("UI Elements")]
@@ -109,13 +110,16 @@ public class CharacterSelection : MonoBehaviour
     // Uusi metodi valitun hahmon käsittelylle
     private void HandleSelectedCharacter()
     {
-        if (selectedCharacterIndex < 0 || selectedCharacterIndex >= characterSprites.Length)
+        if (selectedCharacterIndex < 0 || selectedCharacterIndex >= characters.Length)
         {
             infoText.text = "Select your character.";
             return; // Keskeytetään suoritus
         }
-
+        
         string additionalMessage = AdditionalCharactersAvailableMessage();
+        // Tässä kohtaa chatgpt muuttanut switchcase methodin sisältä ja tehnyt siitä infotext. 
+        //infotext alla kommentoituna. testataan myöhemmin -->
+        //infoText.text = $"Character {selectedCharacterIndex + 1} equipped. Press Continue to play. {additionalMessage}";
         switch (selectedCharacterIndex)
         {
             case 0:
@@ -130,17 +134,22 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+
     // Equip a character based on the index provided
     public void EquipCharacter(int index)
     {
         bool isOnline = SecurePlayerPrefs.GetInt("Online", 1) == 1;
 
-        if (index < characterSprites.Length && !characterLocked[index])
+        if (index < characters.Length && !characterLocked[index])
         {
             selectedCharacterIndex = index;
             Debug.Log($"Character with index {index} equipped.");
             UpdateButtonColors();
+            //updatecharactertext poistettu tai nimi muutettu updatecharacterdisplays
             UpdateCharacterTexts();
+            // tässä sama kuin yllä. chatgpt yksinkertaistaa switchcase methodin. testataan myöhemmin.
+            //string additionalMessage = AdditionalCharactersAvailableMessage();
+            //infoText.text = $"Character {index + 1} equipped. Press Continue to play. {additionalMessage}";
 
             string additionalMessage = AdditionalCharactersAvailableMessage();
             switch (index)
@@ -176,6 +185,7 @@ public class CharacterSelection : MonoBehaviour
     // Message to display additional available characters
     private string AdditionalCharactersAvailableMessage()
     {
+        // tätä myös yksinkertaistettu chatgpt toimesta. for loop muutettu foreach loopiksi
         int unlockedCharacters = 0;
         for (int i = 0; i < characterLocked.Length; i++)
         {
@@ -201,6 +211,7 @@ public class CharacterSelection : MonoBehaviour
 
 
     // Fetch player's high score from the PlayFab service
+    //tämä method myös muutettu täysin chatgpt toimesta
     void FetchPlayerHighScore()
     {
         PlayFabClientAPI.GetPlayerStatistics(new GetPlayerStatisticsRequest(),
@@ -234,6 +245,7 @@ public class CharacterSelection : MonoBehaviour
     }
 
     // Lock or unlock characters based on the player's score
+    //tämä method myös muutettu täysin chatgpt toimesta
     void UpdateCharacterLocks()
     {
         // Update which characters are locked based on the player's score
@@ -250,11 +262,49 @@ public class CharacterSelection : MonoBehaviour
             characterLocked[2] = false;
         }
 
-        UpdateCharacterTexts();
+        UpdateCharacterDisplays();
+    }
+    private void UpdateCharactersFromSO()
+    {
+        if (characters.Length != characterSprites.Length)
+        {
+            Debug.LogWarning("Characters ScriptableObject array and characterSprites array lengths are not matching.");
+            return;
+        }
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            characterSprites[i] = characters[i].characterPlayableSprite;
+        }
+    }
+
+    // Päivitetty metodi:
+    public void SetSelectedCharacterIndexFromSO(PlayerCharacterSO selectedCharacter)
+    {
+        int index = System.Array.IndexOf(characters, selectedCharacter);
+        if (index >= 0)
+        {
+            SetSelectedCharacterIndex(index);
+        }
+        else
+        {
+            Debug.LogWarning("Selected character is not found in the characters array.");
+        }
+    }
+
+
+
+
+
+    // tämä uusi chatgpt generoima methodi mikä helpottaa displayn päivittämistä
+    void UpdateCharacterDisplays()
+    {
         UpdateButtonColors();
+        UpdateCharacterTexts();
     }
 
     // Update button colors based on character availability and selection
+    // tässä myös muutoksia. katso myöhemmin 
     void UpdateButtonColors()
     {
         for (int i = 0; i < characterButtons.Length; i++)
@@ -294,6 +344,7 @@ public class CharacterSelection : MonoBehaviour
     }
 
     // Update text displays on character buttons
+    // tässä myös isot muutokset
     void UpdateCharacterTexts()
     {
         bool isOnline = SecurePlayerPrefs.GetInt("Online", 1) == 1;

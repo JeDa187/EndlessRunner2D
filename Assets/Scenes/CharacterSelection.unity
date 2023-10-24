@@ -588,7 +588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1905541963, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
+  m_Sprite: {fileID: -313871838, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -650,12 +650,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e277b1ad79c5b0469dd301fcb6489d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSprites:
-  - {fileID: 112133131, guid: ccd4e805fc275034585d7cbad4be7bc9, type: 3}
-  - {fileID: -102250863, guid: df0811d798e2d844ab0c89d01e6e9dac, type: 3}
-  - {fileID: 263239279, guid: b5b77c7aeed7d4f41a8bcd96bcf32519, type: 3}
-  selectedCharacterIndex: 0
+  selectedCharacterIndex: 3
   characterLocked: 000101
+  characters:
+  - {fileID: 11400000, guid: 5fa4c6c379111f345ac2ee5b1ad37b8f, type: 2}
+  - {fileID: 11400000, guid: e6a8c22650fe285478430d322cb1f29b, type: 2}
+  - {fileID: 11400000, guid: 0cd380b606f834e409b2b955f495d36e, type: 2}
   characterButtons:
   - {fileID: 1706909032}
   - {fileID: 340752742}
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -964306262, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
+  m_Sprite: {fileID: 2091983460, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2323,7 +2323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5799662288953959241, guid: 565c64c411ab8cf429934fcec2c748ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5799662288953959245, guid: 565c64c411ab8cf429934fcec2c748ca, type: 3}
       propertyPath: m_Pivot.x

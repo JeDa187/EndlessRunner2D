@@ -7,11 +7,11 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
 {
 
     private Vector2 originalPosition; // Original position of the dragonfly for resetting  
-    [SerializeField] private float jumpForce;
+    public float jumpForce;
     private bool canMove = false;
     private InfiniteParallaxBackground parallaxBG;
     private Rigidbody2D rb;
-
+    public SpriteRenderer playerSpriteRenderer;
     private float immortalTimer = 0;
     private AbilityManager abilityManager;
     private InputHandling inputHandling;
@@ -25,7 +25,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
     {
         // Etsi InfiniteParallaxBackground-olio pelimaailmasta
         parallaxBG = FindObjectOfType<InfiniteParallaxBackground>();
-
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>(); // Initialize the Rigidbody2D component here instead of Start
         originalConstraints = rb.constraints;
     }
