@@ -37,25 +37,17 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        InitializeGame(); // Initialize the game
+        InitializeGame();
 
         // Aseta valittu hahmo pelissä.
-        //if (CharacterSelection.Instance != null)
-        //{
-        //    playerSpriteRenderer.sprite = CharacterSelection.Instance.characters
-        //        [CharacterSelection.Instance.selectedCharacterIndex].characterPlayableSprite;
-        //    Debug.Log($"Set player sprite to: {playerSpriteRenderer.sprite.name}");
-        //}
-        //else
-        //{
-        //    Debug.LogError("CharacterSelection.Instance is null.");
-        //}
         if (CharacterSelection.Instance != null)
         {
-            DragonflyController player = FindObjectOfType<DragonflyController>(); // Oletetaan, että pelissä on vain yksi Player-olio.
+            // Oletetaan, että pelissä on vain yksi Player-olio.
+            DragonflyController player = FindObjectOfType<DragonflyController>(); 
             if (player != null)
             {
-                PlayerCharacterSO selectedCharacter = CharacterSelection.Instance.characters[CharacterSelection.Instance.selectedCharacterIndex];
+                PlayerCharacterSO selectedCharacter = CharacterSelection.Instance.characters
+                    [CharacterSelection.Instance.selectedCharacterIndex];
                 selectedCharacter.ApplyCharacter(player);
                 Debug.Log($"Set player sprite to: {selectedCharacter.characterName}");
             }
@@ -128,7 +120,18 @@ public class GameManager : MonoBehaviour
         DisableDragonflyAndParallax();
         StartCoroutine(DoCountdown());
     }
-    
+    private IEnumerator StartCountdown(float duration)
+    {
+        float currentCountdown = duration;
+        while (currentCountdown > 0)
+        {
+            countdownTextObject.text = currentCountdown.ToString("0");
+            yield return new WaitForSeconds(1.0f);
+            currentCountdown--;
+        }
+
+        countdownTextObject.text = "";
+    }
     private IEnumerator DoCountdown()
     {
         yield return StartCoroutine(StartCountdown(countdownTime));
@@ -143,18 +146,6 @@ public class GameManager : MonoBehaviour
         OnCountdownFinished?.Invoke();
     }
     
-    private IEnumerator StartCountdown(float duration)
-    {
-        float currentCountdown = duration;
-        while (currentCountdown > 0)
-        {
-            countdownTextObject.text = currentCountdown.ToString("0");
-            yield return new WaitForSeconds(1.0f);
-            currentCountdown--;
-        }
-
-        countdownTextObject.text = "";
-    }
     private void DisableDragonflyAndParallax()
     {
         DragonflyController dragonfly = FindObjectOfType<DragonflyController>();

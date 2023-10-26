@@ -130,9 +130,6 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         // Immortal effect
         ActivateImmortality();
 
-        //// Fire Breath Particles
-        //HandleFireBreathParticles(true);
-
         // Score Multiplier
         isMultiplierActive = true;
 
@@ -156,30 +153,7 @@ public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
         // Reset Immortal effect
         DeactivateImmortality();
 
-        // Stop Fire Breath Particles
-        //HandleFireBreathParticles(false);
     }
-
-    //private void HandleFireBreathParticles(bool shouldPlay)
-    //{
-    //    Debug.Log("Checking fireBreathParticles");
-    //    if (abilitySO.fireBreathParticles != null)
-    //    {
-    //        Debug.Log("Fire breath particles found");
-    //        if (shouldPlay)
-    //        {
-    //            abilitySO.fireBreathParticles.Play();
-    //        }
-    //        else
-    //        {
-    //            abilitySO.fireBreathParticles.Stop();
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("No fire breath particles found");
-    //    }
-    //}
 
     public int GetScoreMultiplier()
     {

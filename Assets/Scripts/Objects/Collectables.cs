@@ -4,6 +4,8 @@ public class Collectables : MonoBehaviour
 {
     public ItemSO collectedItem; // ScriptableObject, joka tallentaa objektin tiedot
     private AbilityManager abilityManager;
+    public bool isScoreMultiplier; // Uusi muuttuja ScriptableObjektissa m‰‰ritt‰m‰‰n onko esine pistekerroin
+    public int multiplierValue = 2; // Kerroin, joka sovelletaan, kun t‰m‰ esine ker‰t‰‰n. Oletuksena 2.
 
     private void Awake()
     {
