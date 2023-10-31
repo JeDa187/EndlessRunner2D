@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: d712345f58a15a342b36fa9cc6e0f2ae
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 837
+        width: 521
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061099cdf1cd8d84c9aa726d226f0acd
+      internalID: -1638293887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_4
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 796
+        width: 308
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba2dfd2d0c5d1e4ebc654327ab98485
+      internalID: 773026393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_5
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 612
+        width: 1032
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b340d3697d4c6104a88ca2ec7b0b2e04
+      internalID: 1079169709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_6
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 286
+        width: 571
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a119d4e1be7d04d9ee0d52793c52e9
+      internalID: -426330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_8
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 276
+        width: 344
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279269c4c46cb6d49b50030a92640580
+      internalID: -989476446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_10
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 288
+        width: 740
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b238623689fe2140a83d8712f2e84c8
+      internalID: 1871246442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_11
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 291
+        width: 376
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2138262b727738d40b36ec2d21c828da
+      internalID: -1401602281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_12
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 290
+        width: 376
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8cbc91052702c64a858408ae799ad27
+      internalID: 1049071655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_13
+      rect:
+        serializedVersion: 2
+        x: 2244
+        y: 295
+        width: 378
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5177de2e6afaf934d8c32331c13979d9
+      internalID: -1209501934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_15
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 144
+        width: 980
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b4184ed418be2d4d815b8556f97bb04
+      internalID: -1596576976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_42
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 145
+        width: 724
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d7792d63d81f84d9e026423f7ac0b6
+      internalID: -950576455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_62
+      rect:
+        serializedVersion: 2
+        x: 1913
+        y: 149
+        width: 1303
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f407e8ca6abbd740933b756b8315d2a
+      internalID: 2029253586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndlessRunner_UI3_98
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 24
+        width: 3319
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdacced8496133349be5cba85bdb5b41
+      internalID: 1873251727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      EndlessRunner_UI3_0: -1638293887
+      EndlessRunner_UI3_1: 1682364663
+      EndlessRunner_UI3_10: 1871246442
+      EndlessRunner_UI3_100: -2076451842
+      EndlessRunner_UI3_101: -2010699470
+      EndlessRunner_UI3_102: 432794488
+      EndlessRunner_UI3_103: 1682461342
+      EndlessRunner_UI3_104: 243726347
+      EndlessRunner_UI3_105: -1851082973
+      EndlessRunner_UI3_106: 66669769
+      EndlessRunner_UI3_107: 1616752740
+      EndlessRunner_UI3_108: -1623193175
+      EndlessRunner_UI3_109: 142898468
+      EndlessRunner_UI3_11: -1401602281
+      EndlessRunner_UI3_110: -286610472
+      EndlessRunner_UI3_111: 495378694
+      EndlessRunner_UI3_112: 1921170382
+      EndlessRunner_UI3_113: -2016172614
+      EndlessRunner_UI3_114: -248931688
+      EndlessRunner_UI3_115: -1750172875
+      EndlessRunner_UI3_116: 1915222322
+      EndlessRunner_UI3_117: 2034667722
+      EndlessRunner_UI3_118: -420800261
+      EndlessRunner_UI3_119: -803730758
+      EndlessRunner_UI3_12: 1049071655
+      EndlessRunner_UI3_120: 1661956903
+      EndlessRunner_UI3_121: 468140458
+      EndlessRunner_UI3_122: 83942724
+      EndlessRunner_UI3_123: 1744018591
+      EndlessRunner_UI3_124: 1809027831
+      EndlessRunner_UI3_125: 1041326632
+      EndlessRunner_UI3_126: -1141709926
+      EndlessRunner_UI3_127: -2131950274
+      EndlessRunner_UI3_128: 179284650
+      EndlessRunner_UI3_129: 881208970
+      EndlessRunner_UI3_13: -1209501934
+      EndlessRunner_UI3_130: -2937648
+      EndlessRunner_UI3_131: -1471605919
+      EndlessRunner_UI3_132: -528884862
+      EndlessRunner_UI3_133: 1773902001
+      EndlessRunner_UI3_134: 1228696337
+      EndlessRunner_UI3_135: 1336551257
+      EndlessRunner_UI3_136: -1094908954
+      EndlessRunner_UI3_137: -1790908640
+      EndlessRunner_UI3_138: -240524161
+      EndlessRunner_UI3_139: 120367599
+      EndlessRunner_UI3_14: -1168270235
+      EndlessRunner_UI3_140: -1703941753
+      EndlessRunner_UI3_141: -1729656411
+      EndlessRunner_UI3_142: 1492448294
+      EndlessRunner_UI3_143: -531448236
+      EndlessRunner_UI3_144: 1296030804
+      EndlessRunner_UI3_145: 2003148227
+      EndlessRunner_UI3_146: 387771870
+      EndlessRunner_UI3_147: 208111339
+      EndlessRunner_UI3_148: -682388430
+      EndlessRunner_UI3_149: -61264822
+      EndlessRunner_UI3_15: -1596576976
+      EndlessRunner_UI3_150: -1971235620
+      EndlessRunner_UI3_151: 1710858937
+      EndlessRunner_UI3_152: -1572662224
+      EndlessRunner_UI3_153: -1877406856
+      EndlessRunner_UI3_154: 1414073754
+      EndlessRunner_UI3_155: -2081207056
+      EndlessRunner_UI3_156: 857855389
+      EndlessRunner_UI3_157: -2045369111
+      EndlessRunner_UI3_158: 329837692
+      EndlessRunner_UI3_159: 1742811548
+      EndlessRunner_UI3_16: -1141099815
+      EndlessRunner_UI3_160: 990451394
+      EndlessRunner_UI3_161: -1712663423
+      EndlessRunner_UI3_162: -1414066571
+      EndlessRunner_UI3_163: 1177022775
+      EndlessRunner_UI3_164: 762674806
+      EndlessRunner_UI3_165: -1206525467
+      EndlessRunner_UI3_166: 223979247
+      EndlessRunner_UI3_167: 1172575641
+      EndlessRunner_UI3_168: -501144954
+      EndlessRunner_UI3_169: 1711624724
+      EndlessRunner_UI3_17: 1600068722
+      EndlessRunner_UI3_170: 1500290725
+      EndlessRunner_UI3_171: 771460094
+      EndlessRunner_UI3_172: -1263272657
+      EndlessRunner_UI3_173: -1271015525
+      EndlessRunner_UI3_174: -584336220
+      EndlessRunner_UI3_175: 1431669507
+      EndlessRunner_UI3_176: 1909205929
+      EndlessRunner_UI3_177: 1941088823
+      EndlessRunner_UI3_178: -578302404
+      EndlessRunner_UI3_179: -1873036913
+      EndlessRunner_UI3_18: 480945155
+      EndlessRunner_UI3_180: -1966107769
+      EndlessRunner_UI3_181: 1105449889
+      EndlessRunner_UI3_182: 584385337
+      EndlessRunner_UI3_183: -155693079
+      EndlessRunner_UI3_184: -775572053
+      EndlessRunner_UI3_185: 1590414556
+      EndlessRunner_UI3_186: 200497908
+      EndlessRunner_UI3_187: -2081495721
+      EndlessRunner_UI3_188: 1330669097
+      EndlessRunner_UI3_189: -1752945985
+      EndlessRunner_UI3_19: 61756904
+      EndlessRunner_UI3_2: -1117442193
+      EndlessRunner_UI3_20: 174826331
+      EndlessRunner_UI3_21: -2083844465
+      EndlessRunner_UI3_22: -297722743
+      EndlessRunner_UI3_23: -2081018466
+      EndlessRunner_UI3_24: 558268658
+      EndlessRunner_UI3_25: -732022586
+      EndlessRunner_UI3_26: -620679939
+      EndlessRunner_UI3_27: 1083735293
+      EndlessRunner_UI3_28: -316616035
+      EndlessRunner_UI3_29: 1597881101
+      EndlessRunner_UI3_3: 882632398
+      EndlessRunner_UI3_30: 1052300478
+      EndlessRunner_UI3_31: 719993866
+      EndlessRunner_UI3_32: 1785422646
+      EndlessRunner_UI3_33: -1260636938
+      EndlessRunner_UI3_34: -1497285844
+      EndlessRunner_UI3_35: 838452989
+      EndlessRunner_UI3_36: 1133639030
+      EndlessRunner_UI3_37: -1892086517
+      EndlessRunner_UI3_38: 1653956548
+      EndlessRunner_UI3_39: -1198603723
+      EndlessRunner_UI3_4: 773026393
+      EndlessRunner_UI3_40: -804438768
+      EndlessRunner_UI3_41: 341706054
+      EndlessRunner_UI3_42: -950576455
+      EndlessRunner_UI3_43: 1572505867
+      EndlessRunner_UI3_44: 370103022
+      EndlessRunner_UI3_45: -325588736
+      EndlessRunner_UI3_46: -479451208
+      EndlessRunner_UI3_47: -1842244136
+      EndlessRunner_UI3_48: -1900702014
+      EndlessRunner_UI3_49: -1033595960
+      EndlessRunner_UI3_5: 1079169709
+      EndlessRunner_UI3_50: 1293484403
+      EndlessRunner_UI3_51: 1990601321
+      EndlessRunner_UI3_52: 1962645514
+      EndlessRunner_UI3_53: -348477994
+      EndlessRunner_UI3_54: 1017620519
+      EndlessRunner_UI3_55: 678958595
+      EndlessRunner_UI3_56: -1324420297
+      EndlessRunner_UI3_57: -930348595
+      EndlessRunner_UI3_58: 2076063770
+      EndlessRunner_UI3_59: 2063678804
+      EndlessRunner_UI3_6: -426330
+      EndlessRunner_UI3_60: -518877796
+      EndlessRunner_UI3_61: 1435538498
+      EndlessRunner_UI3_62: 2029253586
+      EndlessRunner_UI3_63: -1191328605
+      EndlessRunner_UI3_64: -1473319725
+      EndlessRunner_UI3_65: 1137085447
+      EndlessRunner_UI3_66: -816224649
+      EndlessRunner_UI3_67: 2065101591
+      EndlessRunner_UI3_68: 8460219
+      EndlessRunner_UI3_69: -407010919
+      EndlessRunner_UI3_7: -1136875372
+      EndlessRunner_UI3_70: 875604854
+      EndlessRunner_UI3_71: -39533545
+      EndlessRunner_UI3_72: 121031301
+      EndlessRunner_UI3_73: 22078019
+      EndlessRunner_UI3_74: -1116677448
+      EndlessRunner_UI3_75: -1443896452
+      EndlessRunner_UI3_76: 810107319
+      EndlessRunner_UI3_77: 286772541
+      EndlessRunner_UI3_78: -1102371125
+      EndlessRunner_UI3_79: 1189914798
+      EndlessRunner_UI3_8: -989476446
+      EndlessRunner_UI3_80: 804520357
+      EndlessRunner_UI3_81: 1143234563
+      EndlessRunner_UI3_82: -1922952168
+      EndlessRunner_UI3_83: 1154406039
+      EndlessRunner_UI3_84: -2043932457
+      EndlessRunner_UI3_85: 1810736901
+      EndlessRunner_UI3_86: -1825675853
+      EndlessRunner_UI3_87: 1078498641
+      EndlessRunner_UI3_88: 594404611
+      EndlessRunner_UI3_89: -2133236182
+      EndlessRunner_UI3_9: -1436705036
+      EndlessRunner_UI3_90: 1850986692
+      EndlessRunner_UI3_91: -995876389
+      EndlessRunner_UI3_92: 993976967
+      EndlessRunner_UI3_93: 2005477802
+      EndlessRunner_UI3_94: -1879801921
+      EndlessRunner_UI3_95: 1074614204
+      EndlessRunner_UI3_96: -976273530
+      EndlessRunner_UI3_97: -2011247041
+      EndlessRunner_UI3_98: 1873251727
+      EndlessRunner_UI3_99: -2025545422
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
