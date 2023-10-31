@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public enum AbilityType { SpeedBoost, ScoreMultiplier/*, Lis‰‰ muita kykytyyppej‰ tarvittaessa*/ }
-
 [CreateAssetMenu(fileName = "New Ability", menuName = "Custom/Ability")]
+
 public class AbilitySO : ScriptableObject
 {
     // Lis‰‰ tarvittavia ominaisuuksia kyvylle
@@ -12,21 +11,18 @@ public class AbilitySO : ScriptableObject
     public Sprite icon;
     public float abilityDuration = 5.0f;
     public ParticleSystem particleEffect;
-
-    public AbilityType abilityType;
-
-    public void UseAbility(DragonflyController player)
-    {
-        //DragonflyController player = FindObjectOfType<DragonflyController>();
-
-        switch (abilityType)
-        {
-            case AbilityType.SpeedBoost:
-                Debug.Log("aso");
-                player.UseAbility(this); // Kutsu DragonflyControllerin metodia ja v‰lit‰ AbilitySO
-                break;
-                // K‰sittele muita kykytyyppej‰ tarvittaessa
-        }
-    }
-
 }
+
+//    public virtual void Activate(DragonflyController controller)
+//    {
+//        // T‰h‰n voi lis‰t‰ perustoimintoja, jotka soveltuvat kaikille kyvyille
+//        // Esimerkiksi partikkeliefektin k‰ynnist‰minen
+//        if (particleEffect != null)
+//        {
+//            // Luo ja toista partikkeliefekti
+//        }
+
+//        Debug.Log($"{abilityName} activated.");
+//    }
+
+//}

@@ -1,7 +1,7 @@
 //using UnityEngine;
 //using System.Collections;
 
-//public class SpeedBoost : MonoBehaviour, IAbility
+//public class SpeedBoostAbility : MonoBehaviour, IAbility
 //{
 //    public float abilityDuration;
 //    public float immortalTimer = 0;
@@ -10,6 +10,7 @@
 //    private Rigidbody2D rb;
 //    private InfiniteParallaxBackground parallaxBG;
 //    private AbilitySO abilitySO;
+//    private Coroutine speedBoostCoroutine;
 
 //    private void Awake()
 //    {
@@ -86,20 +87,20 @@
 //        return isMultiplierActive ? 2 : 1;
 //    }
 
-//public void Activate(DragonflyController controller)
+//    public void Activate(DragonflyController controller)
 //    {
-//        ActivateSpeedBoost();
+//        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine());
 //    }
 
 //    public void Deactivate(DragonflyController controller)
 //    {
 //        if (isMultiplierActive)
 //        {
-//            StopCoroutine(SpeedBoostCoroutine());
-//            isMultiplierActive = false;
-//            ManipulateCameraSpeed(false);
-//            DeactivateImmortality();
-//            // Kaikki muu siivouskoodi
+//            StopCoroutine(speedBoostCoroutine);        
 //        }
+//        isMultiplierActive = false;
+//        ManipulateCameraSpeed(false);
+//        DeactivateImmortality();
+//        // Kaikki muu siivouskoodi
 //    }
 //}

@@ -3,7 +3,7 @@ using TMPro;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragonflyController : MonoBehaviour /*IAbilityActivator*/
+public class DragonflyController : MonoBehaviour
 {
 
     private Vector2 originalPosition; // Original position of the dragonfly for resetting  

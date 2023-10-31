@@ -4,7 +4,6 @@ public class AbilityManager : MonoBehaviour
 {
     public AbilitySO currentAbility;
     private DragonflyController dragonflyController;
-    public AbilitySO speedBoostAbility;  // Tämä on "Fire Breath" -kyky
     public static AbilityManager Instance { get; private set; }
 
     private void Awake()

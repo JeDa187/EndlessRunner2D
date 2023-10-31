@@ -39,7 +39,6 @@ public class InputHandling : MonoBehaviour
         }
     }
 
-
     public bool IsTouchOverUI()
     {
         if (Input.touchCount > 0)
