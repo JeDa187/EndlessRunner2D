@@ -10,7 +10,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
     public class ParallaxLayer
     {
         public delegate void OnLayerShifted(Transform shiftedLayer);
-        public event OnLayerShifted onLayerShifted;
+        public event OnLayerShifted LayerShifted;
 
         public float scrollSpeed;
         public Transform parentObject; // Viittaus parent GameObjectiin
@@ -32,8 +32,8 @@ public class InfiniteParallaxBackground : MonoBehaviour
 
         public void Scroll(float cameraPosition, float cameraSpeed)
         {
-            Vector3 scrollVector = new Vector3(-scrollSpeed * Time.deltaTime * cameraSpeed, 0, 0);
-            Vector3 resetVector = new Vector3(3 * spriteWidth, 0, 0);
+            Vector3 scrollVector = new(-scrollSpeed * Time.deltaTime * cameraSpeed, 0, 0);
+            Vector3 resetVector = new(3 * spriteWidth, 0, 0);
             for (int i = 0; i < childSprites.Length; i++)
             {
                 childSprites[i].position += scrollVector;
@@ -44,7 +44,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
                     childSprites[i].position += resetVector;
 
                     // Tämä laukaisee tapahtuman
-                    onLayerShifted?.Invoke(childSprites[i]);
+                    LayerShifted?.Invoke(childSprites[i]);
                 }
             }
         }

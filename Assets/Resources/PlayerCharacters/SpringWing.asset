@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: SpringWing
   characterMenuSprite: {fileID: 849883431, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
   characterPlayableSprite: {fileID: 1066430788, guid: 53f195abbf73a4440a47d649d924c313, type: 3}
-  jumpHeight: 0
-  inventorySize: 0
+  jumpForce: 15
+  inventorySize: 1
   unlockScore: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e37930c6e294a274caed98e7da8299d1, type: 3}
-  m_Name: SpeedBoost
+  m_Name: ScoreMultiplier
   m_EditorClassIdentifier: 
-  abilityName: SpeedBoost
-  description: Gives More Speed And Multiplies Score
+  abilityName: ScoreMultiplier
+  description: Multiplies Player's Score
   icon: {fileID: 0}
   abilityDuration: 5
   particleEffect: {fileID: 0}
-  abilityType: 0
+  abilityType: 1

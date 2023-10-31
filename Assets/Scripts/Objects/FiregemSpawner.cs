@@ -18,7 +18,7 @@ public class FiregemSpawner : MonoBehaviour
         // Liitt‰‰ FiregemSpawner:n InfiniteParallaxBackground:in tapahtumiin.
         foreach (var layer in parallaxBackground.parallaxLayers)
         {
-            layer.onLayerShifted += HandleLayerShifted;
+            layer.LayerShifted += HandleLayerShifted;
         }
     }
 

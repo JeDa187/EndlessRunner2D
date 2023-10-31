@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: BlueAngel
   characterMenuSprite: {fileID: 1905541963, guid: 6b80434d9839de1448a116dea89d8738, type: 3}
   characterPlayableSprite: {fileID: 112133131, guid: ccd4e805fc275034585d7cbad4be7bc9, type: 3}
-  jumpHeight: 0
-  inventorySize: 0
+  jumpForce: 15
+  inventorySize: 1
   unlockScore: 0

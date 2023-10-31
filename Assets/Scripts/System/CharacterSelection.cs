@@ -14,7 +14,6 @@ public class CharacterSelection : MonoBehaviour
 
     // Character Details
     [Header("Character Details")]
-    private Sprite[] characterSprites; // Array of character sprites
     public int selectedCharacterIndex = -1; // Index of currently selected character
     public bool[] characterLocked = { false, true, true }; // Array indicating if a character is locked
     public PlayerCharacterSO[] characters; // Array of PlayerCharacterSO
@@ -264,19 +263,6 @@ public class CharacterSelection : MonoBehaviour
 
         UpdateCharacterDisplays();
     }
-    private void UpdateCharactersFromSO()
-    {
-        if (characters.Length != characterSprites.Length)
-        {
-            Debug.LogWarning("Characters ScriptableObject array and characterSprites array lengths are not matching.");
-            return;
-        }
-
-        for (int i = 0; i < characters.Length; i++)
-        {
-            characterSprites[i] = characters[i].characterPlayableSprite;
-        }
-    }
 
     // Päivitetty metodi:
     public void SetSelectedCharacterIndexFromSO(PlayerCharacterSO selectedCharacter)
@@ -291,10 +277,6 @@ public class CharacterSelection : MonoBehaviour
             Debug.LogWarning("Selected character is not found in the characters array.");
         }
     }
-
-
-
-
 
     // tämä uusi chatgpt generoima methodi mikä helpottaa displayn päivittämistä
     void UpdateCharacterDisplays()

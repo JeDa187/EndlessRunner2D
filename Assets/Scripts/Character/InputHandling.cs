@@ -39,7 +39,6 @@ public class InputHandling : MonoBehaviour
         }
     }
 
-
     public bool IsTouchOverUI()
     {
         if (Input.touchCount > 0)
@@ -58,7 +57,7 @@ public class InputHandling : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) // Voit käyttää sopivaa näppäintä tai syötettä
         {
-            AbilitySO currentAbility  = abilityManager.currentAbility;
+            AbilitySO currentAbility = abilityManager.currentAbility;
             abilityManager.UseCurrentAbility();
         }
     }

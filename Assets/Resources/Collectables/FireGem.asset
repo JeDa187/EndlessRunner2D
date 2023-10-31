@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FireGem
   m_EditorClassIdentifier: 
   abilityToGrant: {fileID: 11400000, guid: a8589398197c27f44aca24093ef208d7, type: 2}
-  collectibleSprite: {fileID: 0}
+  collectableSprite: {fileID: -1096589552, guid: 6bec7d9cfabf1f645b22f2d7d4d95d1e, type: 3}
   collectableName: FireGem
-  description: Gives The Firebreath
+  description: Gives The SpeedBoost
   collectedItem: {fileID: 239924113085819100, guid: 4d2c009cfc599c7419bcb591ae666647, type: 3}
+  isScoreMultiplier: 0
+  multiplierValue: 2

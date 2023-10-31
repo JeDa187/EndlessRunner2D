@@ -16,7 +16,7 @@ public class EnemyMover : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Check if SpeedBoost is active
+        //Check if SpeedBoost is active
         float speedMultiplier = (dragonflyController && dragonflyController.IsSpeedBoostActive()) ? 8.0f : 1.0f;
 
         // Move the object to the left
