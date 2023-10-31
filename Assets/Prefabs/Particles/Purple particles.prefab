@@ -14511,7 +14511,7 @@ GameObject:
   - component: {fileID: 4937182938992150607}
   m_Layer: 0
   m_Name: Purple particles
-  m_TagString: Untagged
+  m_TagString: ObstacleDown2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

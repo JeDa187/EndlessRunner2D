@@ -24,9 +24,29 @@ public abstract class ObjectPoolingSystem : MonoBehaviour
         return objectToSpawn;
     }
 
+    //public void ReturnToPool(string tag, GameObject objectToReturn)
+    //{
+    //    objectToReturn.SetActive(false);
+    //    if (poolDictionary.ContainsKey(tag))
+    //    {
+    //        poolDictionary[tag].Enqueue(objectToReturn);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning($"Trying to return an object to a pool with tag {tag} that doesn't exist.");
+    //    }
+    //}
+
     public void ReturnToPool(string tag, GameObject objectToReturn)
     {
         objectToReturn.SetActive(false);
+
+        // Check if the parent of objectToReturn has the Ground_Second tag
+        if (objectToReturn.transform.parent != null && objectToReturn.transform.parent.CompareTag("Ground_Second"))
+        {
+            objectToReturn.transform.SetParent(ObstaclePooler.Instance.transform);
+        }
+
         if (poolDictionary.ContainsKey(tag))
         {
             poolDictionary[tag].Enqueue(objectToReturn);

@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple particles
       objectReference: {fileID: 0}
+    - target: {fileID: 4937182938992150606, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDown2
+      objectReference: {fileID: 0}
     - target: {fileID: 4937182938992150607, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
       propertyPath: m_RootOrder
       value: 0

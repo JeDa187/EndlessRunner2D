@@ -11,15 +11,8 @@ public class ObstacleDestruction : MonoBehaviour
 
         if (transform.position.x < cameraLeftEdge)
         {
-            ReturnToPool();
+            // Käytämme ReturnToPool-metodia ObstaclePooler-luokassa.
+            obstaclePooler.ReturnToPool(gameObject.tag, gameObject);
         }
-    }
-
-    private void ReturnToPool()
-    {
-        gameObject.SetActive(false);
-
-        // Käytämme ReturnToPool-metodia ObstaclePooler-luokassa.
-        obstaclePooler.ReturnToPool(gameObject.tag, gameObject);
     }
 }
