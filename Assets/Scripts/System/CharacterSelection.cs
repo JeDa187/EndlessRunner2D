@@ -252,11 +252,11 @@ public class CharacterSelection : MonoBehaviour
 
         characterLocked[0] = false;
 
-        if (playerScore >= 1000)
+        if (playerScore >= 500)
         {
             characterLocked[1] = false;
         }
-        if (playerScore >= 2000)
+        if (playerScore >= 1000)
         {
             characterLocked[2] = false;
         }
