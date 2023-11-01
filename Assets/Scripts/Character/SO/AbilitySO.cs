@@ -13,16 +13,3 @@ public class AbilitySO : ScriptableObject
     public ParticleSystem particleEffect;
 }
 
-//    public virtual void Activate(DragonflyController controller)
-//    {
-//        // Tähän voi lisätä perustoimintoja, jotka soveltuvat kaikille kyvyille
-//        // Esimerkiksi partikkeliefektin käynnistäminen
-//        if (particleEffect != null)
-//        {
-//            // Luo ja toista partikkeliefekti
-//        }
-
-//        Debug.Log($"{abilityName} activated.");
-//    }
-
-//}
