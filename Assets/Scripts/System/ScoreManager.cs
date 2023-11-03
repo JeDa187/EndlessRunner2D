@@ -12,22 +12,9 @@ public class ScoreManager : MonoBehaviour
     private int score = 0; // Player's current score
     private int highScore = 0; // Highest score achieved so far
     private const string HighScoreKey = "HighScore"; // Key used to save/load high score with PlayerPrefs
-    public static ScoreManager Instance { get; private set; }
-
+                                                     
     private DragonflyController dragonflyController;
     //private int scoreMultiplier = 1;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
-    }
 
     private void Start()
     {

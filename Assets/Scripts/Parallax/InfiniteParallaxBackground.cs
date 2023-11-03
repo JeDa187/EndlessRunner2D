@@ -6,42 +6,6 @@ public class InfiniteParallaxBackground : MonoBehaviour
     public float cameraSpeed = 1.5f;
     public float accelerationFactor; // Kiihtyvyyskerroin taustoille
 
-    public ParallaxLayer[] parallaxLayers;
-    private Transform mainCamera;
-    private Vector3 cameraMoveVector; // K‰ytet‰‰n ennalta luotua vektoria kameran siirtoon
-
-    void Start()
-    {
-        mainCamera = Camera.main.transform;
-        cameraMoveVector = new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
-        foreach (var layer in parallaxLayers)
-        {
-            layer.Initialize();
-        }
-    }
-
-    private void Update()
-    {
-        if (Time.timeScale == 0) return;
-
-        if (enableScrolling)
-        {
-            cameraSpeed += accelerationFactor * Time.deltaTime; // T‰m‰ lis‰‰ nopeutta tasaisesti
-            mainCamera.position += cameraMoveVector;
-
-            foreach (var layer in parallaxLayers)
-            {
-                layer.Scroll(mainCamera.position.x, cameraSpeed);
-            }
-        }
-    }
-
-    public float CameraSpeed
-    {
-        get { return cameraSpeed; }
-        set { cameraSpeed = value; }
-    }
-
     [System.Serializable]
     public class ParallaxLayer
     {
@@ -84,5 +48,41 @@ public class InfiniteParallaxBackground : MonoBehaviour
                 }
             }
         }
+    }
+
+    public ParallaxLayer[] parallaxLayers;
+    private Transform mainCamera;
+    private Vector3 cameraMoveVector; // K‰ytet‰‰n ennalta luotua vektoria kameran siirtoon
+
+    void Start()
+    {
+        mainCamera = Camera.main.transform;
+        cameraMoveVector = new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        foreach (var layer in parallaxLayers)
+        {
+            layer.Initialize();
+        }
+    }
+
+    private void Update()
+    {
+        if (Time.timeScale == 0) return;
+
+        if (enableScrolling)
+        {
+            cameraSpeed += accelerationFactor * Time.deltaTime; // T‰m‰ lis‰‰ nopeutta tasaisesti
+            mainCamera.position += cameraMoveVector;
+
+            foreach (var layer in parallaxLayers)
+            {
+                layer.Scroll(mainCamera.position.x, cameraSpeed);
+            }
+        }
+    }
+
+    public float CameraSpeed
+    {
+        get { return cameraSpeed; }
+        set { cameraSpeed = value; }
     }
 }
