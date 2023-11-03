@@ -1,18 +1,19 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PowerUps/ScoreBuff")]
-public class ScoreBuff : PowerUps
+public class ScoreBuff : PowerUpSO
 {
     public int amount;
 
     public override void Apply(GameObject target)
     {
-        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
-        if (scoreManager != null)
+        if (ScoreManager.Instance != null)
         {
-            scoreManager.AddScore(amount);
+            ScoreManager.Instance.AddScore(amount);
+        }
+        else
+        {
+            Debug.LogWarning("ScoreManager instance not found!");
         }
     }
-
-
 }

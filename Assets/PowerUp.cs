@@ -1,15 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public PowerUps powerUpEffect;
+    public PowerUpSO powerUpEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-        powerUpEffect.Apply(collision.gameObject);
-        Debug.Log("törmäys");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (powerUpEffect != null)
+            {
+                powerUpEffect.Apply(collision.gameObject);
+            }
+            else
+            {
+                Debug.LogError("PowerUp effect is not assigned!");
+            }
+
+            Destroy(gameObject);
+        }
     }
 }
