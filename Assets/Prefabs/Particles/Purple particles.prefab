@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4939165531754369061}
   - component: {fileID: 5063750734813815663}
   - component: {fileID: 5062404024378128389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particles Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 4941739835582675924}
   - component: {fileID: 5063383446901458902}
   - component: {fileID: 5062533488358201782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particles Health (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9677,7 +9677,7 @@ GameObject:
   - component: {fileID: 4939100965540629948}
   - component: {fileID: 5063352085480055124}
   - component: {fileID: 5062639013224734486}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particles Health (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14509,7 +14509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4937182938992150607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Purple particles
   m_TagString: ObstacleDown2
   m_Icon: {fileID: 0}
@@ -14546,7 +14546,7 @@ GameObject:
   - component: {fileID: 4937182939723390562}
   - component: {fileID: 4937182939723390560}
   - component: {fileID: 4937182939723390563}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particles Health (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

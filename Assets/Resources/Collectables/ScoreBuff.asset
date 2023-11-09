@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37930c6e294a274caed98e7da8299d1, type: 3}
-  m_Name: ScoreMultiplier
+  m_Script: {fileID: 11500000, guid: a8b4096787a3dfe45b9fd3e26e7fdf11, type: 3}
+  m_Name: ScoreBuff
   m_EditorClassIdentifier: 
-  abilityName: ScoreMultiplier
-  description: Multiplies Player's Score
-  icon: {fileID: 0}
-  abilityDuration: 5
-  particleEffect: {fileID: 0}
-  abilityType: 1
+  amount: 100

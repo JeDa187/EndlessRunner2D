@@ -124,9 +124,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7768144237948611927}
     m_Modifications:
+    - target: {fileID: 4935956174150357189, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936070213786664332, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936071601162632726, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4937182938992150606, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
       propertyPath: m_Name
       value: Purple particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937182938992150606, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4937182938992150606, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
       propertyPath: m_TagString
@@ -195,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 4937182939723390563, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
       propertyPath: m_SortingOrder
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937182939723390565, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4939100965540629948, guid: 9c3e128a07a637442a5e488df9c68a7d, type: 3}
       propertyPath: m_LocalScale.x

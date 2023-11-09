@@ -20,6 +20,13 @@ public class ScoreManager : MonoBehaviour
     {
         dragonflyController = FindObjectOfType<DragonflyController>();
     }
+    public void AddScore(int amount)
+    {
+        score += amount;
+        scoreTextObject.text = $"Score: {score}"; // P‰ivit‰ pistem‰‰r‰n n‰yttˆ v‰littˆm‰sti
+        Debug.Log("added score");
+
+    }
     public int GetScore()
     {
         return score;
@@ -68,24 +75,4 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
-    //public IEnumerator UpdateScore()
-    //{
-    //    while (true) // Runs indefinitely, be cautious of infinite loops.
-    //    {
-    //        int currentMultiplier = dragonflyController.GetScoreMultiplier();
-    //        score += currentMultiplier; // Lis‰‰ pistem‰‰r‰‰ kertoimen mukaan
-    //        scoreTextObject.text = $"Score: {score}"; // P‰ivit‰ teksti n‰ytt‰m‰‰n nykyinen pistem‰‰r‰
-
-    //        yield return new WaitForSeconds(0.5f); // Odota 0.5 sekuntia ennen seuraavaa p‰ivityst‰
-    //    }
-    //}
-    //public void SetScoreMultiplier(int multiplier)
-    //{
-    //    scoreMultiplier = Mathf.Max(1, multiplier); // Varmistetaan, ett‰ kerroin on v‰hint‰‰n 1
-    //}
-
-    //public int GetScoreMultiplier()
-    //{
-    //    return scoreMultiplier; // Palautetaan nykyinen kerroin
-    //}
 }

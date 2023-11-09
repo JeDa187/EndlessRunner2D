@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7037017270569299522, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
       propertyPath: m_TagString
-      value: Hazard
+      value: ObstacleDown1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8370113626789687604, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7037017270569299522, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
       propertyPath: m_TagString
-      value: Hazard
+      value: ObstacleDown1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8370113626789687604, guid: 4da6e2bab54595a41a4e9c680b09d147, type: 3}
