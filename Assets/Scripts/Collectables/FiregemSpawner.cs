@@ -4,9 +4,9 @@ using System.Collections;
 public class FiregemSpawner : MonoBehaviour
 {
     public GameObject firegemPrefab; // Firegemin prefab.
-    private float initialWaitTime = 30f; // Ensimmäinen odotusaika (30 sekuntia).
-    private float minSpawnInterval = 20f; // Minimi aika seuraavan Firegemin spawnaukseen.
-    private float maxSpawnInterval = 40f; // Maksimi aika seuraavan Firegemin spawnaukseen.
+    private float initialWaitTime = 10f; // Ensimmäinen odotusaika (30 sekuntia).
+    private float minSpawnInterval = 15f; // Minimi aika seuraavan Firegemin spawnaukseen.
+    private float maxSpawnInterval = 25f; // Maksimi aika seuraavan Firegemin spawnaukseen.
 
     public InfiniteParallaxBackground parallaxBackground; // Viittaus InfiniteParallaxBackground -komponenttiin.
 
