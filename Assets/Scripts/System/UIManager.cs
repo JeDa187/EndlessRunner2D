@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] Sprite icon;
+    //[SerializeField] Sprite icon;
     [SerializeField] TMP_Text collectedItemsText;
     [SerializeField] Button pauseButton;
     [SerializeField] GameObject pauseMenuCanvas;
@@ -30,7 +30,30 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         UpdateCollectedItemsText(); // P‰ivit‰ tekstikentt‰ alussa
-        pauseButton.onClick.AddListener(ShowPauseMenu);
+                                    // Varmista, ett‰ pauseMenu ja uiPauseButton ovat asetettu inspectorissa
+        if (pauseMenuPanel == null)
+        {
+            Debug.LogError("PauseMenu GameObject ei ole asetettu PauseButtonControllerissa!");
+        }
+
+        if (pauseButton == null)
+        {
+            Debug.LogError("UIPauseButton ei ole asetettu PauseButtonControllerissa!");
+        }
+        else
+        {
+            // Kuuntele OnClick-tapahtumaa UI-painikkeelle
+            pauseButton.onClick.AddListener(TogglePauseMenu);
+        }
+    }
+
+    void Update()
+    {
+        // Tarkista, onko Pause-painiketta painettu n‰pp‰imistˆlt‰ (Q)
+        if (Input.GetButtonDown("Pause"))
+        {
+            TogglePauseMenu(); // Kutsu TogglePauseMenu-metodia, kun painetaan pause-painiketta n‰pp‰imistˆlt‰
+        }
     }
 
     //Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
@@ -56,10 +79,13 @@ public class UIManager : MonoBehaviour
 
         collectedItemsText.text = sb.ToString();
     }
-    public void ShowPauseMenu()
+    void TogglePauseMenu()
     {
-        Time.timeScale = 0f; // Pause the game
-        pauseMenuCanvas.SetActive(true); // Show the pause menu
+        // K‰‰nn‰ pauseMenu-panelin tila p‰‰lle/pois p‰‰lt‰
+        pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
+
+        // Pys‰yt‰ aika, jos pauseMenu on p‰‰ll‰, jatka, jos se on pois p‰‰lt‰
+        Time.timeScale = (pauseMenuPanel.activeSelf) ? 0 : 1;
     }
     public void ResumeGame()
     {
