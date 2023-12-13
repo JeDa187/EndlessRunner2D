@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    private UIManager uiManager;
     private ScoreManager scoreManager;
     private InfiniteParallaxBackground parallax; // Reference to the parallax scrolling background  
     [SerializeField] GameObject gameOverPanel; // UI panel displayed when game is over
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
         scoreManager = GetComponent<ScoreManager>();
+        uiManager = GetComponent<UIManager>(); 
         SetupSingleton(); // Set up singleton instance
         scoreManager.LoadHighScore(); // Load the high score from PlayerPrefs
 
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         pauseButton.SetActive(false);
+        uiManager.DisablePauseMenu();
         gameOverPanel.SetActive(true);
         scoreManager.GetScoreTextObject().gameObject.SetActive(false);
         Time.timeScale = 0;

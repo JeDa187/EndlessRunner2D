@@ -7,13 +7,13 @@ using System.Collections.Generic;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    //[SerializeField] Sprite icon;
     [SerializeField] TMP_Text collectedItemsText;
     [SerializeField] Button pauseButton;
     [SerializeField] GameObject pauseMenuCanvas;
     [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject settingsMenuPanel;
     [SerializeField] GameObject MainMenuSecurePanel;
+    private bool pauseEnabled = true;
 
     private void Awake()
     {
@@ -46,7 +46,13 @@ public class UIManager : MonoBehaviour
             pauseButton.onClick.AddListener(TogglePauseMenu);
         }
     }
-
+    public void DisablePauseMenu()
+    {
+        pauseEnabled = false;
+        pauseMenuCanvas.SetActive(false);
+        pauseMenuPanel.SetActive(false);
+        
+    }
     void Update()
     {
         // Tarkista, onko Pause-painiketta painettu n‰pp‰imistˆlt‰ (Q)
@@ -81,11 +87,14 @@ public class UIManager : MonoBehaviour
     }
     void TogglePauseMenu()
     {
-        // K‰‰nn‰ pauseMenu-panelin tila p‰‰lle/pois p‰‰lt‰
-        pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
+        if(pauseEnabled)
+        {
+            // K‰‰nn‰ pauseMenu-panelin tila p‰‰lle/pois p‰‰lt‰
+            pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
 
-        // Pys‰yt‰ aika, jos pauseMenu on p‰‰ll‰, jatka, jos se on pois p‰‰lt‰
-        Time.timeScale = (pauseMenuPanel.activeSelf) ? 0 : 1;
+            // Pys‰yt‰ aika, jos pauseMenu on p‰‰ll‰, jatka, jos se on pois p‰‰lt‰
+            Time.timeScale = (pauseMenuPanel.activeSelf) ? 0 : 1;
+        }
     }
     public void ResumeGame()
     {
