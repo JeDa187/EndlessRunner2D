@@ -7,13 +7,15 @@ using System.Collections.Generic;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] TMP_Text collectedItemsText;
+    //[SerializeField] TMP_Text collectedItemsText;
     [SerializeField] Button pauseButton;
     [SerializeField] GameObject pauseMenuCanvas;
     [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject settingsMenuPanel;
     [SerializeField] GameObject MainMenuSecurePanel;
     private bool pauseEnabled = true;
+
+    public List<Image> collectedItemSlots = new List<Image>();
 
     private void Awake()
     {
@@ -29,8 +31,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateCollectedItemsText(); // P‰ivit‰ tekstikentt‰ alussa
-                                    // Varmista, ett‰ pauseMenu ja uiPauseButton ovat asetettu inspectorissa
+        UpdateCollectedItems(); // P‰ivit‰ tekstikentt‰ alussa
+                                // Varmista, ett‰ pauseMenu ja uiPauseButton ovat asetettu inspectorissa
         if (pauseMenuPanel == null)
         {
             Debug.LogError("PauseMenu GameObject ei ole asetettu PauseButtonControllerissa!");
@@ -51,7 +53,7 @@ public class UIManager : MonoBehaviour
         pauseEnabled = false;
         pauseMenuCanvas.SetActive(false);
         pauseMenuPanel.SetActive(false);
-        
+
     }
     void Update()
     {
@@ -69,25 +71,51 @@ public class UIManager : MonoBehaviour
         if (InventoryManager.Instance != null)
         {
             // P‰ivit‰ ker‰ttyjen objektien teksti
-            UpdateCollectedItemsText();
+            UpdateCollectedItems();
         }
     }
-
-    private void UpdateCollectedItemsText()
+    private void UpdateCollectedItems()
     {
         List<ItemSO> collectedItems = InventoryManager.Instance.GetCollectedItems();
 
-        StringBuilder sb = new("Collected Items:\n");
-        foreach (ItemSO item in collectedItems)
+        for (int i = 0; i < collectedItemSlots.Count; i++)
         {
-            sb.Append(item.collectableName).Append("\n");
-        }
+            Image slotImage = collectedItemSlots[i];
 
-        collectedItemsText.text = sb.ToString();
+            if (i < collectedItems.Count)
+            {
+                // Jos on ker‰tty esineit‰, hae niiden kuvat ItemSO-objekteista
+                Sprite itemSprite = collectedItems[i].collectableSprite;
+
+                // P‰ivit‰ Image-komponentti
+                slotImage.sprite = itemSprite;
+                slotImage.gameObject.SetActive(true);  // Varmista, ett‰ ruutu on n‰kyviss‰
+            }
+            else
+            {
+                // Jos ei ole en‰‰ esineit‰, piilota ruutu
+                slotImage.sprite = null;
+                slotImage.gameObject.SetActive(false);
+            }
+        }
     }
+
+
+    //private void UpdateCollectedItemsText()
+    //{
+    //    List<ItemSO> collectedItems = InventoryManager.Instance.GetCollectedItems();
+
+    //    StringBuilder sb = new("Collected Items:\n");
+    //    foreach (ItemSO item in collectedItems)
+    //    {
+    //        sb.Append(item.collectableName).Append("\n");
+    //    }
+
+    //    collectedItemsText.text = sb.ToString();
+    //}
     void TogglePauseMenu()
     {
-        if(pauseEnabled)
+        if (pauseEnabled)
         {
             // K‰‰nn‰ pauseMenu-panelin tila p‰‰lle/pois p‰‰lt‰
             pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
@@ -110,7 +138,7 @@ public class UIManager : MonoBehaviour
     {
         MainMenuSecurePanel.SetActive(true);
         pauseMenuPanel.SetActive(false);
-        
+
     }
     public void ReturnToPauseMenu()
     {
