@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878e4323d910ac5418e11aa7316960d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 2.57
+  baseMoveSpeed: 2.73
   customSpeedFactor: 7.25
+  customSpeedAccelerator: 0.6
+  acceleratorForSpeedAccelerator: 0.2
 --- !u!70 &8059466992260444495
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
