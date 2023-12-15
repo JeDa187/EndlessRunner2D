@@ -8,9 +8,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
         public delegate void OnLayerShifted(Transform shiftedLayer);
         public event OnLayerShifted LayerShifted;
 
-        [SerializeField] float scrollSpeed = 1.0f; // Parallax-scrollin nopeus
-        private float layerScrollSpeed; // Scrollin oma nopeus
-
+        public float scrollSpeed;
         public Transform parentObject; // Viittaus parent GameObjectiin
         private Transform[] childSprites = new Transform[3]; // Lapsispritet
         private float spriteWidth;
@@ -27,14 +25,10 @@ public class InfiniteParallaxBackground : MonoBehaviour
             spriteRenderer = childSprites[0].GetComponent<SpriteRenderer>();
             spriteWidth = spriteRenderer.sprite.bounds.size.x;
         }
-        public void SetScrollSpeed(float speed)
-        {
-            layerScrollSpeed = speed;
-        }
 
-        public void Scroll(float cameraPosition)
+        public void Scroll(float cameraPosition, float cameraSpeed)
         {
-            Vector3 scrollVector = new(-layerScrollSpeed * Time.deltaTime, 0, 0);
+            Vector3 scrollVector = new(-scrollSpeed * Time.deltaTime * cameraSpeed, 0, 0);
             Vector3 resetVector = new(3 * spriteWidth, 0, 0);
             for (int i = 0; i < childSprites.Length; i++)
             {
@@ -81,7 +75,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
 
             foreach (var layer in parallaxLayers)
             {
-                layer.Scroll(mainCamera.position.x);
+                layer.Scroll(mainCamera.position.x, cameraSpeed);
             }
         }
     }

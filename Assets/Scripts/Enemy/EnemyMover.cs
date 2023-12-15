@@ -3,11 +3,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] float baseMoveSpeed;
-    [SerializeField] float customSpeedFactor;
-    [SerializeField] float customSpeedAccelerator;
-    [SerializeField] float acceleratorForSpeedAccelerator;
-
-
+    [SerializeField] float customSpeedFactor = 1.0f;
 
     private void Update()
     {
@@ -31,11 +27,7 @@ public class EnemyMover : MonoBehaviour
 
     private float GetModifiedMoveSpeed()
     {
-        return baseMoveSpeed * customSpeedFactor * AccelerateSpeed();
-    }
-    private float AccelerateSpeed()
-    {
-        return acceleratorForSpeedAccelerator + customSpeedAccelerator;
+        return baseMoveSpeed * customSpeedFactor;
     }
 
     private void ReturnToPool()

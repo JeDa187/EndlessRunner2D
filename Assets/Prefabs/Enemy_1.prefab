@@ -100,8 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMoveSpeed: 2.73
   customSpeedFactor: 7.25
-  customSpeedAccelerator: 0.6
-  acceleratorForSpeedAccelerator: 0.2
 --- !u!70 &1308766066421148801
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
