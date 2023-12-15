@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // Singleton instance of the GameManager
     public event Action OnCountdownFinished; // Event triggered when the countdown is finished
 
-    public SpriteRenderer playerSpriteRenderer; // Renderer, joka n‰ytt‰‰ pelaajan hahmon.
+    //public SpriteRenderer playerSpriteRenderer; // Renderer, joka n‰ytt‰‰ pelaajan hahmon.
 
 
     private void Awake()
@@ -41,11 +41,16 @@ public class GameManager : MonoBehaviour
     {
         InitializeGame();
 
+        SetPlayerCharacter();
+    }
+
+    private void SetPlayerCharacter()
+    {
         // Aseta valittu hahmo peliss‰.
         if (CharacterSelection.Instance != null)
         {
             // Oletetaan, ett‰ peliss‰ on vain yksi Player-olio.
-            DragonflyController player = FindObjectOfType<DragonflyController>(); 
+            DragonflyController player = FindObjectOfType<DragonflyController>();
             if (player != null)
             {
                 PlayerCharacterSO selectedCharacter = CharacterSelection.Instance.characters
@@ -63,7 +68,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError("CharacterSelection.Instance is null.");
         }
     }
-
 
     private void SetupSingleton()
     {

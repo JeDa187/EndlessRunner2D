@@ -97,14 +97,13 @@ public class ObjectSpawner : MonoBehaviour
             GameObject spawnedObject = GetObjectFromPool(objectToSpawn);
             if (spawnedObject == null) continue;
 
-            spawnedObject.transform.position = spawnPosition;
-            spawnedObject.transform.rotation = Quaternion.identity;
+            spawnedObject.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
             spawnedObject.SetActive(true);
 
             EnemyMover mover = spawnedObject.GetComponent<EnemyMover>();
             if (mover)
             {
-                mover.SetSpeed(parallaxBackground.CameraSpeed);
+                mover.SetCustomSpeedFactor(parallaxBackground.CameraSpeed * 0.5f); // Voit k‰ytt‰‰ mit‰ tahansa sopivaa tekij‰‰ t‰ss‰
             }
 
             lastY = nextY;

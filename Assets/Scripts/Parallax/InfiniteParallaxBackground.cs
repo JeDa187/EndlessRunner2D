@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class InfiniteParallaxBackground : MonoBehaviour
 {
-    public bool enableScrolling = true;
-    public float cameraSpeed = 1.5f;
-    public float accelerationFactor; // Kiihtyvyyskerroin taustoille
-
     [System.Serializable]
     public class ParallaxLayer
     {
@@ -50,6 +46,10 @@ public class InfiniteParallaxBackground : MonoBehaviour
         }
     }
 
+
+    public bool enableScrolling = true;
+    public float cameraSpeed = 1.5f;
+    public float accelerationFactor; // Kiihtyvyyskerroin taustoille
     public ParallaxLayer[] parallaxLayers;
     private Transform mainCamera;
     private Vector3 cameraMoveVector; // K‰ytet‰‰n ennalta luotua vektoria kameran siirtoon
@@ -64,7 +64,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Time.timeScale == 0) return;
 

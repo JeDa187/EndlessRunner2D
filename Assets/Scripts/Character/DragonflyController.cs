@@ -37,7 +37,7 @@ public class DragonflyController : MonoBehaviour
         inputHandling = GetComponent<InputHandling>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (!canMove) return; // If canMove is false, exit the function
         inputHandling.HandleInput();        // Check and process player input

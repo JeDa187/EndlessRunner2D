@@ -55,7 +55,11 @@ public class InputHandling : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Voit käyttää sopivaa näppäintä tai syötettä
+        SpeedBoostAction();
+    }
+    private void SpeedBoostAction()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             AbilitySO currentAbility = abilityManager.currentAbility;
             abilityManager.UseCurrentAbility();
