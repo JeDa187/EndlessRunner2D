@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Enemy nopeus- suunnittelua.md",
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Enemy nopeus- suunnittelua.md",
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Enemy nopeus- suunnittelua.md",
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Enemy nopeus- suunnittelua.md"
+                "file": "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md"
               }
             }
           }
@@ -148,15 +148,20 @@
   },
   "active": "57a12b1030ed65f2",
   "lastOpenFiles": [
-    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Tehdyt muutokset luokkiin/ObjectSpawner-luokka.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Tehdyt muutokset luokkiin/Enemy mover-luokka.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Tehdyt muutokset luokkiin",
-    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Enemy nopeus- suunnittelua.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/ObstacleSpawner...md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Toteutus.md",
-    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Obstacles liike uudellen rakentaminen.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/Esteiden liikkumisen ja tuhoamisen päivitys.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen/`ObstacleSpawner`-scriptin päivitys.md",
+    "Dokumentaatio/Effects/2D Sade Efekti.md",
+    "Dokumentaatio/Grafiikka/Grafiikoiden optimointi.md",
+    "Projektin aloitus.md",
+    "Dokumentaatio/Grafiikka",
+    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Enemy nopeus- suunnittelua.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Tehdyt muutokset luokkiin/ObjectSpawner-luokka.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Tehdyt muutokset luokkiin/Enemy mover-luokka.md",
+    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus/Tehdyt muutokset luokkiin",
+    "Dokumentaatio/Bugit ja niiden korjaus/Enemy liikkeen nopeus",
     "Dokumentaatio/Log In Scene/Offline Pelitila Napit ja Toiminnot.md",
     "Dokumentaatio/PlayFab systems/PlayFab toimintojen jalostus.md",
     "Dokumentaatio/PlayFab systems/PlayFabin Mahdolliset Muut Käyttötavat.md",
@@ -171,14 +176,10 @@
     "Dokumentaatio/Bugit ja niiden korjaus/Inventaarion ja Kykyjen Hallinta.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Obstacles liike uudellen rakentaminen",
     "Dokumentaatio/Log In Scene/Kirjautumisviestin viive.md",
-    "Dokumentaatio/Effects/2D Sade Efekti.md",
     "Dokumentaatio/Bugit ja niiden korjaus/UI Nappien Ongelma ja Virheenkorjaus.md",
     "Dokumentaatio/Bugit ja niiden korjaus/Pelaajien nimet eivät ilmesty tulostaulukkoon.md",
     "Dokumentaatio/Bugit ja niiden korjaus/InventoryManager Null Reference Ongelma ja Ratkaisu.md",
     "Dokumentaatio/PlayFab systems/PlayFab Leaderboard (discarded).md",
-    "Projektin aloitus.md",
-    "Dokumentaatio/ScoreSystem/Local Score-järjestelmä.md",
-    "Dokumentaatio/Security/PlayerPrefs Salaus.md",
     "Images/Näyttökuva 2023-08-16 134159.png",
     "Images/Näyttökuva 2023-08-16 134204.png",
     "Dokumentaatio/Security",
@@ -188,7 +189,6 @@
     "Images/privacypolicy.png",
     "Dokumentaatio/System",
     "Images/Parallax tausta.png",
-    "Dokumentaatio/Log In Scene",
     "Images/Mainmenucreation (4).png",
     "Images/Mainmenucreation (3).png",
     "Images/Mainmenucreation (2).png",
