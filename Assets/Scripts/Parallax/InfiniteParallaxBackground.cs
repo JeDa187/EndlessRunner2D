@@ -30,19 +30,12 @@ public class InfiniteParallaxBackground : MonoBehaviour
             spriteRenderer = childSprites[0].GetComponent<SpriteRenderer>();
             spriteWidth = spriteRenderer.sprite.bounds.size.x;
         }
-        //public void SetScrollSpeed()
-        //{
-        //    layerScrollSpeed = CalculateExponentialScroll();
-        //}
 
         private Vector3 CalculateScrollVector()
         {
             return new Vector3(-layerScrollSpeed * Time.deltaTime, 0, 0);
         }
-        //private float CalculateExponentialScroll(float cameraPosition)
-        //{
-        //    return Mathf.Exp(exponentFactor * cameraPosition) * scrollSpeed;
-        //}
+
         private float CalculateExponentialScroll()
         {
             return Mathf.Exp(exponentFactor * elapsedTime) * scrollSpeed;
@@ -82,9 +75,6 @@ public class InfiniteParallaxBackground : MonoBehaviour
             }
         }
     }
-
-
-
 
     public bool enableScrolling = true;
     public float cameraSpeed = 1.5f;
