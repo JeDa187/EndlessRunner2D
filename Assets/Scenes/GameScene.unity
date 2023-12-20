@@ -1092,6 +1092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectedItems:
   - {fileID: 11400000, guid: 36effd63b0556aa4dbe0290e4571ff57, type: 2}
+  - {fileID: 11400000, guid: 36effd63b0556aa4dbe0290e4571ff57, type: 2}
+  - {fileID: 11400000, guid: 36effd63b0556aa4dbe0290e4571ff57, type: 2}
 --- !u!1 &273672733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,7 +4882,7 @@ PrefabInstance:
     - target: {fileID: 8661110466388078423, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: currentAbility
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: a8589398197c27f44aca24093ef208d7, type: 2}
     - target: {fileID: 8661110466388078423, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: speedBoostAbility
       value: 

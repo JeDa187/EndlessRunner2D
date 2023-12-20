@@ -5,9 +5,11 @@ public class InfiniteParallaxBackground : MonoBehaviour
     [System.Serializable]
     public class ParallaxLayer
     {
+
         public delegate void OnLayerShifted(Transform shiftedLayer);
         public event OnLayerShifted LayerShifted;
 
+        private float elapsedTime = 0f;
         [SerializeField] float scrollSpeed = 2.0f; // Parallax-scrollin nopeus
         [SerializeField] float layerScrollSpeed; // Scrollin oma nopeus
         float exponentFactor = 0.005f;
@@ -28,18 +30,22 @@ public class InfiniteParallaxBackground : MonoBehaviour
             spriteRenderer = childSprites[0].GetComponent<SpriteRenderer>();
             spriteWidth = spriteRenderer.sprite.bounds.size.x;
         }
-        public void SetScrollSpeed(float cameraPosition)
-        {
-            layerScrollSpeed = CalculateExponentialScroll(cameraPosition);
-        }
+        //public void SetScrollSpeed()
+        //{
+        //    layerScrollSpeed = CalculateExponentialScroll();
+        //}
 
         private Vector3 CalculateScrollVector()
         {
             return new Vector3(-layerScrollSpeed * Time.deltaTime, 0, 0);
         }
-        private float CalculateExponentialScroll(float cameraPosition)
+        //private float CalculateExponentialScroll(float cameraPosition)
+        //{
+        //    return Mathf.Exp(exponentFactor * cameraPosition) * scrollSpeed;
+        //}
+        private float CalculateExponentialScroll()
         {
-            return Mathf.Exp(exponentFactor * cameraPosition) * scrollSpeed;
+            return Mathf.Exp(exponentFactor * elapsedTime) * scrollSpeed;
         }
         private Vector3 CreateResetVector()
         {
@@ -47,10 +53,15 @@ public class InfiniteParallaxBackground : MonoBehaviour
             Vector3 targetPosition = new Vector3(3 * spriteWidth, 0, 0);
             return Vector3.Lerp(Vector3.zero, targetPosition, smoothness);
         }
-
-        public void Scroll(float cameraPosition)
+        public void SetElapsedTime(float time)
         {
-            SetScrollSpeed(cameraPosition);
+            elapsedTime = time;
+        }
+
+        public void Scroll(float cameraPosition, float deltaTime)
+        {
+            layerScrollSpeed = CalculateExponentialScroll();
+            elapsedTime += deltaTime;
             Vector3 scrollVector = CalculateScrollVector();
             Vector3 resetVector = CreateResetVector();
             for (int i = 0; i < childSprites.Length; i++)
@@ -60,7 +71,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
                     childSprites[i].position += scrollVector;
 
                     // Kun yksittäinen childSprite menee kameran vasemmalle puolelle
-                    if (childSprites[i].position.x < cameraPosition - spriteWidth)
+                    if (childSprites[i].position.x < cameraPosition -spriteWidth)
                     {
                         childSprites[i].position += resetVector;
 
@@ -86,7 +97,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
     {
 
         mainCamera = Camera.main.transform;
-        cameraMoveVector = new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        UpdateCameraMoveVector();
         foreach (var layer in parallaxLayers)
         {
             layer.Initialize();
@@ -98,8 +109,9 @@ public class InfiniteParallaxBackground : MonoBehaviour
         foreach (var layer in parallaxLayers)
         {
 
-            layer.Scroll(mainCamera.position.x);
+            layer.Scroll(mainCamera.position.x, Time.deltaTime);
         }
+        UpdateCameraMoveVector();
     }
     private void LateUpdate()
     {
@@ -107,15 +119,14 @@ public class InfiniteParallaxBackground : MonoBehaviour
 
         if (enableScrolling)
         {
-            cameraSpeed += accelerationFactor * Time.deltaTime; // Tämä lisää nopeutta tasaisesti
+            CameraSpeed += accelerationFactor * Time.deltaTime; // Tämä lisää nopeutta tasaisesti
+            UpdateCameraMoveVector();
             mainCamera.position += cameraMoveVector;
-
-            //foreach (var layer in parallaxLayers)
-            //{
-            //    layer.Scroll(mainCamera.position.x);
-
-            //}
         }
+    }
+    private void UpdateCameraMoveVector()
+    {
+        cameraMoveVector = new Vector3(CameraSpeed * Time.deltaTime, 0, 0);
     }
 
     public float CameraSpeed
