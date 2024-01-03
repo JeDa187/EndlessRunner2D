@@ -10,7 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private ObstaclePooler obstaclePooler; // P‰ivitetty viittaus
 
-    public InfiniteParallaxBackground backgroundScroller;
+    public InfiniteParallaxBackground parallaxBG;
 
     private const float CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT = 8.0f; // M‰‰ritelty raja, jonka j‰lkeen spawn-tahti ei en‰‰ nopeudu
 
@@ -25,7 +25,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            float currentCameraSpeed = Mathf.Min(backgroundScroller.CameraSpeed, CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT); // Spawn-tahti ei nopeudu rajoitteen j‰lkeen
+            float currentCameraSpeed = Mathf.Min(parallaxBG.CameraSpeed, CAMERA_SPEED_LIMIT_FOR_SPAWN_ADJUSTMENT); // Spawn-tahti ei nopeudu rajoitteen j‰lkeen
             float cameraSpeedModifier = currentCameraSpeed / 1.5f;
             float adjustedMinSpawnRate = minSpawnRate / cameraSpeedModifier;
             float adjustedMaxSpawnRate = maxSpawnRate / cameraSpeedModifier;

@@ -9,7 +9,7 @@ public class AbilitySO : ScriptableObject
     public string abilityName;
     public string description;
     public Sprite icon;
-    public float abilityDuration = 5.0f;
+    public float abilityDuration = 3.0f;
     public ParticleSystem particleEffect;
 }
 

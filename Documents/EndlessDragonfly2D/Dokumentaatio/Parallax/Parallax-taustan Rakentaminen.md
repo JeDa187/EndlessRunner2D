@@ -68,4 +68,4 @@ Muutin koodia lisäämällä uuden muuttujan `SpeedIncreaseRate` ja muuttamalla 
 Testasin muutettua koodia varmistaakseni, että parallax-taustan liikuttelun nopeus todella kasvaa ajan myötä ja että taustat liikkuvat vasemmalle. Havaitsin, että muutokset toimivat odotetusti ja saavat aikaan halutun efektin.
 
 ---> 
-[[Parllax refakturointi ja optimointi]]
+[[Parallax refakturointi ja optimointi]]

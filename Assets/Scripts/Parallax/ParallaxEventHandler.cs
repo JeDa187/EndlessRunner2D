@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ParallaxEventHandler : MonoBehaviour
 {
-    public InfiniteParallaxBackground infiniteParallaxBackground;
+    private InfiniteParallaxBackground parallaxBG;
 
     private void OnEnable()
     {
-        foreach (var layer in infiniteParallaxBackground.parallaxLayers)
+        foreach (var layer in parallaxBG.parallaxLayers)
         {
             layer.LayerShifted += HandleLayerShifted;
         }
@@ -14,7 +14,7 @@ public class ParallaxEventHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var layer in infiniteParallaxBackground.parallaxLayers)
+        foreach (var layer in parallaxBG.parallaxLayers)
         {
             layer.LayerShifted -= HandleLayerShifted;
         }

@@ -12,7 +12,7 @@ public class InfiniteParallaxBackground : MonoBehaviour
         private float elapsedTime = 0f;
         [SerializeField] float scrollSpeed = 2.0f; // Parallax-scrollin nopeus
         [SerializeField] float layerScrollSpeed; // Scrollin oma nopeus
-        float exponentFactor = 0.005f;
+        float exponentFactor = 0.5f;
 
         public Transform parentObject; // Viittaus parent GameObjectiin
         private Transform[] childSprites = new Transform[3]; // Lapsispritet
@@ -44,7 +44,8 @@ public class InfiniteParallaxBackground : MonoBehaviour
         {
             float smoothness = 1f; // S‰‰d‰ t‰m‰ arvo sopivaksi, 0.0f tarkoittaa ‰killist‰ siirtym‰‰, 1.0f tarkoittaa pehme‰‰ siirtym‰‰
             Vector3 targetPosition = new Vector3(3 * spriteWidth, 0, 0);
-            return Vector3.Lerp(Vector3.zero, targetPosition, smoothness);
+            //return Vector3.Lerp(Vector3.zero, targetPosition, smoothness);
+            return Vector3.LerpUnclamped(Vector3.zero, targetPosition, smoothness); // LerpUnclamped k‰ytet‰‰n paremmin suorituskyky‰
         }
         public void SetElapsedTime(float time)
         {

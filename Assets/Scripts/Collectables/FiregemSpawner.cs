@@ -8,7 +8,7 @@ public class FiregemSpawner : MonoBehaviour
     private float minSpawnInterval = 15f; // Minimi aika seuraavan Firegemin spawnaukseen.
     private float maxSpawnInterval = 25f; // Maksimi aika seuraavan Firegemin spawnaukseen.
 
-    public InfiniteParallaxBackground parallaxBackground; // Viittaus InfiniteParallaxBackground -komponenttiin.
+    public InfiniteParallaxBackground parallaxBG; // Viittaus InfiniteParallaxBackground -komponenttiin.
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class FiregemSpawner : MonoBehaviour
         StartCoroutine(SpawnFiregems());
 
         // Liitt‰‰ FiregemSpawner:n InfiniteParallaxBackground:in tapahtumiin.
-        foreach (var layer in parallaxBackground.parallaxLayers)
+        foreach (var layer in parallaxBG.parallaxLayers)
         {
             layer.LayerShifted += HandleLayerShifted;
         }

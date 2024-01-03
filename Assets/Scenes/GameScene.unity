@@ -4829,7 +4829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410163301480943888, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2760872010388890157, guid: 7b874df04c99610439f444c9e26f596d, type: 3}
       propertyPath: jumpForce
@@ -9561,7 +9561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92df2e87e769dfb478a29edbbe88c6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infiniteParallaxBackground: {fileID: 2069759166}
 --- !u!1 &2083349618
 GameObject:
   m_ObjectHideFlags: 0
@@ -10019,6 +10018,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 739123069936370429, guid: 33e878763641cee4d9724429ac19e92e, type: 3}
+      propertyPath: parallaxBG
+      value: 
+      objectReference: {fileID: 2069759166}
+    - target: {fileID: 739123069936370429, guid: 33e878763641cee4d9724429ac19e92e, type: 3}
       propertyPath: maxSpawnRate
       value: 12
       objectReference: {fileID: 0}
@@ -10039,6 +10042,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2850622012183123811, guid: 2f89f4d028ee833418a603a1a3f2a8fe, type: 3}
+      propertyPath: parallaxBG
+      value: 
+      objectReference: {fileID: 2069759166}
     - target: {fileID: 2850622012183123811, guid: 2f89f4d028ee833418a603a1a3f2a8fe, type: 3}
       propertyPath: parallaxBackground
       value: 
@@ -10154,7 +10161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: cameraSpeed
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: Layers.Array.size
@@ -10166,7 +10173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: accelerationFactor
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: Layers.Array.data[0]
@@ -10254,27 +10261,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[0].scrollSpeed
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[1].scrollSpeed
-      value: 0.28
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[2].scrollSpeed
-      value: 0.36
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[3].scrollSpeed
-      value: 0.48
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[4].scrollSpeed
-      value: 0.52
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[5].scrollSpeed
-      value: 0.6
+      value: 1.89
       objectReference: {fileID: 0}
     - target: {fileID: 7758939435489443623, guid: 53d1cf47c23fe044c8e77d75ee140e13, type: 3}
       propertyPath: parallaxLayers.Array.data[6].scrollSpeed

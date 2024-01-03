@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     private UIManager uiManager;
     private ScoreManager scoreManager;
-    private InfiniteParallaxBackground parallax; // Reference to the parallax scrolling background  
+    private InfiniteParallaxBackground parallaxBG; // Reference to the parallax scrolling background  
     [SerializeField] GameObject gameOverPanel; // UI panel displayed when game is over
     [SerializeField] GameObject pauseButton;
     [SerializeField] TMP_Text countdownTextObject; // Text object to display the countdown before game starts
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
+        parallaxBG = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
         scoreManager = GetComponent<ScoreManager>();
         uiManager = GetComponent<UIManager>(); 
         SetupSingleton(); // Set up singleton instance
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
             dragonfly.ResetDragonfly();
         }
 
-        parallax.enableScrolling = false;
+        parallaxBG.enableScrolling = false;
     }
     private void EnableDragonflyAndParallax()
     {
@@ -172,6 +172,6 @@ public class GameManager : MonoBehaviour
             dragonfly.ToggleRigidbodyMovement(true);
         }
 
-        parallax.enableScrolling = true;
+        parallaxBG.enableScrolling = true;
     }
 }

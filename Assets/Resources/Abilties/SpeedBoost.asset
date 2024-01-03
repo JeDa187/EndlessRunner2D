@@ -15,6 +15,5 @@ MonoBehaviour:
   abilityName: SpeedBoost
   description: Gives More Speed And Multiplies Score
   icon: {fileID: 0}
-  abilityDuration: 5
+  abilityDuration: 3
   particleEffect: {fileID: 0}
-  abilityType: 0

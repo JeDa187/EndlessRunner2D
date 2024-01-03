@@ -107,10 +107,6 @@ public class DragonflyController : MonoBehaviour
             parallaxBG.CameraSpeed /= 24f;
         }
     }
-    //private void ManipulateLayerScrollSpeed(bool increase)
-    //{
-    //    parallaxBG.LayersScrollSpeed(increase);
-    //}
 
     private void ActivateImmortality()
     {
