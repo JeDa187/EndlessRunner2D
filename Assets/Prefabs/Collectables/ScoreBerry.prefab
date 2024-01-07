@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 322857623091183066}
   - component: {fileID: 1184700305255610030}
   - component: {fileID: 7892230443271303523}
-  - component: {fileID: -2975602817012642212}
   m_Layer: 0
   m_Name: ScoreBerry
   m_TagString: ScoreBerry
@@ -124,18 +123,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2975602817012642212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322857623091183067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef0f25b3d75c2a4428e7dd9adb86e591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectedItem: {fileID: 11400000, guid: 2bfc1ecf6f9f14a4085094dbf7de501a, type: 2}
-  isScoreMultiplier: 1
-  multiplierValue: 2

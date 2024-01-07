@@ -29,7 +29,7 @@ public class Collectables : MonoBehaviour
             }
             else
             {
-                Debug.Log("Inventaarisi on jo t‰ynn‰! Et voi ker‰t‰ en‰‰ lis‰‰ objekteja.");
+                Debug.Log("Your inventory is full, can not collect more collectables");
                 // Voit halutessasi lis‰t‰ muun k‰sitellyn logiikan, kuten ilmoituksen pelaajalle, jos inventaari on t‰ynn‰.
             }
         }

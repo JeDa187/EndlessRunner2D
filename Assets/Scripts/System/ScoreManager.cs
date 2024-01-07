@@ -27,6 +27,14 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("added score");
 
     }
+    public void MultiplyScore(int amount)
+    {
+        Debug.Log("Multiplier käynnistyi");
+        int multiplier = ScoreMultiplierSystem.Instance.GetCurrentMultiplier();
+        score += Mathf.RoundToInt(amount * multiplier);
+        // Päivitä pistemäärän näyttö
+        scoreTextObject.text = $"Score: {score}";
+    }
     public int GetScore()
     {
         return score;

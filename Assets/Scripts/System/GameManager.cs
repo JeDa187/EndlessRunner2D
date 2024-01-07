@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    private UIManager uiManager;
     private ScoreManager scoreManager;
     private InfiniteParallaxBackground parallax; // Reference to the parallax scrolling background  
     [SerializeField] GameObject gameOverPanel; // UI panel displayed when game is over
@@ -18,13 +19,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // Singleton instance of the GameManager
     public event Action OnCountdownFinished; // Event triggered when the countdown is finished
 
-    public SpriteRenderer playerSpriteRenderer; // Renderer, joka n‰ytt‰‰ pelaajan hahmon.
+    //public SpriteRenderer playerSpriteRenderer; // Renderer, joka n‰ytt‰‰ pelaajan hahmon.
 
 
     private void Awake()
     {
         parallax = FindObjectOfType<InfiniteParallaxBackground>(); // Get the parallax background script
         scoreManager = GetComponent<ScoreManager>();
+        uiManager = GetComponent<UIManager>(); 
         SetupSingleton(); // Set up singleton instance
         scoreManager.LoadHighScore(); // Load the high score from PlayerPrefs
 
@@ -39,11 +41,16 @@ public class GameManager : MonoBehaviour
     {
         InitializeGame();
 
+        SetPlayerCharacter();
+    }
+
+    private void SetPlayerCharacter()
+    {
         // Aseta valittu hahmo peliss‰.
         if (CharacterSelection.Instance != null)
         {
             // Oletetaan, ett‰ peliss‰ on vain yksi Player-olio.
-            DragonflyController player = FindObjectOfType<DragonflyController>(); 
+            DragonflyController player = FindObjectOfType<DragonflyController>();
             if (player != null)
             {
                 PlayerCharacterSO selectedCharacter = CharacterSelection.Instance.characters
@@ -61,7 +68,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError("CharacterSelection.Instance is null.");
         }
     }
-
 
     private void SetupSingleton()
     {
@@ -82,6 +88,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         pauseButton.SetActive(false);
+        uiManager.DisablePauseMenu();
         gameOverPanel.SetActive(true);
         scoreManager.GetScoreTextObject().gameObject.SetActive(false);
         Time.timeScale = 0;

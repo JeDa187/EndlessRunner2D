@@ -7,13 +7,15 @@ using System.Collections.Generic;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] Sprite icon;
-    [SerializeField] TMP_Text collectedItemsText;
+    //[SerializeField] TMP_Text collectedItemsText;
     [SerializeField] Button pauseButton;
     [SerializeField] GameObject pauseMenuCanvas;
     [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject settingsMenuPanel;
     [SerializeField] GameObject MainMenuSecurePanel;
+    private bool pauseEnabled = true;
+
+    public List<Image> collectedItemSlots = new List<Image>();
 
     private void Awake()
     {
@@ -29,8 +31,37 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateCollectedItemsText(); // P‰ivit‰ tekstikentt‰ alussa
-        pauseButton.onClick.AddListener(ShowPauseMenu);
+        UpdateCollectedItems(); // P‰ivit‰ tekstikentt‰ alussa
+                                // Varmista, ett‰ pauseMenu ja uiPauseButton ovat asetettu inspectorissa
+        if (pauseMenuPanel == null)
+        {
+            Debug.LogError("PauseMenu GameObject ei ole asetettu PauseButtonControllerissa!");
+        }
+
+        if (pauseButton == null)
+        {
+            Debug.LogError("UIPauseButton ei ole asetettu PauseButtonControllerissa!");
+        }
+        else
+        {
+            // Kuuntele OnClick-tapahtumaa UI-painikkeelle
+            pauseButton.onClick.AddListener(TogglePauseMenu);
+        }
+    }
+    public void DisablePauseMenu()
+    {
+        pauseEnabled = false;
+        pauseMenuCanvas.SetActive(false);
+        pauseMenuPanel.SetActive(false);
+
+    }
+    void Update()
+    {
+        // Tarkista, onko Pause-painiketta painettu n‰pp‰imistˆlt‰ (Q)
+        if (Input.GetButtonDown("Pause"))
+        {
+            TogglePauseMenu(); // Kutsu TogglePauseMenu-metodia, kun painetaan pause-painiketta n‰pp‰imistˆlt‰
+        }
     }
 
     //Voit kutsua t‰t‰ metodia esimerkiksi aina kun ker‰ttyj‰ objekteja p‰ivitet‰‰n
@@ -40,26 +71,58 @@ public class UIManager : MonoBehaviour
         if (InventoryManager.Instance != null)
         {
             // P‰ivit‰ ker‰ttyjen objektien teksti
-            UpdateCollectedItemsText();
+            UpdateCollectedItems();
         }
     }
-
-    private void UpdateCollectedItemsText()
+    private void UpdateCollectedItems()
     {
         List<ItemSO> collectedItems = InventoryManager.Instance.GetCollectedItems();
 
-        StringBuilder sb = new("Collected Items:\n");
-        foreach (ItemSO item in collectedItems)
+        for (int i = 0; i < collectedItemSlots.Count; i++)
         {
-            sb.Append(item.collectableName).Append("\n");
-        }
+            Image slotImage = collectedItemSlots[i];
 
-        collectedItemsText.text = sb.ToString();
+            if (i < collectedItems.Count)
+            {
+                // Jos on ker‰tty esineit‰, hae niiden kuvat ItemSO-objekteista
+                Sprite itemSprite = collectedItems[i].collectableSprite;
+
+                // P‰ivit‰ Image-komponentti
+                slotImage.sprite = itemSprite;
+                slotImage.gameObject.SetActive(true);  // Varmista, ett‰ ruutu on n‰kyviss‰
+            }
+            else
+            {
+                // Jos ei ole en‰‰ esineit‰, piilota ruutu
+                slotImage.sprite = null;
+                slotImage.gameObject.SetActive(false);
+            }
+        }
     }
-    public void ShowPauseMenu()
+
+
+    //private void UpdateCollectedItemsText()
+    //{
+    //    List<ItemSO> collectedItems = InventoryManager.Instance.GetCollectedItems();
+
+    //    StringBuilder sb = new("Collected Items:\n");
+    //    foreach (ItemSO item in collectedItems)
+    //    {
+    //        sb.Append(item.collectableName).Append("\n");
+    //    }
+
+    //    collectedItemsText.text = sb.ToString();
+    //}
+    void TogglePauseMenu()
     {
-        Time.timeScale = 0f; // Pause the game
-        pauseMenuCanvas.SetActive(true); // Show the pause menu
+        if (pauseEnabled)
+        {
+            // K‰‰nn‰ pauseMenu-panelin tila p‰‰lle/pois p‰‰lt‰
+            pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
+
+            // Pys‰yt‰ aika, jos pauseMenu on p‰‰ll‰, jatka, jos se on pois p‰‰lt‰
+            Time.timeScale = (pauseMenuPanel.activeSelf) ? 0 : 1;
+        }
     }
     public void ResumeGame()
     {
@@ -75,7 +138,7 @@ public class UIManager : MonoBehaviour
     {
         MainMenuSecurePanel.SetActive(true);
         pauseMenuPanel.SetActive(false);
-        
+
     }
     public void ReturnToPauseMenu()
     {

@@ -17,7 +17,6 @@ public class ObjectSpawner : MonoBehaviour
 
     private float lastY;
     private GameObject lastSpawnedEnemy = null;
-    private InfiniteParallaxBackground parallaxBackground;
     private Camera mainCamera;
     private Dictionary<GameObject, Queue<GameObject>> objectPools;
 
@@ -38,7 +37,6 @@ public class ObjectSpawner : MonoBehaviour
         }
 
         mainCamera = Camera.main;
-        parallaxBackground = FindObjectOfType<InfiniteParallaxBackground>();
         InitializeObjectPools();
     }
     #endregion
@@ -97,15 +95,8 @@ public class ObjectSpawner : MonoBehaviour
             GameObject spawnedObject = GetObjectFromPool(objectToSpawn);
             if (spawnedObject == null) continue;
 
-            spawnedObject.transform.position = spawnPosition;
-            spawnedObject.transform.rotation = Quaternion.identity;
+            spawnedObject.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
             spawnedObject.SetActive(true);
-
-            EnemyMover mover = spawnedObject.GetComponent<EnemyMover>();
-            if (mover)
-            {
-                mover.SetSpeed(parallaxBackground.CameraSpeed);
-            }
 
             lastY = nextY;
 

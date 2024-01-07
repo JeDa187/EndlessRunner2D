@@ -2,25 +2,13 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    private DragonflyController dragonflyController;
+    [SerializeField] float baseMoveSpeed;
+    [SerializeField] float customSpeedFactor = 1.0f;
 
-    private void Start()
+    private void Update()
     {
-        dragonflyController = FindObjectOfType<DragonflyController>();
-        if (!dragonflyController)
-        {
-            Debug.LogError("DragonflyController was not found in the scene!");
-        }
-    }
-
-    private void LateUpdate()
-    {
-        //Check if SpeedBoost is active
-        float speedMultiplier = (dragonflyController && dragonflyController.IsSpeedBoostActive()) ? 8.0f : 1.0f;
-
         // Move the object to the left
-        transform.position += Vector3.left * moveSpeed * speedMultiplier * Time.deltaTime;
+        transform.position += Vector3.left * GetModifiedMoveSpeed() * Time.deltaTime;
 
         // Check if the object has gone off the left side of the screen
         Vector2 screenPosition = Camera.main.WorldToViewportPoint(transform.position);
@@ -32,10 +20,14 @@ public class EnemyMover : MonoBehaviour
         }
     }
 
-    public void SetSpeed(float cameraSpeed)
+    public void SetCustomSpeedFactor(float factor)
     {
-        // Modify moveSpeed based on camera speed.
-        moveSpeed = moveSpeed * cameraSpeed * 0.5f;
+        customSpeedFactor = factor;
+    }
+
+    private float GetModifiedMoveSpeed()
+    {
+        return baseMoveSpeed * customSpeedFactor;
     }
 
     private void ReturnToPool()

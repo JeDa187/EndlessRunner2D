@@ -18,6 +18,7 @@ public class DragonflyController : MonoBehaviour
     private AbilitySO abilitySO;
     private bool isMultiplierActive = false;
     private RigidbodyConstraints2D originalConstraints;
+    
 
     //private float[] originalSpeeds;
 
@@ -37,7 +38,7 @@ public class DragonflyController : MonoBehaviour
         inputHandling = GetComponent<InputHandling>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (!canMove) return; // If canMove is false, exit the function
         inputHandling.HandleInput();        // Check and process player input
@@ -67,6 +68,7 @@ public class DragonflyController : MonoBehaviour
         gameObject.SetActive(true); // Activate the dragonfly object
         transform.position = originalPosition; // Reset position
         rb.velocity = Vector2.zero; // Stop any movement
+        
     }
 
     // Kutsutaan kun pelaaja k‰ytt‰‰ kyky‰
@@ -95,15 +97,20 @@ public class DragonflyController : MonoBehaviour
     {
         if (increase)
         {
+            Debug.Log("SpeedBoostActivoitui");
             // Kiihdyt‰ kameraa
-            parallaxBG.CameraSpeed *= 8f;
+            parallaxBG.CameraSpeed *= 24f;
         }
         else
         {
             // Palauta kameran nopeus alkuper‰iseen
-            parallaxBG.CameraSpeed /= 8f;
+            parallaxBG.CameraSpeed /= 24f;
         }
     }
+    //private void ManipulateLayerScrollSpeed(bool increase)
+    //{
+    //    parallaxBG.LayersScrollSpeed(increase);
+    //}
 
     private void ActivateImmortality()
     {
@@ -123,10 +130,10 @@ public class DragonflyController : MonoBehaviour
     {
         Debug.Log("coroutine");
 
-        bool originalKinematicState = rb.isKinematic;       
+        bool originalKinematicState = rb.isKinematic;
 
+        //ManipulateLayerScrollSpeed(true);
         ManipulateCameraSpeed(true);
-
         // Immortal effect
         ActivateImmortality();
 
@@ -139,9 +146,10 @@ public class DragonflyController : MonoBehaviour
         // Score Multiplier
         isMultiplierActive = false;
 
+        //ManipulateLayerScrollSpeed(false);
+
         ManipulateCameraSpeed(false);
 
-     
         // Restore player's ability to move here
         rb.constraints = originalConstraints;
         rb.isKinematic = true;
